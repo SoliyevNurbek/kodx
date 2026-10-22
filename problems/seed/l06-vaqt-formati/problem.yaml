@@ -1,0 +1,20 @@
+title: Vaqt formati
+type: code
+difficulty: 2
+points: 200
+tags:
+- arifmetika
+- f-string
+time_limit: 1000
+memory_limit: 256
+checker: exact
+samples:
+- 1
+- 2
+input_format: Bitta son $S$ ($0 \le S < 10^6$).
+output_format: '`H:MM:SS`'
+lessons:
+- lesson: 6
+  kind: homework
+  required: true
+  order: 2

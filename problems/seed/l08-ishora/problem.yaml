@@ -1,0 +1,19 @@
+title: Sonning ishorasi
+type: code
+difficulty: 1
+points: 100
+tags:
+- if
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta butun son ($|n| \le 10^{18}$).
+output_format: '`musbat`, `manfiy` yoki `nol`.'
+lessons:
+- lesson: 8
+  kind: classwork
+  required: true
+  order: 1

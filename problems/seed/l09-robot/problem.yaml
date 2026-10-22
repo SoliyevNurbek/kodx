@@ -1,0 +1,20 @@
+title: Robot buyruqlari
+type: code
+difficulty: 3
+points: 300
+tags:
+- match-case
+- tsikl
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ ($1 \le n \le 10^4$), keyingi $n$ qatorda buyruqlar ($1 \le k \le 1000$).
+output_format: Birinchi qatorda $x$ va $y$, ikkinchi qatorda masofa.
+lessons:
+- lesson: 9
+  kind: challenge
+  required: false
+  order: 3

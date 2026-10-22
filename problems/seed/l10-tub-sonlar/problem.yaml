@@ -1,0 +1,20 @@
+title: Tub sonlar
+type: code
+difficulty: 3
+points: 300
+tags:
+- for
+- matematika
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta son $n$ ($2 \le n \le 20000$).
+output_format: Tub sonlar bitta qatorda.
+lessons:
+- lesson: 10
+  kind: challenge
+  required: false
+  order: 3

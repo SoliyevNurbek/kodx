@@ -1,0 +1,19 @@
+title: Kalkulyator
+type: code
+difficulty: 2
+points: 200
+tags:
+- match-case
+time_limit: 1000
+memory_limit: 256
+checker: float
+samples:
+- 1
+- 2
+input_format: Bitta qatorda `a amal b` ($|a|, |b| \le 10^9$, butun sonlar).
+output_format: Natija yoki `xato`.
+lessons:
+- lesson: 9
+  kind: homework
+  required: true
+  order: 2

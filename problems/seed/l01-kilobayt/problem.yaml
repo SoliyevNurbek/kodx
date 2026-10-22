@@ -1,0 +1,19 @@
+title: Kilobaytdan baytga
+type: code
+difficulty: 1
+points: 100
+tags:
+- arifmetika
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta butun son $K$ ($0 \le K \le 10^9$) — hajm kilobaytlarda.
+output_format: Hajm baytlarda.
+lessons:
+- lesson: 1
+  kind: classwork
+  required: true
+  order: 1

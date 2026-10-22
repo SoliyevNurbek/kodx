@@ -1,0 +1,20 @@
+title: Commit xabari uzunligi
+type: code
+difficulty: 1
+points: 100
+tags:
+- satrlar
+- git
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta qatorda bo‘sh bo‘lmagan commit xabari (uzunligi 200 gacha).
+output_format: '`OK` yoki `UZUN`.'
+lessons:
+- lesson: 3
+  kind: classwork
+  required: true
+  order: 1

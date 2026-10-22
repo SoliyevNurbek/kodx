@@ -1,0 +1,19 @@
+title: Raqamlar soni
+type: code
+difficulty: 1
+points: 100
+tags:
+- while
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta son $n$ ($0 \le n \le 10^{18}$).
+output_format: Raqamlar soni.
+lessons:
+- lesson: 11
+  kind: classwork
+  required: true
+  order: 1

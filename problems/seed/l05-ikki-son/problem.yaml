@@ -1,0 +1,19 @@
+title: Ikki son yig‘indisi
+type: code
+difficulty: 1
+points: 100
+tags:
+- kirish-chiqish
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $a$, ikkinchi qatorda $b$ ($|a|, |b| \le 10^{18}$).
+output_format: $a + b$
+lessons:
+- lesson: 5
+  kind: homework
+  required: true
+  order: 2

@@ -1,0 +1,20 @@
+title: Eng mashhur repozitoriylar
+type: code
+difficulty: 3
+points: 300
+tags:
+- saralash
+- github
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ ($1 \le n \le 10^5$), keyingi $n$ qatorda `nom yulduzlar`.
+output_format: Har bir qatorda `nom yulduzlar`.
+lessons:
+- lesson: 4
+  kind: challenge
+  required: false
+  order: 3

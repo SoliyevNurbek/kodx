@@ -1,0 +1,22 @@
+title: Diskdagi bo‘sh joy
+type: code
+difficulty: 3
+points: 300
+tags:
+- tsikl
+- arifmetika
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: 'Birinchi qatorda $C$ va $n$ ($0 \le C \le 1000$, $1 \le n \le 1000$).
+
+  Ikkinchi qatorda $n$ ta fayl hajmi (MB, $1 \le s_i \le 10^6$).'
+output_format: 'Ikki son: nusxalangan fayllar soni va bo‘sh qolgan joy (MB).'
+lessons:
+- lesson: 1
+  kind: challenge
+  required: false
+  order: 3

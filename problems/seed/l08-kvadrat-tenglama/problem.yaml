@@ -1,0 +1,21 @@
+title: Kvadrat tenglama
+type: code
+difficulty: 3
+points: 300
+tags:
+- if
+- matematika
+time_limit: 1000
+memory_limit: 256
+checker: float
+epsilon: 0.0001
+samples:
+- 1
+- 2
+input_format: Bitta qatorda uchta butun son $a$, $b$, $c$ ($|a|, |b|, |c| \le 1000$, $a \ne 0$).
+output_format: Birinchi qatorda ildizlar soni (0, 1 yoki 2), keyin — ildizlar (agar bo‘lsa).
+lessons:
+- lesson: 8
+  kind: challenge
+  required: false
+  order: 3

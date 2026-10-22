@@ -1,0 +1,21 @@
+title: Sonni top o‘yini
+type: code
+difficulty: 2
+points: 200
+tags:
+- while
+- if
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $s$, ikkinchi qatorda $n$ ($1 \le n \le 1000$), uchinchi qatorda $n$ ta
+  taxmin.
+output_format: Har bir ko‘rib chiqilgan taxmin uchun bitta so‘z.
+lessons:
+- lesson: 12
+  kind: homework
+  required: true
+  order: 2

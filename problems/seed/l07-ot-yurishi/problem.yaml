@@ -1,0 +1,19 @@
+title: Ot yurishi
+type: code
+difficulty: 3
+points: 300
+tags:
+- mantiqiy ifodalar
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta qatorda ikkita katak (`a`–`h` harfi va `1`–`8` raqami).
+output_format: '`True` yoki `False`.'
+lessons:
+- lesson: 7
+  kind: challenge
+  required: false
+  order: 3

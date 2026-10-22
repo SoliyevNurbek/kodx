@@ -1,0 +1,20 @@
+title: Karra jadvali
+type: code
+difficulty: 1
+points: 100
+tags:
+- for
+- f-string
+time_limit: 1000
+memory_limit: 256
+checker: exact
+samples:
+- 1
+- 2
+input_format: Bitta son $n$ ($1 \le n \le 1000$).
+output_format: 10 qator.
+lessons:
+- lesson: 10
+  kind: homework
+  required: true
+  order: 2

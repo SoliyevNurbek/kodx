@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "problems",
     "submissions",
     "contests",
+    "judge",
 ]
 
 MIDDLEWARE = [
@@ -147,3 +148,17 @@ MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Testlar: vaqtinchalik MEDIA_ROOT va TESTING belgisi (config/test_runner.py)
+
+TEST_RUNNER = "config.test_runner.KodxTestRunner"
+TESTING = False
+
+
+# Judge (kodni tekshirish). "local" — faqat DEBUG uchun, production'da "judge0".
+
+JUDGE_BACKEND = env("JUDGE_BACKEND", "local" if DEBUG else "judge0")
+JUDGE0_URL = env("JUDGE0_URL", "")
+JUDGE0_TOKEN = env("JUDGE0_TOKEN", "")
+JUDGE0_AUTH_HEADER = env("JUDGE0_AUTH_HEADER", "X-Auth-Token")

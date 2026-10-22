@@ -1,0 +1,20 @@
+title: Fayl kengaytmasi
+type: code
+difficulty: 2
+points: 200
+tags:
+- satrlar
+- fayllar
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta qatorda fayl nomi (bo‘shliqsiz, uzunligi 1–100).
+output_format: Kengaytma kichik harflarda yoki `yo'q`.
+lessons:
+- lesson: 1
+  kind: homework
+  required: true
+  order: 2
