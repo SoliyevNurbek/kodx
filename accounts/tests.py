@@ -132,3 +132,100 @@ class RoleRequestTests(TestCase):
         second = RoleRequest(user=self.student, requested_role=Role.JURY_PRO)
         with self.assertRaises(ValidationError):
             second.full_clean()
+
+
+class PermissionToolTests(TestCase):
+    """role_required, RoleRequiredMixin va is_staff sinxronizatsiyasi."""
+
+    def setUp(self) -> None:
+        from django.http import HttpResponse
+        from django.test import RequestFactory
+        from django.views import View
+
+        from .permissions import RoleRequiredMixin, role_required
+
+        self.factory = RequestFactory()
+
+        @role_required(Role.JURY_PRO)
+        def fn_view(request):
+            return HttpResponse("ok")
+
+        class CbView(RoleRequiredMixin, View):
+            required_role = Role.MODERATOR
+
+            def get(self, request):
+                return HttpResponse("ok")
+
+        self.fn_view = fn_view
+        self.cb_view = CbView.as_view()
+
+    def _request(self, user=None):
+        from django.contrib.auth.models import AnonymousUser
+
+        request = self.factory.get("/panel/")
+        request.user = user or AnonymousUser()
+        return request
+
+    def test_decorator_redirects_anonymous_to_login(self) -> None:
+        response = self.fn_view(self._request())
+        self.assertEqual(response.status_code, 302)
+        self.assertIn("login", response["Location"])
+
+    def test_decorator_denies_lower_role_and_allows_higher(self) -> None:
+        with self.assertRaises(PermissionDenied):
+            self.fn_view(self._request(make_user("j", role=Role.JURY)))
+        self.assertEqual(self.fn_view(self._request(make_user("jp", role=Role.JURY_PRO))).status_code, 200)
+        self.assertEqual(self.fn_view(self._request(make_user("m", role=Role.MODERATOR))).status_code, 200)
+
+    def test_mixin_checks_role(self) -> None:
+        with self.assertRaises(PermissionDenied):
+            self.cb_view(self._request(make_user("jp", role=Role.JURY_PRO)))
+        self.assertEqual(self.cb_view(self._request(make_user("m", role=Role.MODERATOR))).status_code, 200)
+        self.assertEqual(self.cb_view(self._request()).status_code, 302)
+
+    def test_is_staff_follows_role(self) -> None:
+        user = make_user("o")
+        self.assertFalse(user.is_staff)
+        user.role = Role.MODERATOR
+        user.save(update_fields=["role"])
+        user.refresh_from_db()
+        self.assertTrue(user.is_staff)
+        user.role = Role.JURY
+        user.save()
+        self.assertFalse(user.is_staff)
+
+
+class ModeratorAdminTests(TestCase):
+    """Moderatorning admin paneldagi chegaralari."""
+
+    def setUp(self) -> None:
+        from django.urls import reverse
+
+        self.reverse = reverse
+        self.moderator = make_user("mod", role=Role.MODERATOR)
+        self.client.force_login(self.moderator)
+
+    def test_moderator_cannot_edit_other_moderator(self) -> None:
+        other = make_user("mod2", role=Role.MODERATOR)
+        url = self.reverse("admin:accounts_user_change", args=[other.pk])
+        response = self.client.post(url, {"username": "mod2", "role": Role.USER})
+        self.assertEqual(response.status_code, 403)
+        other.refresh_from_db()
+        self.assertEqual(other.role, Role.MODERATOR)
+
+    def test_moderator_role_choices_limited(self) -> None:
+        student = make_user("talaba")
+        response = self.client.get(self.reverse("admin:accounts_user_change", args=[student.pk]))
+        self.assertEqual(response.status_code, 200)
+        choices = [value for value, _ in response.context["adminform"].form.fields["role"].choices]
+        self.assertEqual(choices, [Role.USER, Role.JURY, Role.JURY_PRO])
+
+    def test_moderator_cannot_view_audit_log(self) -> None:
+        response = self.client.get(self.reverse("admin:audit_auditlog_changelist"))
+        self.assertEqual(response.status_code, 403)
+
+    def test_moderator_cannot_delete_users(self) -> None:
+        student = make_user("talaba")
+        response = self.client.post(self.reverse("admin:accounts_user_delete", args=[student.pk]), {"post": "yes"})
+        self.assertEqual(response.status_code, 403)
+        self.assertTrue(User.objects.filter(pk=student.pk).exists())

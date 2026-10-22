@@ -1,0 +1,15 @@
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+extend-exclude = ["venv", "*/migrations/0001_*.py", "*/migrations/0002_*auto*.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "DJ"]
+ignore = ["DJ001"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["config", "accounts", "audit", "courses", "problems", "submissions", "contests", "judge", "grading"]
+
+[tool.coverage.run]
+source = ["."]
+omit = ["venv/*", "*/migrations/*", "manage.py", "config/asgi.py", "config/wsgi.py", "*/tests.py", "*/tests/*"]
