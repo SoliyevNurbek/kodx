@@ -50,6 +50,9 @@ class User(AbstractUser):
 
     objects = KodxUserManager()
 
+    # Email ixtiyoriy — createsuperuser uni so'ramaydi.
+    REQUIRED_FIELDS: list[str] = []
+
     class Meta:
         verbose_name = "foydalanuvchi"
         verbose_name_plural = "foydalanuvchilar"
@@ -58,6 +61,11 @@ class User(AbstractUser):
         # Bo'sh email NULL sifatida saqlanadi — unikal cheklov buzilmasligi uchun.
         if not self.email:
             self.email = None
+        # Admin panelga kirish roldan kelib chiqadi: moderator va undan yuqori.
+        self.is_staff = self.is_superuser or int(self.role) >= Role.MODERATOR
+        update_fields = kwargs.get("update_fields")
+        if update_fields is not None and "role" in update_fields:
+            kwargs["update_fields"] = {*update_fields, "is_staff"}
         super().save(*args, **kwargs)
 
     @property

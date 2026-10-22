@@ -67,10 +67,13 @@ Modul 4 — AI, API va Telegram bot:
 - Commit xabarlari o‘zbekcha, aniq. main — doim ishlaydigan holatda; yangi bosqich — alohida branch.
 
 ## Bosqichlar (MVP)
-1. Poydevor: Django + MySQL + rollar + audit + admin   ← hozir
+1. Poydevor: Django + MySQL + rollar + audit + admin
 2. Kurs: Course, Module, Lesson (48 dars seed), Group, GroupMember
 3. Masalalar: Problem, TestCase, Tag, LessonProblem (dars va muddat)
 4. Yechimlar: Submission, SubmissionResult + Judge0 integratsiyasi
 5. Sahifalar: ro‘yxatdan o‘tish, profil, masalalar, yechim yuborish, reyting
 6. Kontestlar, Jury/Jury Pro, rating tarixi
 7. Quiz va loyiha topshirish, kurs bahosi
+
+Batafsil bajarish rejasi va bosqichlar tartibi: docs/MASTER_PROMPT.md (ustuvor).
+Holat: docs/PROGRESS.md · Qarorlar: docs/DECISIONS.md
