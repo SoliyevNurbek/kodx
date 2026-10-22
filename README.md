@@ -60,8 +60,8 @@ Har yuqori rol pastdagilarning barcha huquqlarini o‘z ichiga oladi
 | Daraja | Rol | Huquqlar |
 |---|---|---|
 | 1 | user | profil, masalalar, yechim yuborish, o‘z urinishlari, reyting |
-| 2 | jury | + kontest yaratish va o‘z kontestlarini boshqarish |
-| 3 | jury_pro | + masala va test qo‘shish; faqat o‘z masalalarini tahrirlash |
+| 2 | judge | + kontest yaratish va o‘z kontestlarini boshqarish |
+| 3 | judge_pro | + masala va test qo‘shish; faqat o‘z masalalarini tahrirlash |
 | 4 | moderator | + barcha urinishlar va testlarni ko‘rish; jury/jury_pro rolini berish; rol so‘rovlarini tasdiqlash |
 | 5 | superadmin | + tizim sozlamalari, barcha rollar |
 
