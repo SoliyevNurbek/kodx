@@ -50,3 +50,12 @@ Har yozuv: sana · qaror · sabab · muqobil variant.
 - **Qaror:** ruff (line-length 120, E/F/W/I/B/UP/DJ). Avtomatik generatsiya qilingan `0001_*`
   migratsiyalar tekshiruvdan chiqarilgan. `requirements.txt` — runtime, `requirements-dev.txt` — ruff, coverage.
 - **Sabab:** generatsiya qilingan kodni qo‘lda formatlash ma’nosiz.
+
+## 2026-10-23 · README dagi «judge» nomi
+- **Qaror:** egasining GitHub’dagi README tahriri (jury → judge, 2–3-qatorlar) o‘zgartirilmasdan
+  merge qilindi. Koddagi rol identifikatorlari `jury`/`jury_pro` qoldi.
+- **Sabab:** CLAUDE.md va MASTER_PROMPT — ustuvor spetsifikatsiya, ularda `jury`. Koddagi nomni
+  o‘zgartirish migratsiya va barcha hujjatlarni o‘zgartirishni talab qiladi; egasining tahriri
+  qisman (4-qatorda «jury» qolgan), shuning uchun niyat aniq emas.
+- **Muqobil:** butun loyihada `judge` ga o‘tish — egasi xohlasa, `Role` label’larini o‘zgartirish
+  yetarli (DB da raqam saqlanadi, migratsiya oddiy).
