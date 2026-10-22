@@ -1,0 +1,25 @@
+# Maxfiy sozlamalar
+.env
+.env.*
+!.env.example
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Django
+media/
+logs/
+staticfiles/
+*.log
+
+# O'rnatish fayllari
+python-*.exe
+
+# IDE va OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
