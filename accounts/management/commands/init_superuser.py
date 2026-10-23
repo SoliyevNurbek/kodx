@@ -8,6 +8,7 @@ parolni almashtirishga majbur (must_change_password=True).
 
 import secrets
 import string
+from pathlib import Path
 
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
@@ -33,9 +34,10 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser) -> None:
         parser.add_argument("--username", default="nurbek")
+        parser.add_argument("--env-file", default=None, help="Parol yoziladigan fayl (standart: <loyiha>/.env)")
 
-    def handle(self, *args, username: str, **options) -> None:
-        env_path = settings.BASE_DIR / ".env"
+    def handle(self, *args, username: str, env_file: str | None, **options) -> None:
+        env_path = Path(env_file) if env_file else settings.BASE_DIR / ".env"
         if not env_path.exists():
             raise CommandError(".env topilmadi.")
 

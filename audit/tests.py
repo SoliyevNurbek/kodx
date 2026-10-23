@@ -65,3 +65,10 @@ class AdminSecurityTests(TestCase):
         delete_url = reverse("admin:audit_auditlog_delete", args=[log.pk])
         self.assertEqual(self.client.post(delete_url, {"post": "yes"}).status_code, 403)
         self.assertTrue(AuditLog.objects.filter(pk=log.pk).exists())
+
+    def test_changelists_render_without_mysql_timezone_tables(self) -> None:
+        log_action(self.admin, "x")
+        for name in ("admin:audit_auditlog_changelist", "admin:submissions_submission_changelist",
+                     "admin:accounts_user_changelist", "admin:problems_problem_changelist",
+                     "admin:contests_contest_changelist", "admin:grading_practicestats_changelist"):
+            self.assertEqual(self.client.get(reverse(name)).status_code, 200, name)

@@ -38,7 +38,6 @@ class SubmissionAdmin(ReadOnlyMixin, admin.ModelAdmin):
     list_display = ("id", "user", "problem", "verdict", "score", "time_ms", "status", "created_at")
     list_filter = ("verdict", "status", "language")
     search_fields = ("user__username", "problem__slug")
-    date_hierarchy = "created_at"
     list_select_related = ("user", "problem")
     readonly_fields = [f.name for f in Submission._meta.fields]
     inlines = (SubmissionResultInline,)

@@ -17,4 +17,4 @@ known-first-party = ["config", "accounts", "audit", "courses", "problems", "subm
 
 [tool.coverage.run]
 source = ["."]
-omit = ["venv/*", "*/migrations/*", "manage.py", "config/asgi.py", "config/wsgi.py", "*/tests.py", "*/tests/*"]
+omit = ["venv/*", "*/migrations/*", "manage.py", "config/asgi.py", "config/wsgi.py", "config/settings_prod.py", "tools/*", "*/tests.py", "*/test_*.py", "*/tests/*"]

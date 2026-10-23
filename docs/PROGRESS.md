@@ -12,7 +12,7 @@ Sessiya uzilsa — ish shu fayldan davom ettiriladi. Reja: `docs/MASTER_PROMPT.m
 | 6. Baholash va reyting | tayyor | 214 |
 | 7. Kontestlar | tayyor | 244 |
 | 8. Rollar oqimi va xavfsizlik | tayyor | 265 |
-| 9. Sifat va hujjatlar | — | |
+| 9. Sifat va hujjatlar | tayyor | 277 |
 
 ## Egasi bajarishi kerak bo‘lgan ishlar
 - [ ] `venv/Scripts/python manage.py init_superuser` — `nurbek` ga parol o‘rnatadi
@@ -78,3 +78,21 @@ Sessiya uzilsa — ish shu fayldan davom ettiriladi. Reja: `docs/MASTER_PROMPT.m
 - `check_similarity` + moderator paneli «O‘xshash yechimlar».
 - CSP (nonce), xavfsizlik sarlavhalari; `config/settings_prod.py`, `check --deploy` toza.
 - 21 yangi test. Jami 265. Keyingi qadam: 9-bosqich — sifat, CI, seed_demo, hujjatlar.
+
+## 9-bosqich — Sifat va hujjatlar (tayyor)
+- Coverage 95% (talab ≥ 80%), ruff toza, GitHub Actions CI (MySQL 8 servisi bilan).
+- `seed_demo` (20 demo o‘quvchi, urinishlar, kontest, reyting; faqat DEBUG).
+- Yakuniy qabul testlari (`core/test_acceptance.py`): o‘quvchi yo‘li, o‘qituvchi baholari va CSV, Jury kontesti va reyting.
+- README to‘liq; `docs/ARCHITECTURE.md` (Mermaid), `docs/ROLES.md` (ruxsatlar matritsasi).
+
+## Yakuniy qabul (MASTER_PROMPT §5)
+1. ✅ O‘quvchi ro‘yxatdan o‘tadi → guruhga qo‘shiladi → masala, test, loyiha → ball → reytingda o‘rni (test_1).
+2. ✅ O‘qituvchi progress va baholarni ko‘radi, loyihani baholaydi, CSV eksport qiladi (test_2).
+3. ✅ Jury kontest o‘tkazadi, jadval ishlaydi, reyting yangilanadi (test_3).
+4. ✅ Barcha testlar o‘tadi, coverage ≥ 80% (95%), ruff toza, `.env` hech qachon commit qilinmagan.
+5. ✅ Barcha bosqichlar «tayyor».
+
+## Keyingi tavsiyalar (MVP dan keyin)
+- Tailwind build (CDN o‘rniga) va CSP’dan `style-src 'unsafe-inline'` ni olib tashlash.
+- Production’da Judge0 serverini ko‘tarish; Redis/Celery navbati (`JUDGE_QUEUE`).
+- ru/en tarjimalar (`makemessages`), 375/768/1440 px da vizual QA.
