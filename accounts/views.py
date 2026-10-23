@@ -45,7 +45,10 @@ def profile(request: HttpRequest, username: str) -> HttpResponse:
         "is_owner": request.user.is_authenticated and request.user.pk == person.pk,
         "solved_count": len(solved_ids(person)),
         "calendar": activity_calendar(person),
-        "badges": list(person.badges.select_related("badge")) if hasattr(person, "badges") else [],
+        "badges": list(person.badges.select_related("badge")),
+        "practice": getattr(person, "practice", None),
+        "rating_history": list(person.rating_history.select_related("contest").order_by("created_at"))
+        if hasattr(person, "rating_history") else [],
     }
     return render(request, "accounts/profile.html", context)
 

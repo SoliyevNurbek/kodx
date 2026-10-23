@@ -11,6 +11,8 @@ urlpatterns = [
     # O'qituvchi
     path("guruhlar/", views.groups, name="groups"),
     path("guruhlar/<int:pk>/", views.group_progress, name="group_progress"),
+    path("guruhlar/<int:pk>/baholar/", views.group_grades, name="group_grades"),
+    path("guruhlar/<int:pk>/davomat/", views.group_attendance, name="group_attendance"),
     path("yechimlar/", views.submissions_feed, name="submissions"),
     path("loyihalar/", views.projects_queue, name="projects"),
     path("loyihalar/<int:pk>/", views.project_grade, name="project_grade"),

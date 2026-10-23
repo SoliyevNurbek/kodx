@@ -39,7 +39,7 @@ class User(AbstractUser):
     role = models.PositiveSmallIntegerField(
         "rol", choices=Role.choices, default=Role.USER, db_index=True
     )
-    rating = models.IntegerField("reyting", default=0)
+    rating = models.IntegerField("kontest reytingi", default=1200)
     bio = models.TextField("o'zi haqida", blank=True, max_length=1000)
     avatar = models.ImageField("avatar", upload_to="avatars/", blank=True)
     must_change_password = models.BooleanField(

@@ -3,14 +3,40 @@
 {% block title %}{% translate "Reyting" %}{% endblock %}
 {% block content %}
 <h1 class="mb-4 text-2xl font-bold">{% translate "Reyting" %}</h1>
+<nav class="mb-4 flex flex-wrap gap-2" aria-label="{% translate 'Reyting turlari' %}">
+  {% for key, label in tabs %}
+    <a href="?tab={{ key }}" class="{% if tab == key %}btn-primary{% else %}btn-secondary{% endif %} text-sm">{% translate label %}</a>
+  {% endfor %}
+  {% if tab == "group" and groups %}
+    <form method="get" class="ml-auto"><input type="hidden" name="tab" value="group">
+      <select name="id" class="form-input w-auto" data-autosubmit aria-label="{% translate 'Guruh' %}">
+        {% for g in groups %}<option value="{{ g.pk }}" {% if selected == g.pk|stringformat:"d" %}selected{% endif %}>{{ g.name }}</option>{% endfor %}
+      </select></form>
+  {% elif tab == "course" and courses|length > 1 %}
+    <form method="get" class="ml-auto"><input type="hidden" name="tab" value="course">
+      <select name="id" class="form-input w-auto" data-autosubmit aria-label="{% translate 'Kurs' %}">
+        {% for c in courses %}<option value="{{ c.pk }}" {% if selected == c.pk|stringformat:"d" %}selected{% endif %}>{{ c.title }}</option>{% endfor %}
+      </select></form>
+  {% endif %}
+</nav>
+{% if me %}
+  <div class="card mb-4 border-accent">{% translate "Sizning o‘rningiz" %}: <strong class="text-accent">{{ me.place }}</strong> · {{ me.score }} {% translate "ball" %}</div>
+{% elif user.is_authenticated %}
+  <div class="card mb-4 text-sm text-slate-500">{% translate "Siz hali bu jadvalda yo‘qsiz — birinchi masalani yeching!" %}</div>
+{% endif %}
 <div class="card overflow-x-auto">
   <table class="table-kodx">
-    <thead><tr><th>#</th><th>{% translate "Foydalanuvchi" %}</th><th class="text-right">{% translate "Ball" %}</th></tr></thead>
+    <thead><tr><th>#</th><th>{% translate "Foydalanuvchi" %}</th><th class="text-right">{% translate "Yechilgan" %}</th><th class="text-right">{% translate "Ball" %}</th></tr></thead>
     <tbody>
     {% for row in rows %}
-      <tr><td>{{ forloop.counter }}</td><td><a class="hover:text-accent" href="{% url 'profile' row.username %}">{{ row.username }}</a></td><td class="text-right font-semibold">{{ row.points }}</td></tr>
+      <tr class="{% if row.user.pk == user.pk %}bg-accent/10 font-semibold{% endif %}">
+        <td>{{ row.place }}</td>
+        <td><a class="hover:text-accent" href="{% url 'profile' row.user.username %}">{{ row.user.username }}</a></td>
+        <td class="text-right">{{ row.solved }}</td>
+        <td class="text-right font-semibold text-gold">{{ row.score }}</td>
+      </tr>
     {% empty %}
-      <tr><td colspan="3" class="text-slate-500">{% translate "Hali natijalar yo‘q." %}</td></tr>
+      <tr><td colspan="4" class="text-slate-500">{% translate "Hali natijalar yo‘q." %}</td></tr>
     {% endfor %}
     </tbody>
   </table>

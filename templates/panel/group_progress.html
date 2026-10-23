@@ -4,7 +4,10 @@
 {% block panel %}
 <div class="flex flex-wrap items-center justify-between gap-2">
   <h1 class="text-2xl font-bold">{{ group.name }} — {% translate "progress" %}</h1>
-  {% block group_actions %}{% endblock %}
+  <div class="flex flex-wrap gap-2">
+    <a class="btn-secondary text-sm" href="{% url 'panel:group_attendance' group.pk %}">{% translate "Davomat" %}</a>
+    <a class="btn-secondary text-sm" href="{% url 'panel:group_grades' group.pk %}">{% translate "Baholar" %}</a>
+  </div>
 </div>
 <p class="mb-4 text-sm text-slate-500">{% translate "Katakda: dars bo‘yicha yechilgan majburiy vazifalar / jami." %}</p>
 <div class="card overflow-x-auto">

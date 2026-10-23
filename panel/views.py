@@ -6,6 +6,7 @@ Rol panellari.
 - Super admin: tizim sozlamalari, audit jurnali, tizim holati.
 """
 
+import csv
 from datetime import timedelta
 
 from django.contrib import messages
@@ -23,6 +24,8 @@ from audit.models import AuditLog
 from audit.services import log_action
 from core.models import SiteSettings
 from courses.models import Group, Lesson
+from grading.course_grade import group_grades as group_grades_for
+from grading.models import Attendance
 from problems.models import LessonProblem, Problem, TestCase
 from submissions.models import ProjectSubmission, Submission
 from submissions.queue import get_queue
@@ -306,3 +309,55 @@ def audit_log(request: HttpRequest) -> HttpResponse:
     page = Paginator(items, 50).get_page(request.GET.get("page"))
     actions = AuditLog.objects.order_by("action").values_list("action", flat=True).distinct()
     return render(request, "panel/audit.html", {"page": page, "actions": actions, "action": action, "actor": actor})
+
+
+# ---------------- Baholash: kurs baholari va davomat ----------------
+
+@role_required(Role.MODERATOR)
+def group_grades(request: HttpRequest, pk: int) -> HttpResponse:
+    """Guruh baholari jadvali; ?format=csv — CSV eksport."""
+    group = get_object_or_404(Group.objects.select_related("course"), pk=pk)
+    grades = group_grades_for(group)
+    if request.GET.get("format") == "csv":
+        response = HttpResponse(content_type="text/csv; charset=utf-8")
+        response["Content-Disposition"] = f'attachment; filename="baholar-{group.pk}.csv"'
+        response.write("﻿")  # Excel UTF-8 ni to'g'ri ochishi uchun BOM
+        writer = csv.writer(response)
+        modules = grades[0][1].modules if grades else []
+        header = ["username", "ism"]
+        for module in modules:
+            header += [f"M{module.number} davomat", f"M{module.number} vazifalar", f"M{module.number} test",
+                       f"M{module.number} loyiha", f"M{module.number} jami"]
+        writer.writerow(header + ["jami"])
+        for user, grade in grades:
+            row = [user.username, user.get_full_name()]
+            for module in grade.modules:
+                row += [module.attendance, module.tasks, module.quiz, module.project, module.total]
+            writer.writerow(row + [grade.total])
+        log_action(request.user, "grades_exported", group, request=request)
+        return response
+    return render(request, "panel/group_grades.html", {"group": group, "grades": grades})
+
+
+@role_required(Role.MODERATOR)
+def group_attendance(request: HttpRequest, pk: int) -> HttpResponse:
+    """Dars bo'yicha davomatni belgilash."""
+    group = get_object_or_404(Group.objects.select_related("course"), pk=pk)
+    lessons = Lesson.objects.filter(module__course=group.course).order_by("number")
+    number = request.POST.get("lesson") or request.GET.get("lesson") or "1"
+    lesson = get_object_or_404(lessons, number=int(number) if str(number).isdigit() else 1)
+    members = list(group.members.filter(is_active=True).select_related("user").order_by("user__username"))
+    if request.method == "POST":
+        present_ids = {int(v) for v in request.POST.getlist("present") if v.isdigit()}
+        for member in members:
+            Attendance.objects.update_or_create(
+                group=group, lesson=lesson, user=member.user,
+                defaults={"present": member.user_id in present_ids, "marked_by": request.user})
+        log_action(request.user, "attendance_marked", group,
+                   {"lesson": lesson.number, "present": len(present_ids), "total": len(members)}, request)
+        messages.success(request, f"{lesson.number}-dars davomati saqlandi.")
+        return redirect(f"{request.path}?lesson={lesson.number}")
+    marked = dict(Attendance.objects.filter(group=group, lesson=lesson).values_list("user_id", "present"))
+    rows = [{"user": m.user, "present": marked.get(m.user_id, True), "marked": m.user_id in marked} for m in members]
+    return render(request, "panel/group_attendance.html",
+                  {"group": group, "lesson": lesson, "lessons": lessons, "rows": rows})

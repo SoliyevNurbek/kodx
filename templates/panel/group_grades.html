@@ -1,0 +1,32 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{{ group.name }} — {% translate "baholar" %}{% endblock %}
+{% block panel %}
+<div class="mb-4 flex flex-wrap items-center justify-between gap-2">
+  <h1 class="text-2xl font-bold">{{ group.name }} — {% translate "kurs baholari" %}</h1>
+  <div class="flex gap-2">
+    <a class="btn-secondary text-sm" href="{% url 'panel:group_progress' group.pk %}">{% translate "Progress" %}</a>
+    <a class="btn-primary text-sm" href="?format=csv">{% translate "CSV eksport" %}</a>
+  </div>
+</div>
+<p class="mb-3 text-sm text-slate-500">{% translate "Har modul: davomat + mustaqil vazifalar + test + loyiha. Kurs bahosi musobaqa reytingidan alohida." %}</p>
+<div class="card overflow-x-auto">
+  <table class="table-kodx text-sm">
+    <thead>
+      <tr><th rowspan="2">{% translate "O‘quvchi" %}</th>
+        {% for m in grades.0.1.modules %}<th colspan="5" class="text-center">{% translate "Modul" %} {{ m.number }}</th>{% endfor %}
+        <th rowspan="2" class="text-right">{% translate "Jami" %}</th></tr>
+      <tr>{% for m in grades.0.1.modules %}<th title="{% translate 'davomat' %}">D</th><th title="{% translate 'vazifalar' %}">V</th><th title="{% translate 'test' %}">T</th><th title="{% translate 'loyiha' %}">L</th><th>Σ</th>{% endfor %}</tr>
+    </thead>
+    <tbody>
+    {% for student, grade in grades %}
+      <tr>
+        <td class="whitespace-nowrap font-medium">{{ student.username }}</td>
+        {% for m in grade.modules %}<td>{{ m.attendance }}</td><td>{{ m.tasks }}</td><td>{{ m.quiz }}</td><td>{{ m.project }}</td><td class="font-semibold">{{ m.total }}</td>{% endfor %}
+        <td class="text-right font-bold text-accent">{{ grade.total }} / {{ grade.max_total }}</td>
+      </tr>
+    {% empty %}<tr><td class="text-slate-500">{% translate "Guruhda faol o‘quvchilar yo‘q." %}</td></tr>{% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

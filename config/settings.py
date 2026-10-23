@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "judge",
     "core",
     "panel",
+    "grading",
 ]
 
 MIDDLEWARE = [

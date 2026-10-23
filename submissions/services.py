@@ -105,7 +105,16 @@ def judge_submission(submission: Submission, backend: JudgeBackend | None = None
         submission.status = Submission.Status.DONE
         submission.judged_at = timezone.now()
         submission.save()
+    if submission.verdict == Verdict.ACCEPTED:
+        _refresh_stats(submission.user)
     return submission
+
+
+def _refresh_stats(user) -> None:
+    """Mashq statistikasi va nishonlarni yangilash (grading ilovasi)."""
+    from grading.practice import refresh_practice_stats
+
+    refresh_practice_stats(user)
 
 
 def rejudge(submission: Submission, actor, request: HttpRequest | None = None) -> None:
@@ -172,8 +181,11 @@ def grade_quiz(user, problem: Problem, answers: dict[str, Any], lesson=None) -> 
         points = question.points if correct else 0
         score += points
         details[key] = {"correct": correct, "points": points}
-    return QuizAttempt.objects.create(user=user, problem=problem, lesson=lesson, answers=clean_answers,
-                                      details=details, score=score, max_score=max_score)
+    attempt = QuizAttempt.objects.create(user=user, problem=problem, lesson=lesson, answers=clean_answers,
+                                         details=details, score=score, max_score=max_score)
+    if max_score and score == max_score:
+        _refresh_stats(user)
+    return attempt
 
 
 # ---------------- Loyihalar ----------------
@@ -211,6 +223,7 @@ def grade_project(grader, submission: ProjectSubmission, scores: dict[str, int],
     submission.graded_by = grader
     submission.graded_at = timezone.now()
     submission.save()
+    _refresh_stats(submission.user)
     log_action(grader, "project_graded", submission,
                {"score": submission.score, "status": submission.status, "user": submission.user.username}, request)
     return submission
