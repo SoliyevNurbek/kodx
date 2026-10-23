@@ -206,3 +206,17 @@ Har yozuv: sana · qaror · sabab · muqobil variant.
   cookie’lar, nginx orqasida `X-Forwarded-Proto`, Judge0 majburiy, SMTP. `check --deploy` ogohlantirishsiz (test bilan).
 - **Fayl yuklash:** test fayllari .in/.out/.txt, ≤ 5 MB, UTF-8 (5-bosqich); avatar ≤ 2 MB, ImageField (Pillow tekshiradi);
   `FILE_UPLOAD_MAX_MEMORY_SIZE`/`DATA_UPLOAD_MAX_MEMORY_SIZE` chegaralari.
+
+## 2026-10-23 · Sifat va hujjatlar (9-bosqich)
+- **CI (GitHub Actions):** Ubuntu 24.04 + MySQL 8.0 servisi; `kodx_user` (MYSQL_USER) — loyiha root bilan ishlamaydi,
+  root faqat CI konteynerida `test_kodx` ga GRANT berish uchun. venv majburiy: LocalDevBackend foydalanuvchi kodini
+  asosiy interpretatorda (venv paketlarisiz) ishga tushiradi. Qadamlar: ruff, `makemigrations --check`, testlar,
+  `coverage report --fail-under=80`, `check --deploy` (prod sozlamalari).
+- **Coverage:** `config/settings_prod.py`, migratsiyalar, testlar va `tools/` hisobga olinmaydi. Natija ~95%.
+- **seed_demo:** faqat DEBUG (yoki testda); `demo` prefiksli foydalanuvchilar, standart holatda kirib bo‘lmaydi
+  (`--password` bilan umumiy parol); determinik (`--seed`); `--reset` faqat demo ma’lumotlarni o‘chiradi. Yechimlar
+  sintetik (judge’siz) — demo jadvallar uchun. Egasining dev bazasida bir marta ishga tushirildi (20 o‘quvchi).
+- **POSIX xotira chegarasi:** `RLIMIT_AS` = limit + 64 MB (interpretatorning virtual xotirasi uchun zaxira).
+- **Admin `date_hierarchy` olib tashlandi:** MySQL vaqt zonasi jadvallari yuklanmagan serverlarda (OpenServer odatda)
+  `CONVERT_TZ` NULL qaytaradi va sahifa yiqiladi. Statistikalar ham shu sababli Python’da hisoblanadi.
+- **README dagi rol nomlari:** egasining `judge`/`judge_pro` tahriri saqlandi; koddagi identifikatorlar izohda ko‘rsatildi.
