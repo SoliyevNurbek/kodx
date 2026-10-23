@@ -1,0 +1,19 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Yechimlar oqimi" %}{% endblock %}
+{% block panel %}
+<div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+  <h1 class="text-2xl font-bold">{% translate "Yechimlar oqimi" %}</h1>
+  <form method="get"><select name="group" class="form-input w-auto" data-autosubmit aria-label="{% translate 'Guruh' %}">
+    <option value="">{% translate "Barcha guruhlar" %}</option>
+    {% for g in groups %}<option value="{{ g.pk }}" {% if group_id == g.pk|stringformat:"d" %}selected{% endif %}>{{ g.name }}</option>{% endfor %}
+  </select></form>
+</div>
+<div class="card overflow-x-auto"><table class="table-kodx">
+  <thead><tr><th>#</th><th>{% translate "O‘quvchi" %}</th><th>{% translate "Masala" %}</th><th>{% translate "Natija" %}</th><th>{% translate "Ball" %}</th><th>{% translate "Sana" %}</th></tr></thead>
+  <tbody>{% for s in page %}
+    <tr><td><a class="hover:text-accent" href="{% url 'submission_detail' s.pk %}">{{ s.pk }}</a></td><td>{{ s.user.username }}</td><td>{{ s.problem.title }}</td><td>{% include "_verdict.html" %}</td><td>{{ s.score }}</td><td class="text-sm">{{ s.created_at|date:"d.m H:i" }}</td></tr>
+  {% empty %}<tr><td colspan="6" class="text-slate-500">{% translate "Yechimlar yo‘q." %}</td></tr>{% endfor %}</tbody>
+</table></div>
+{% include "_pagination.html" %}
+{% endblock %}

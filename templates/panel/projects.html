@@ -1,0 +1,19 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Loyihalarni baholash" %}{% endblock %}
+{% block panel %}
+<div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+  <h1 class="text-2xl font-bold">{% translate "Loyihalarni baholash" %}</h1>
+  <form method="get"><select name="status" class="form-input w-auto" data-autosubmit aria-label="{% translate 'Holat' %}">
+    {% for value, label in statuses %}<option value="{{ value }}" {% if status == value %}selected{% endif %}>{{ label }}</option>{% endfor %}
+  </select></form>
+</div>
+<div class="card overflow-x-auto"><table class="table-kodx">
+  <thead><tr><th>{% translate "O‘quvchi" %}</th><th>{% translate "Loyiha" %}</th><th>{% translate "Topshirilgan" %}</th><th>{% translate "Ball" %}</th><th></th></tr></thead>
+  <tbody>{% for p in page %}
+    <tr><td>{{ p.user.username }}</td><td>{{ p.problem.title }}</td><td class="text-sm">{{ p.created_at|date:"d.m.Y H:i" }}</td><td>{{ p.score }}</td>
+      <td><a class="btn-secondary text-sm" href="{% url 'panel:project_grade' p.pk %}">{% translate "Baholash" %}</a></td></tr>
+  {% empty %}<tr><td colspan="5" class="text-slate-500">{% translate "Navbat bo‘sh." %}</td></tr>{% endfor %}</tbody>
+</table></div>
+{% include "_pagination.html" %}
+{% endblock %}

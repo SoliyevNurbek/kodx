@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n kodx %}
+{% block title %}{% translate "Masalalar" %}{% endblock %}
+{% block content %}
+<h1 class="mb-4 text-2xl font-bold">{% translate "Masalalar" %}</h1>
+<form method="get" class="card mb-4 grid gap-3 sm:grid-cols-5" role="search">
+  <input class="form-input sm:col-span-2" type="search" name="q" value="{{ filters.q }}" placeholder="{% translate 'Nomi bo‘yicha qidirish' %}" aria-label="{% translate 'Qidirish' %}">
+  <select class="form-input" name="type" aria-label="{% translate 'Turi' %}">
+    <option value="">{% translate "Barcha turlar" %}</option>
+    {% for value, label in types %}<option value="{{ value }}" {% if filters.type == value %}selected{% endif %}>{{ label }}</option>{% endfor %}
+  </select>
+  <select class="form-input" name="tag" aria-label="{% translate 'Teg' %}">
+    <option value="">{% translate "Barcha teglar" %}</option>
+    {% for tag in tags %}<option value="{{ tag.slug }}" {% if filters.tag == tag.slug %}selected{% endif %}>{{ tag.name }}</option>{% endfor %}
+  </select>
+  <button class="btn-primary" type="submit">{% translate "Filtrlash" %}</button>
+</form>
+<div class="card overflow-x-auto">
+  <table class="table-kodx">
+    <thead><tr><th>{% translate "Nomi" %}</th><th class="hidden sm:table-cell">{% translate "Turi" %}</th><th>{% translate "Qiyinlik" %}</th><th>{% translate "Holat" %}</th></tr></thead>
+    <tbody>
+    {% for row in rows %}
+      <tr>
+        <td><a class="font-medium hover:text-accent" href="{% url 'problem_detail' row.problem.slug %}">{{ row.problem.title }}</a>
+          <div class="text-xs text-slate-500">{% for tag in row.problem.tags.all %}#{{ tag.name }} {% endfor %}</div></td>
+        <td class="hidden text-sm sm:table-cell">{{ row.problem.get_type_display }}</td>
+        <td class="whitespace-nowrap text-gold">{{ row.problem.difficulty|stars }}</td>
+        <td><span class="badge badge-{{ row.status }}">{% if row.status == "solved" %}{% translate "yechilgan" %}{% elif row.status == "attempted" %}{% translate "urinilgan" %}{% else %}{% translate "yangi" %}{% endif %}</span></td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="4" class="text-slate-500">{% translate "Hech narsa topilmadi." %}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% include "_pagination.html" %}
+{% endblock %}

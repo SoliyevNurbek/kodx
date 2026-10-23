@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Urinish" %} #{{ submission.pk }}{% endblock %}
+{% block content %}
+<div class="mb-4">
+  <h1 class="text-2xl font-bold">{% translate "Urinish" %} #{{ submission.pk }}</h1>
+  <p class="text-sm text-slate-500">
+    <a class="hover:text-accent" href="{% url 'problem_detail' submission.problem.slug %}">{{ submission.problem.title }}</a> ·
+    <a class="hover:text-accent" href="{% url 'profile' submission.user.username %}">{{ submission.user.username }}</a> ·
+    {{ submission.get_language_display }} · {{ submission.created_at|date:"d.m.Y H:i:s" }}
+  </p>
+</div>
+{% include "submissions/_status.html" %}
+{% if show_code %}
+  <div class="card"><h2 class="mb-2 font-semibold">{% translate "Kod" %}</h2><pre class="overflow-x-auto rounded bg-slate-900 p-3 text-sm text-slate-100"><code>{{ submission.code }}</code></pre></div>
+{% else %}
+  <div class="card text-sm text-slate-500">{% translate "Kod masalani o‘zingiz yechganingizdan keyin ochiladi." %}</div>
+{% endif %}
+{% endblock %}

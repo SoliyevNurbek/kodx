@@ -1,0 +1,23 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Testlar" %}: {{ problem.title }}{% endblock %}
+{% block panel %}
+<h1 class="mb-4 text-2xl font-bold">{% translate "Testlar" %}: {{ problem.title }}</h1>
+<div class="grid gap-6 lg:grid-cols-2">
+  <div class="card overflow-x-auto">
+    <table class="table-kodx"><thead><tr><th>#</th><th>{% translate "Fayllar" %}</th><th>{% translate "Namuna" %}</th><th>{% translate "Ball" %}</th><th></th></tr></thead>
+      <tbody>{% for t in tests %}
+        <tr><td>{{ t.order }}</td><td class="text-xs">{{ t.input_file.name }}<br>{{ t.output_file.name }}</td><td>{% if t.is_sample %}✓{% endif %}</td><td>{{ t.points }}</td>
+          <td><form method="post" action="{% url 'panel:test_delete' problem.slug t.pk %}" data-confirm="{% translate 'Testni o‘chirasizmi?' %}">{% csrf_token %}<button class="text-sm text-red-500">{% translate "O‘chirish" %}</button></form></td></tr>
+      {% empty %}<tr><td colspan="5" class="text-slate-500">{% translate "Testlar yo‘q." %}</td></tr>{% endfor %}</tbody></table>
+    {% if tests %}<form method="post" action="{% url 'panel:problem_check' problem.slug %}" class="mt-4">{% csrf_token %}
+      <button class="btn-primary">{% translate "Etalon yechim bilan tekshirish" %}</button>
+      <p class="mt-1 text-xs text-slate-500">{% translate "Yechim navbatga qo‘yiladi va judge worker’da tekshiriladi." %}</p></form>{% endif %}
+  </div>
+  <form method="post" enctype="multipart/form-data" class="card">{% csrf_token %}
+    <h2 class="mb-3 font-semibold">{% translate "Test qo‘shish" %}</h2>
+    {% include "_form.html" %}
+    <button class="btn-primary" type="submit">{% translate "Yuklash" %}</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Bosh sahifa" %}{% endblock %}
+{% block content %}
+<section class="mb-8 rounded-2xl bg-navy p-6 text-white md:p-10">
+  <p class="text-sm uppercase tracking-widest text-gold">{{ site.tagline }}</p>
+  <h1 class="mt-2 text-3xl font-bold md:text-4xl">{% translate "Dasturlashni masala yechib o‘rganing" %}</h1>
+  <p class="mt-3 max-w-2xl text-slate-300">
+    {% blocktranslate %}48 dars, yuzlab masalalar, testlar va loyihalar. Kodingiz avtomatik tekshiriladi, natija bir necha soniyada.{% endblocktranslate %}
+  </p>
+  <div class="mt-6 flex flex-wrap gap-3">
+    {% if course %}<a class="btn-primary" href="{% url 'course_detail' course.slug %}">{% translate "Kursni boshlash" %}</a>{% endif %}
+    <a class="btn-secondary text-white" href="{% url 'problem_list' %}">{% translate "Masalalar" %}</a>
+  </div>
+</section>
+
+<section class="mb-8 grid grid-cols-2 gap-3 md:grid-cols-4" aria-label="{% translate 'Statistika' %}">
+  {% for label, value in counters.items %}
+  <div class="card text-center">
+    <div class="text-2xl font-bold text-accent">{{ value }}</div>
+    <div class="text-sm text-slate-500">
+      {% if label == "users" %}{% translate "o‘quvchilar" %}{% elif label == "problems" %}{% translate "vazifalar" %}{% elif label == "submissions" %}{% translate "yechimlar" %}{% else %}{% translate "qabul qilingan" %}{% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+<div class="grid gap-6 lg:grid-cols-3">
+  <section class="lg:col-span-2">
+    {% if course %}
+    <h2 class="mb-3 text-xl font-bold">{{ course.title }}</h2>
+    <div class="grid gap-3 sm:grid-cols-2">
+      {% for module in course.modules.all %}
+      <a class="card block transition hover:border-accent" href="{% url 'course_detail' course.slug %}#modul-{{ module.number }}">
+        <div class="text-xs font-semibold uppercase text-gold">{% translate "Modul" %} {{ module.number }}</div>
+        <div class="mt-1 font-semibold">{{ module.title }}</div>
+        <div class="mt-2 text-sm text-slate-500">{{ module.lessons.all|length }} {% translate "dars" %}</div>
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </section>
+  <section>
+    <h2 class="mb-3 text-xl font-bold">{% translate "Top-10" %}</h2>
+    <ol class="card space-y-2">
+      {% for row in top %}
+        <li class="flex items-center justify-between gap-2">
+          <span><span class="mr-2 text-slate-500">{{ forloop.counter }}.</span><a class="hover:text-accent" href="{% url 'profile' row.username %}">{{ row.username }}</a></span>
+          <span class="font-semibold text-gold">{{ row.points }}</span>
+        </li>
+      {% empty %}
+        <li class="text-sm text-slate-500">{% translate "Hali hech kim masala yechmagan — birinchi bo‘ling!" %}</li>
+      {% endfor %}
+    </ol>
+    <a class="mt-2 inline-block text-sm text-accent" href="{% url 'leaderboard' %}">{% translate "To‘liq reyting" %} →</a>
+  </section>
+</div>
+{% endblock %}

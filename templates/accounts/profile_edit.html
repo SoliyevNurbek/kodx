@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Profilni tahrirlash" %}{% endblock %}
+{% block content %}
+<div class="mx-auto max-w-xl">
+  <h1 class="mb-4 text-2xl font-bold">{% translate "Profilni tahrirlash" %}</h1>
+  <form method="post" enctype="multipart/form-data" class="card">
+    {% csrf_token %}
+    {% include "_form.html" %}
+    <button class="btn-primary" type="submit">{% translate "Saqlash" %}</button>
+  </form>
+</div>
+{% endblock %}

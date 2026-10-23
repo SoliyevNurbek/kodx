@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Reyting" %}{% endblock %}
+{% block content %}
+<h1 class="mb-4 text-2xl font-bold">{% translate "Reyting" %}</h1>
+<div class="card overflow-x-auto">
+  <table class="table-kodx">
+    <thead><tr><th>#</th><th>{% translate "Foydalanuvchi" %}</th><th class="text-right">{% translate "Ball" %}</th></tr></thead>
+    <tbody>
+    {% for row in rows %}
+      <tr><td>{{ forloop.counter }}</td><td><a class="hover:text-accent" href="{% url 'profile' row.username %}">{{ row.username }}</a></td><td class="text-right font-semibold">{{ row.points }}</td></tr>
+    {% empty %}
+      <tr><td colspan="3" class="text-slate-500">{% translate "Hali natijalar yo‘q." %}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Test natijasi" %}{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-bold">{{ attempt.problem.title }}</h1>
+<p class="mt-1 text-lg">{% translate "Natija" %}: <strong class="text-accent">{{ attempt.score }}/{{ attempt.max_score }}</strong>
+  ({{ attempt.problem_points }} / {{ attempt.problem.points }} {% translate "ball" %})</p>
+<div class="mt-4 space-y-3">
+  {% for row in rows %}
+  <div class="card border-l-4 {% if row.result.correct %}border-l-emerald-500{% else %}border-l-red-500{% endif %}">
+    <p class="font-semibold">{{ forloop.counter }}. {{ row.question.text }}</p>
+    <p class="mt-1 text-sm">{% if row.result.correct %}✅ {% translate "To‘g‘ri" %}{% else %}❌ {% translate "Noto‘g‘ri" %}{% endif %}</p>
+    {% if row.question.explanation %}<p class="mt-1 text-sm text-slate-500">{{ row.question.explanation }}</p>{% endif %}
+  </div>
+  {% endfor %}
+</div>
+<a class="btn-secondary mt-4" href="{% url 'problem_detail' attempt.problem.slug %}">{% translate "Qayta urinish" %}</a>
+{% endblock %}

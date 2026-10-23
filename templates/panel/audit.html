@@ -1,0 +1,18 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Audit jurnali" %}{% endblock %}
+{% block panel %}
+<h1 class="mb-4 text-2xl font-bold">{% translate "Audit jurnali" %}</h1>
+<form method="get" class="mb-4 flex flex-wrap gap-2">
+  <select name="action" class="form-input w-auto" aria-label="{% translate 'Harakat' %}"><option value="">{% translate "Barcha harakatlar" %}</option>{% for a in actions %}<option value="{{ a }}" {% if a == action %}selected{% endif %}>{{ a }}</option>{% endfor %}</select>
+  <input class="form-input w-auto" name="actor" value="{{ actor }}" placeholder="{% translate 'Bajaruvchi' %}" aria-label="{% translate 'Bajaruvchi' %}">
+  <button class="btn-primary">{% translate "Filtrlash" %}</button>
+</form>
+<div class="card overflow-x-auto"><table class="table-kodx">
+  <thead><tr><th>{% translate "Vaqt" %}</th><th>{% translate "Bajaruvchi" %}</th><th>{% translate "Harakat" %}</th><th>{% translate "Obyekt" %}</th><th>IP</th><th>{% translate "Tafsilotlar" %}</th></tr></thead>
+  <tbody>{% for log in page %}
+    <tr><td class="whitespace-nowrap text-xs">{{ log.created_at|date:"d.m.Y H:i:s" }}</td><td>{{ log.actor.username|default:"tizim" }}</td><td>{{ log.action }}</td><td class="text-xs">{{ log.object_type }} {{ log.object_id }}</td><td class="text-xs">{{ log.ip|default:"" }}</td><td class="max-w-xs truncate text-xs" title="{{ log.details }}">{{ log.details }}</td></tr>
+  {% empty %}<tr><td colspan="6" class="text-slate-500">{% translate "Yozuvlar yo‘q." %}</td></tr>{% endfor %}</tbody>
+</table></div>
+{% include "_pagination.html" %}
+{% endblock %}

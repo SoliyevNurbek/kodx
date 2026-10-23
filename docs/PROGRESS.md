@@ -8,7 +8,7 @@ Sessiya uzilsa — ish shu fayldan davom ettiriladi. Reja: `docs/MASTER_PROMPT.m
 | 2. Kurs tuzilmasi | tayyor | 43 |
 | 3. Vazifalar banki | tayyor | 96 |
 | 4. Yechimlar va tekshiruv | tayyor | 129 |
-| 5. Sahifalar (UI) | — | |
+| 5. Sahifalar (UI) | tayyor | 175 |
 | 6. Baholash va reyting | — | |
 | 7. Kontestlar | — | |
 | 8. Rollar oqimi va xavfsizlik | — | |
@@ -42,3 +42,15 @@ Sessiya uzilsa — ish shu fayldan davom ettiriladi. Reja: `docs/MASTER_PROMPT.m
 - Navbat: `submissions.queue` (DatabaseQueue); worker: `manage.py run_judge_worker [--once]`.
 - Admin: yechimlar (faqat ko‘rish + qayta tekshirish), quiz va loyihalar.
 - Testlar: 129. Keyingi qadam: 5-bosqich — UI sahifalari.
+
+## 5-bosqich — Sahifalar (tayyor)
+- Ommaviy: bosh sahifa (kurs, modullar, statistika, top-10), ro‘yxatdan o‘tish/kirish/parol tiklash, profil
+  (faollik kalendari, nishonlar joyi; email faqat egasiga), kurs → dars (holat, muddatlar), masalalar ro‘yxati.
+- Vazifa sahifalari: code (shart, namunalar, KaTeX, CodeMirror, yuborish → HTMX jonli natija), quiz, project.
+- Urinishlarim, urinish tafsiloti (testlar bo‘yicha natija, kod ko‘rinishi qoidalari).
+- Panellar: o‘qituvchi (guruh progressi dars × o‘quvchi, yechimlar oqimi, loyiha baholash, rol so‘rovlari, rollar),
+  Jury Pro (o‘z vazifalari, testlar yuklash, etalon bilan tekshirish, ko‘rib chiqishga yuborish),
+  super admin (sayt sozlamalari, audit, tizim holati/worker).
+- 46 ta view testi (ruxsat bor/yo‘q matritsasi bilan). Haqiqiy bazada barcha asosiy sahifalar 200.
+- Egasi uchun: 375/768/1440 px da vizual ko‘rib chiqish (responsiv klasslar va overflow-x jadvallar ishlatilgan).
+- Keyingi qadam: 6-bosqich — baholash va reyting.

@@ -1,0 +1,6 @@
+{% load i18n kodx %}{% if page.has_other_pages %}
+<nav class="mt-4 flex items-center justify-center gap-2 text-sm" aria-label="{% translate 'Sahifalar' %}">
+  {% if page.has_previous %}<a class="btn-secondary" href="?{% query_replace page=page.previous_page_number %}">← {% translate "Oldingi" %}</a>{% endif %}
+  <span>{{ page.number }} / {{ page.paginator.num_pages }}</span>
+  {% if page.has_next %}<a class="btn-secondary" href="?{% query_replace page=page.next_page_number %}">{% translate "Keyingi" %} →</a>{% endif %}
+</nav>{% endif %}

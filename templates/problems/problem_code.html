@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ problem.title }}{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" defer></script>
+{% endblock %}
+{% block content %}
+{% include "problems/_header.html" %}
+<div class="grid gap-6 lg:grid-cols-2">
+  <article class="card prose-kodx" aria-label="{% translate 'Masala sharti' %}">
+    {{ statement_html|safe }}
+    {% if problem.input_format %}<h3>{% translate "Kirish" %}</h3><div class="whitespace-pre-line">{{ problem.input_format }}</div>{% endif %}
+    {% if problem.output_format %}<h3>{% translate "Chiqish" %}</h3><div class="whitespace-pre-line">{{ problem.output_format }}</div>{% endif %}
+    {% for sample in samples %}
+      <h3>{% translate "Namuna" %} {{ forloop.counter }}</h3>
+      <div class="grid gap-2 sm:grid-cols-2">
+        <div><div class="text-xs text-slate-500">{% translate "Kirish" %}</div><pre><code>{{ sample.input }}</code></pre></div>
+        <div><div class="text-xs text-slate-500">{% translate "Chiqish" %}</div><pre><code>{{ sample.output }}</code></pre></div>
+      </div>
+    {% endfor %}
+    {% if problem.notes %}<h3>{% translate "Izoh" %}</h3><div class="whitespace-pre-line">{{ problem.notes }}</div>{% endif %}
+  </article>
+
+  <section>
+    {% if user.is_authenticated %}
+    <form method="post" action="{% url 'submit_code' problem.slug %}" class="card" id="submit-form">
+      {% csrf_token %}
+      {% if lesson %}<input type="hidden" name="lesson" value="{{ lesson.pk }}">{% endif %}
+      <div class="mb-2 flex items-center justify-between gap-2">
+        <label for="code" class="font-semibold">{% translate "Yechim" %}</label>
+        <select name="language" class="form-input w-auto" aria-label="{% translate 'Til' %}">
+          {% for value, label in languages %}<option value="{{ value }}">{{ label }}</option>{% endfor %}
+        </select>
+      </div>
+      <div id="editor" class="mb-3"></div>
+      <textarea id="code" name="code" rows="16" class="form-input font-mono text-sm" spellcheck="false" required></textarea>
+      <button class="btn-primary mt-3 w-full" type="submit">{% translate "Yuborish" %}</button>
+      <p class="mt-2 text-xs text-slate-500">{% translate "1 daqiqada ko‘pi bilan 6 ta yechim; kod hajmi 64 KB gacha." %}</p>
+    </form>
+    {% if recent %}
+    <div class="card mt-4">
+      <h2 class="mb-2 font-semibold">{% translate "Oxirgi urinishlarim" %}</h2>
+      <ul class="space-y-1 text-sm">
+        {% for s in recent %}<li class="flex justify-between"><a class="hover:text-accent" href="{% url 'submission_detail' s.pk %}">#{{ s.pk }} · {{ s.created_at|date:"d.m H:i" }}</a>{% include "_verdict.html" %}</li>{% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    {% else %}
+      <div class="card text-center"><a class="btn-primary" href="{% url 'login' %}?next={{ request.path }}">{% translate "Yechim yuborish uchun kiring" %}</a></div>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}
+{% block scripts %}
+<script type="module">
+  // CodeMirror 6 — yuklanmasa oddiy textarea ishlayveradi
+  try {
+    const { EditorView, basicSetup } = await import("https://esm.sh/codemirror@6.0.1");
+    const { python } = await import("https://esm.sh/@codemirror/lang-python@6.1.6");
+    const textarea = document.getElementById("code");
+    if (textarea) {
+      const view = new EditorView({ doc: textarea.value, extensions: [basicSetup, python()], parent: document.getElementById("editor") });
+      textarea.hidden = true;
+      textarea.required = false;
+      document.getElementById("submit-form").addEventListener("submit", () => { textarea.value = view.state.doc.toString(); });
+    }
+  } catch (e) { console.warn("CodeMirror yuklanmadi:", e); }
+</script>
+<script>window.addEventListener("load", function () { window.kodxRenderMath && window.kodxRenderMath(); });</script>
+{% endblock %}

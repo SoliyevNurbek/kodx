@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<div class="grid gap-6 md:grid-cols-[14rem_1fr]">
+  <aside class="card h-fit text-sm" aria-label="{% translate 'Panel menyusi' %}">
+    <nav class="flex flex-col gap-1">
+      <a class="nav-link" href="{% url 'panel:home' %}">{% translate "Panel" %}</a>
+      {% if user.is_moderator %}
+        <p class="mt-2 text-xs font-semibold uppercase text-slate-500">{% translate "O‘qituvchi" %}</p>
+        <a class="nav-link" href="{% url 'panel:groups' %}">{% translate "Guruhlar" %}</a>
+        <a class="nav-link" href="{% url 'panel:submissions' %}">{% translate "Yechimlar oqimi" %}</a>
+        <a class="nav-link" href="{% url 'panel:projects' %}">{% translate "Loyihalarni baholash" %}</a>
+        <a class="nav-link" href="{% url 'panel:role_requests' %}">{% translate "Rol so‘rovlari" %}</a>
+        <a class="nav-link" href="{% url 'panel:users' %}">{% translate "Foydalanuvchilar" %}</a>
+      {% endif %}
+      {% if user.is_jury_pro %}
+        <p class="mt-2 text-xs font-semibold uppercase text-slate-500">Jury Pro</p>
+        <a class="nav-link" href="{% url 'panel:my_problems' %}">{% translate "Vazifalarim" %}</a>
+        <a class="nav-link" href="{% url 'panel:problem_create' %}">{% translate "Yangi vazifa" %}</a>
+      {% endif %}
+      {% block panel_menu_extra %}{% endblock %}
+      {% if user.is_superadmin %}
+        <p class="mt-2 text-xs font-semibold uppercase text-slate-500">{% translate "Super admin" %}</p>
+        <a class="nav-link" href="{% url 'panel:system' %}">{% translate "Tizim" %}</a>
+        <a class="nav-link" href="{% url 'panel:audit' %}">{% translate "Audit jurnali" %}</a>
+        <a class="nav-link" href="{% url 'admin:index' %}">{% translate "Admin panel" %}</a>
+      {% endif %}
+    </nav>
+  </aside>
+  <div class="min-w-0">{% block panel %}{% endblock %}</div>
+</div>
+{% endblock %}

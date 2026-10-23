@@ -1,0 +1,86 @@
+{% load i18n static %}<!DOCTYPE html>
+{% get_current_language as LANG %}
+<html lang="{{ LANG }}" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ site.site_name }}{% endblock %} · {{ site.site_name }}</title>
+  <meta name="description" content="{% block description %}{{ site.tagline }}{% endblock %}">
+  <script>
+    // Mavzu: localStorage → tizim sozlamasi; sahifa chizilishidan oldin qo'llanadi (miltillamasligi uchun)
+    (function () {
+      try {
+        var saved = localStorage.getItem("kodx-theme");
+        var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.classList.toggle("dark", dark);
+      } catch (e) {}
+    })();
+  </script>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: { extend: { colors: { navy: "var(--kx-bg)", accent: "var(--kx-accent)", gold: "var(--kx-gold)" } } }
+    };
+  </script>
+  <style>
+    :root { --kx-bg: {{ site.color_background }}; --kx-accent: {{ site.color_accent }}; --kx-gold: {{ site.color_gold }}; }
+    .htmx-indicator { display: none; } .htmx-request .htmx-indicator, .htmx-request.htmx-indicator { display: inline; }
+  </style>
+  <link rel="stylesheet" href="{% static 'css/kodx.css' %}">
+  <script src="https://unpkg.com/htmx.org@2.0.4" defer></script>
+  {% block head %}{% endblock %}
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800 dark:bg-navy dark:text-slate-100 antialiased">
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:p-2 focus:bg-accent focus:text-navy">{% translate "Asosiy mazmunga o‘tish" %}</a>
+<header class="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-white/10 dark:bg-navy/90">
+  <nav class="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3" aria-label="{% translate 'Asosiy menyu' %}">
+    <a href="{% url 'home' %}" class="text-lg font-bold tracking-tight">
+      <span class="text-accent">&lt;/&gt;</span> {{ site.site_name }}
+    </a>
+    <button type="button" class="ml-auto rounded p-2 md:hidden" data-menu-toggle aria-controls="main-menu" aria-expanded="false">
+      <span class="sr-only">{% translate "Menyu" %}</span>☰
+    </button>
+    <div id="main-menu" class="hidden w-full flex-col gap-1 md:ml-6 md:flex md:w-auto md:flex-1 md:flex-row md:items-center md:gap-4" data-menu>
+      <a class="nav-link" href="{% url 'problem_list' %}">{% translate "Masalalar" %}</a>
+      <a class="nav-link" href="{% url 'leaderboard' %}">{% translate "Reyting" %}</a>
+      <a class="nav-link" href="{% url 'contest_list' %}">{% translate "Kontestlar" %}</a>
+      {% if user.is_authenticated %}
+        <a class="nav-link" href="{% url 'my_submissions' %}">{% translate "Urinishlarim" %}</a>
+        {% if user.is_jury_pro or user.is_jury %}<a class="nav-link" href="{% url 'panel:home' %}">{% translate "Panel" %}</a>{% endif %}
+      {% endif %}
+      <div class="flex items-center gap-2 md:ml-auto">
+        <button type="button" class="rounded px-2 py-1 text-sm ring-1 ring-slate-300 dark:ring-white/20" data-theme-toggle
+                aria-label="{% translate 'Mavzuni almashtirish' %}">◐</button>
+        {% if user.is_authenticated %}
+          <a class="nav-link font-semibold" href="{% url 'profile' user.username %}">{{ user.username }}</a>
+          <form method="post" action="{% url 'logout' %}">{% csrf_token %}
+            <button class="nav-link" type="submit">{% translate "Chiqish" %}</button>
+          </form>
+        {% else %}
+          <a class="nav-link" href="{% url 'login' %}">{% translate "Kirish" %}</a>
+          {% if site.registration_enabled %}<a class="btn-primary" href="{% url 'register' %}">{% translate "Ro‘yxatdan o‘tish" %}</a>{% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="main" class="mx-auto max-w-6xl px-4 py-6">
+  {% if messages %}
+    <div class="mb-4 space-y-2" role="status">
+      {% for message in messages %}
+        <div class="rounded-lg px-4 py-2 text-sm {% if message.tags == 'error' %}bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-200{% else %}bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200{% endif %}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="border-t border-slate-200 py-6 text-center text-sm text-slate-500 dark:border-white/10">
+  {{ site.site_name }} · {{ site.tagline }}
+</footer>
+<script src="{% static 'js/kodx.js' %}" defer></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
