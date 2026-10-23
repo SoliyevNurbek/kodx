@@ -176,3 +176,22 @@ class ProjectSubmission(models.Model):
 
     def can_view(self, user) -> bool:
         return bool(user and user.is_authenticated and (user.pk == self.user_id or user.is_moderator))
+
+
+class SimilarityMatch(models.Model):
+    """Ko'chirmachilik shubhasi: bir masaladagi ikki yechimning o'xshashligi (faqat moderatorga ko'rinadi)."""
+
+    problem = models.ForeignKey("problems.Problem", on_delete=models.CASCADE, related_name="similarity_matches",
+                                verbose_name="masala")
+    submission_a = models.ForeignKey(Submission, on_delete=models.CASCADE, related_name="+", verbose_name="yechim A")
+    submission_b = models.ForeignKey(Submission, on_delete=models.CASCADE, related_name="+", verbose_name="yechim B")
+    score = models.FloatField("o‘xshashlik (0–1)")
+    created_at = models.DateTimeField("aniqlangan", auto_now_add=True)
+
+    class Meta:
+        verbose_name = "o‘xshash yechimlar"
+        verbose_name_plural = "o‘xshash yechimlar"
+        ordering = ["-score"]
+
+    def __str__(self) -> str:
+        return f"{self.problem.slug}: #{self.submission_a_id} ~ #{self.submission_b_id} ({self.score:.0%})"

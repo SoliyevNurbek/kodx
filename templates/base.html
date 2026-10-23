@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ site.site_name }}{% endblock %} · {{ site.site_name }}</title>
   <meta name="description" content="{% block description %}{{ site.tagline }}{% endblock %}">
-  <script>
+  <script nonce="{{ request.csp_nonce }}">
     // Mavzu: localStorage → tizim sozlamasi; sahifa chizilishidan oldin qo'llanadi (miltillamasligi uchun)
     (function () {
       try {
@@ -17,7 +17,7 @@
     })();
   </script>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script>
+  <script nonce="{{ request.csp_nonce }}">
     tailwind.config = {
       darkMode: "class",
       theme: { extend: { colors: { navy: "var(--kx-bg)", accent: "var(--kx-accent)", gold: "var(--kx-gold)" } } }

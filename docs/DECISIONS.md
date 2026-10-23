@@ -178,3 +178,31 @@ Har yozuv: sana · qaror · sabab · muqobil variant.
   `select_for_update` bilan bir martalik; `RatingHistory` — profilda SVG grafik.
 - **Jonli jadval:** HTMX har 15 soniyada (faqat kontest davomida).
 - **Seed:** «Kirish kontesti» (2026-11-01 10:00, ICPC, 120 daqiqa, 30 daqiqa muzlatish, A–D modul 1 masalalari).
+
+## 2026-10-23 · Rollar oqimi va xavfsizlik (8-bosqich)
+- **Rol so‘rovi UI:** o‘quvchi profil → «Rol so‘rash» (Jury; Jury → Jury Pro), sabab bilan; bir vaqtda bitta kutilayotgan
+  so‘rov; moderator panelda tasdiqlaydi (audit).
+- **Vaqtinchalik parol:** moderator+ o‘zidan past darajadagi foydalanuvchiga beradi. Parol tizim tomonidan generatsiya
+  qilinadi (chalkash belgilarsiz), **faqat bir marta** shu javobda ko‘rsatiladi (`Cache-Control: no-store`), bazada —
+  faqat xesh, auditga parol yozilmaydi; `must_change_password=True`. CLAUDE.md dagi «hech kim parolni ko‘ra olmaydi»
+  qoidasi saqlanadi: foydalanuvchining *o‘z* paroli hech qachon ko‘rinmaydi — bu yangi bir martalik parol.
+  Admin paneldagi «parolni o‘rnatish» sahifasi yopiqligicha qoladi.
+- **2FA (TOTP, django-otp):** super admin `/panel/` va `/admin/` ga faqat 2FA tasdiqlangan sessiyada kiradi; qurilma
+  bo‘lmasa — QR (SVG, server tomonida) bilan ulash sahifasi. django-otp throttling’i (noto‘g‘ri koddan keyin kutish) yoqiq.
+  Testlarda boshqa super admin testlari `KODX_REQUIRE_SUPERADMIN_2FA=False` bilan, 2FA oqimi alohida testlangan.
+  ⚠️ Egasi: `nurbek` birinchi kirishda telefonda autentifikator ilova bilan QR-kodni skanerlaydi.
+- **Kirish cheklovi:** barcha foydalanuvchilar uchun — 15 daqiqada 5 ta xato urinish → vaqtincha blok (to‘g‘ri parol ham
+  qabul qilinmaydi); muvaffaqiyatli kirish hisobni yangilaydi; vaqtinchalik parol berilganda blok olib tashlanadi;
+  super admin akkauntiga xato urinishlar auditga yoziladi. Hisob bazada (`LoginAttempt`), kesh shart emas.
+  Muqobil: django-axes — qo‘shimcha qaramlik, oddiy ehtiyoj uchun ortiqcha.
+- **Ko‘chirmachilik:** `manage.py check_similarity [--problem] [--contest] [--threshold 0.85]` — har foydalanuvchining
+  oxirgi qabul qilingan yechimi; Python `tokenize` bilan normallashtirish (izohlar olib tashlanadi, nomlar/sonlar/satrlar
+  umumiy belgiga) + `SequenceMatcher`; 15 tokendan qisqa yechimlar solishtirilmaydi. Natijalar faqat moderator panelida.
+  Kod bajarilmaydi.
+- **CSP:** har so‘rovga nonce; `script-src` da `unsafe-inline`/`unsafe-eval` yo‘q; ruxsat etilgan CDN’lar aniq ro‘yxatda;
+  `style-src 'unsafe-inline'` — Tailwind Play CDN uslublarni dinamik qo‘shgani uchun (Tailwind build’ga o‘tilganda olib
+  tashlanadi). `frame-ancestors 'none'`, `X-Frame-Options: DENY`, `nosniff`, `Referrer-Policy: same-origin`.
+- **Prod sozlamalari:** `config/settings_prod.py` — DEBUG o‘chiq, HTTPS redirect, HSTS (1 yil, preload), Secure/HttpOnly
+  cookie’lar, nginx orqasida `X-Forwarded-Proto`, Judge0 majburiy, SMTP. `check --deploy` ogohlantirishsiz (test bilan).
+- **Fayl yuklash:** test fayllari .in/.out/.txt, ≤ 5 MB, UTF-8 (5-bosqich); avatar ≤ 2 MB, ImageField (Pillow tekshiradi);
+  `FILE_UPLOAD_MAX_MEMORY_SIZE`/`DATA_UPLOAD_MAX_MEMORY_SIZE` chegaralari.

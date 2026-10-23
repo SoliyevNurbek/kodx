@@ -205,3 +205,20 @@ class RoleRequest(models.Model):
     def reject(self, reviewer: User, comment: str = "", request: HttpRequest | None = None) -> None:
         """So'rovni rad etadi."""
         self._review(reviewer, self.Status.REJECTED, comment, request)
+
+
+class LoginAttempt(models.Model):
+    """Kirish urinishi (parolni terib topishga qarshi cheklov uchun)."""
+
+    username = models.CharField("username", max_length=150, db_index=True)
+    ip = models.GenericIPAddressField("IP manzil", null=True, blank=True)
+    success = models.BooleanField("muvaffaqiyatli", default=False)
+    created_at = models.DateTimeField("vaqt", auto_now_add=True, db_index=True)
+
+    class Meta:
+        verbose_name = "kirish urinishi"
+        verbose_name_plural = "kirish urinishlari"
+        ordering = ["-created_at"]
+
+    def __str__(self) -> str:
+        return f"{self.username} · {'+' if self.success else '-'} · {self.created_at:%Y-%m-%d %H:%M}"

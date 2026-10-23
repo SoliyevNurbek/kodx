@@ -1,7 +1,7 @@
 """Rol panellari view testlari: har sahifa uchun ruxsat bor / yo'q va asosiy amallar."""
 
 from django.core.files.uploadedfile import SimpleUploadedFile
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.urls import reverse
 
 from accounts.models import Role, RoleRequest, User
@@ -19,6 +19,7 @@ def make_user(username: str, role: int = Role.USER) -> User:
     return User.objects.create_user(username=username, password=PASSWORD, role=role)
 
 
+@override_settings(KODX_REQUIRE_SUPERADMIN_2FA=False)  # 2FA alohida testlanadi
 class PanelAccessMatrixTests(TestCase):
     """Har bir panel sahifasi uchun minimal rol."""
 
@@ -204,6 +205,7 @@ class JuryProPanelTests(TestCase):
         self.assertEqual(self.client.get(reverse("problem_detail", args=[problem.slug])).status_code, 404)
 
 
+@override_settings(KODX_REQUIRE_SUPERADMIN_2FA=False)  # 2FA alohida testlanadi
 class SuperadminPanelTests(TestCase):
     def setUp(self) -> None:
         self.admin = make_user("bosh", Role.SUPERADMIN)

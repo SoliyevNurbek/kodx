@@ -1,0 +1,17 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{% translate "O‘xshash yechimlar" %}{% endblock %}
+{% block panel %}
+<h1 class="mb-2 text-2xl font-bold">{% translate "O‘xshash yechimlar" %}</h1>
+<p class="mb-4 text-sm text-slate-500">{% translate "Natijalar faqat moderatorlarga ko‘rinadi. Yangilash:" %} <code>manage.py check_similarity [--problem slug] [--contest slug]</code>. {% translate "Yuqori o‘xshashlik — ko‘chirilganining isboti emas, suhbat uchun sabab." %}</p>
+<div class="card overflow-x-auto"><table class="table-kodx">
+  <thead><tr><th>{% translate "Masala" %}</th><th>{% translate "Yechim A" %}</th><th>{% translate "Yechim B" %}</th><th class="text-right">{% translate "O‘xshashlik" %}</th></tr></thead>
+  <tbody>{% for m in page %}
+    <tr><td>{{ m.problem.title }}</td>
+      <td><a class="hover:text-accent" href="{% url 'submission_detail' m.submission_a.pk %}">{{ m.submission_a.user.username }} #{{ m.submission_a.pk }}</a></td>
+      <td><a class="hover:text-accent" href="{% url 'submission_detail' m.submission_b.pk %}">{{ m.submission_b.user.username }} #{{ m.submission_b.pk }}</a></td>
+      <td class="text-right font-semibold {% if m.score >= 0.95 %}text-red-500{% else %}text-amber-500{% endif %}">{% widthratio m.score 1 100 %}%</td></tr>
+  {% empty %}<tr><td colspan="4" class="text-slate-500">{% translate "Shubhali juftliklar topilmadi." %}</td></tr>{% endfor %}</tbody>
+</table></div>
+{% include "_pagination.html" %}
+{% endblock %}

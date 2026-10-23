@@ -20,6 +20,7 @@ from django.views.decorators.http import require_POST
 
 from accounts.models import Role, RoleRequest, User
 from accounts.permissions import role_required
+from accounts.services import issue_temporary_password
 from audit.models import AuditLog
 from audit.services import log_action
 from contests.models import Contest, ContestProblem
@@ -29,7 +30,7 @@ from courses.models import Group, Lesson
 from grading.course_grade import group_grades as group_grades_for
 from grading.models import Attendance
 from problems.models import LessonProblem, Problem, TestCase
-from submissions.models import ProjectSubmission, Submission
+from submissions.models import ProjectSubmission, SimilarityMatch, Submission
 from submissions.queue import get_queue
 from submissions.services import SubmissionError, create_submission, grade_project
 from submissions.stats import solved_map
@@ -459,3 +460,22 @@ def contest_apply_ratings(request: HttpRequest, slug: str) -> HttpResponse:
         messages.success(request, f"Reyting yangilandi: {len(deltas)} ishtirokchi." if deltas
                          else "Reyting o‘zgarmadi (reytingsiz yoki allaqachon hisoblangan).")
     return redirect("panel:contest_edit", slug=slug)
+
+
+@role_required(Role.MODERATOR)
+@require_POST
+def temp_password(request: HttpRequest, pk: int) -> HttpResponse:
+    """Vaqtinchalik parol berish: parol faqat shu javobda ko'rsatiladi (keshlanmaydi)."""
+    target = get_object_or_404(User, pk=pk, is_active=True)
+    password = issue_temporary_password(request.user, target, request)
+    response = render(request, "panel/temp_password.html", {"target": target, "password": password})
+    response["Cache-Control"] = "no-store"
+    return response
+
+
+@role_required(Role.MODERATOR)
+def similarity(request: HttpRequest) -> HttpResponse:
+    """Ko'chirmachilik shubhalari (manage.py check_similarity natijalari) — faqat moderator+."""
+    matches = SimilarityMatch.objects.select_related("problem", "submission_a__user", "submission_b__user")
+    page = Paginator(matches, 50).get_page(request.GET.get("page"))
+    return render(request, "panel/similarity.html", {"page": page})

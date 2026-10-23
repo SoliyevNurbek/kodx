@@ -3,9 +3,11 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth.views import LoginView
 from django.urls import include, path
 
 from accounts import views as account_views
+from accounts.forms import KodxAuthenticationForm
 from contests import views as contest_views
 from core import views as core_views
 from courses import views as course_views
@@ -21,6 +23,10 @@ urlpatterns = [
     path("reyting/", core_views.leaderboard, name="leaderboard"),
     # Hisob
     path("accounts/register/", account_views.register, name="register"),
+    path("accounts/login/", LoginView.as_view(authentication_form=KodxAuthenticationForm), name="login"),
+    path("accounts/2fa/ulash/", account_views.two_factor_setup, name="two_factor_setup"),
+    path("accounts/2fa/", account_views.two_factor_verify, name="two_factor_verify"),
+    path("sozlamalar/rol-sorovi/", account_views.role_request, name="role_request"),
     path("accounts/password_change/", account_views.KodxPasswordChangeView.as_view(), name="password_change"),
     path("accounts/", include("django.contrib.auth.urls")),
     path("sozlamalar/profil/", account_views.profile_edit, name="profile_edit"),

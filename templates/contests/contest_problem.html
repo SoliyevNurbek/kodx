@@ -39,7 +39,7 @@
 </div>
 {% endblock %}
 {% block scripts %}
-<script type="module">
+<script type="module" nonce="{{ request.csp_nonce }}">
   try {
     const { EditorView, basicSetup } = await import("https://esm.sh/codemirror@6.0.1");
     const { python } = await import("https://esm.sh/@codemirror/lang-python@6.1.6");
@@ -51,5 +51,5 @@
     }
   } catch (e) { console.warn("CodeMirror yuklanmadi:", e); }
 </script>
-<script>window.addEventListener("load", function () { window.kodxRenderMath && window.kodxRenderMath(); });</script>
+<script nonce="{{ request.csp_nonce }}">window.addEventListener("load", function () { window.kodxRenderMath && window.kodxRenderMath(); });</script>
 {% endblock %}

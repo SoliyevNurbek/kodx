@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_otp",
+    "django_otp.plugins.otp_totp",
     # Loyiha ilovalari
     "accounts",
     "audit",
@@ -63,11 +65,14 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "core.middleware.ContentSecurityPolicyMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django_otp.middleware.OTPMiddleware",
+    "core.middleware.SuperadminOTPMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "core.middleware.ForcePasswordChangeMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -143,6 +148,17 @@ LOGOUT_REDIRECT_URL = "home"
 # Email: dev'da konsolga (parolni tiklash xatlari terminalda ko'rinadi)
 EMAIL_BACKEND = env("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", "kodx.uz <noreply@kodx.uz>")
+
+
+# Xavfsizlik
+KODX_REQUIRE_SUPERADMIN_2FA = env_bool("KODX_REQUIRE_SUPERADMIN_2FA", True)
+CSP_ENABLED = env_bool("CSP_ENABLED", True)
+OTP_TOTP_ISSUER = "kodx.uz"
+FILE_UPLOAD_MAX_MEMORY_SIZE = 5 * 1024 * 1024
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024
+X_FRAME_OPTIONS = "DENY"
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_REFERRER_POLICY = "same-origin"
 
 
 # Til va vaqt

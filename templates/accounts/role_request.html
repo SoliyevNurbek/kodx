@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Rol so‘rash" %}{% endblock %}
+{% block content %}
+<div class="mx-auto max-w-xl">
+  <h1 class="mb-2 text-2xl font-bold">{% translate "Rol so‘rash" %}</h1>
+  <p class="mb-4 text-sm text-slate-500">{% translate "Jury — kontest o‘tkazadi; Jury Pro — masala va testlar qo‘shadi. So‘rovni moderator ko‘rib chiqadi." %}</p>
+  {% if not can_request %}
+    <div class="card text-slate-500">{% translate "Sizda so‘rash mumkin bo‘lgan barcha rollar bor." %}</div>
+  {% elif pending %}
+    <div class="card text-amber-600 dark:text-amber-300">{% translate "Sizning so‘rovingiz ko‘rib chiqilmoqda." %}</div>
+  {% else %}
+    <form method="post" class="card">{% csrf_token %}{% include "_form.html" %}<button class="btn-primary" type="submit">{% translate "Yuborish" %}</button></form>
+  {% endif %}
+  {% if history %}
+  <h2 class="mb-2 mt-6 font-semibold">{% translate "So‘rovlarim" %}</h2>
+  <ul class="card space-y-2 text-sm">{% for r in history %}
+    <li><strong>{{ r.get_requested_role_display }}</strong> · {{ r.created_at|date:"d.m.Y" }} · {{ r.get_status_display }}
+      {% if r.review_comment %}<div class="text-slate-500">{{ r.review_comment }}</div>{% endif %}</li>{% endfor %}</ul>
+  {% endif %}
+</div>
+{% endblock %}
