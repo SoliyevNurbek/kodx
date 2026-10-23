@@ -1,0 +1,20 @@
+title: O‘rtachadan kattalar
+type: code
+difficulty: 2
+points: 200
+tags:
+- list
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ ($1 \le n \le 10^5$), ikkinchi qatorda $n$ ta son ($|a_i| \le 10^9$).
+output_format: Bitta son.
+notes: Haqiqiy sonlar bilan xatolikka yo‘l qo‘ymaslik uchun $a_i \cdot n > S$ ni solishtirish mumkin.
+lessons:
+- lesson: 13
+  kind: homework
+  required: true
+  order: 2

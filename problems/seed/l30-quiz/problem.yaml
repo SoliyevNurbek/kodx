@@ -1,0 +1,65 @@
+title: 'Test: CSS Grid'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Uch teng ustunli grid qanday yoziladi?
+  kind: single
+  points: 1
+  options:
+  - text: 'columns: 1fr 3'
+    correct: false
+  - text: 'grid-template-columns: repeat(3, 1fr)'
+    correct: true
+  - text: 'grid: 3 equal'
+    correct: false
+  - text: 'grid-columns: 3'
+    correct: false
+- text: '`fr` birligi nimani bildiradi?'
+  kind: single
+  points: 1
+  options:
+  - text: Foiz
+    correct: false
+  - text: Bo‘sh joyning ulushini
+    correct: true
+  - text: Piksel
+    correct: false
+  - text: Shrift o‘lchamini
+    correct: false
+- text: Grid elementlari orasidagi masofa xossasi qaysi? (bitta so‘z)
+  kind: text
+  points: 1
+  answers:
+  - gap
+- text: Grid qachon Flexbox’dan qulayroq?
+  kind: multiple
+  points: 1
+  options:
+  - text: Sahifaning umumiy karkasi uchun
+    correct: true
+  - text: Ikki o‘lchamli (qator va ustun) maket uchun
+    correct: true
+  - text: Faqat bitta tugmani markazlash uchun
+    correct: false
+  - text: Matn rangini o‘zgartirish uchun
+    correct: false
+- text: Element 2 ustunni egallashi uchun?
+  kind: single
+  points: 1
+  options:
+  - text: 'width: 2'
+    correct: false
+  - text: 'grid-size: 2'
+    correct: false
+  - text: 'colspan: 2'
+    correct: false
+  - text: 'grid-column: span 2'
+    correct: true
+lessons:
+- lesson: 30
+  kind: classwork
+  required: true
+  order: 10

@@ -1,0 +1,67 @@
+title: 'Test: Loyiha 1 himoyasi: takrorlash'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Loyiha kodini GitHub’ga joylashning to‘g‘ri tartibi qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: git clone → git push
+    correct: false
+  - text: git push → git add → git commit
+    correct: false
+  - text: git commit → git init → git add
+    correct: false
+  - text: git add → git commit → git push
+    correct: true
+- text: README.md da odatda nima bo‘lmaydi?
+  kind: single
+  points: 1
+  options:
+  - text: Muallif haqida ma’lumot
+    correct: false
+  - text: Parollar va maxfiy kalitlar
+    correct: true
+  - text: O‘rnatish va ishga tushirish yo‘riqnomasi
+    correct: false
+  - text: Loyiha tavsifi
+    correct: false
+- text: '`for i in range(3): print(i, end='''')` nima chiqaradi?'
+  kind: text
+  points: 1
+  answers:
+  - '012'
+- text: Yaxshi kodning belgilari qaysilar?
+  kind: multiple
+  points: 1
+  options:
+  - text: O‘zgaruvchilar a, b, c, d, e
+    correct: false
+  - text: Tushunarli o‘zgaruvchi nomlari
+    correct: true
+  - text: Takrorlanmaydigan kod
+    correct: true
+  - text: Kerakli joylarda izohlar
+    correct: true
+  - text: Barcha kod bitta qatorda
+    correct: false
+- text: Loyiha himoyasida eng muhimi nima?
+  kind: single
+  points: 1
+  options:
+  - text: Kodni o‘zing tushuntirib bera olish
+    correct: true
+  - text: Kod imkon qadar uzun bo‘lishi
+    correct: false
+  - text: Ko‘p kutubxona ishlatish
+    correct: false
+  - text: Taqdimotda ko‘p animatsiya
+    correct: false
+lessons:
+- lesson: 12
+  kind: classwork
+  required: true
+  order: 10

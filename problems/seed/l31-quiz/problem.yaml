@@ -1,0 +1,68 @@
+title: 'Test: Responsiv dizayn'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Media query qanday yoziladi?
+  kind: single
+  points: 1
+  options:
+  - text: media(768px) { ... }
+    correct: false
+  - text: '@responsive { ... }'
+    correct: false
+  - text: '@media (max-width: 768px) { ... }'
+    correct: true
+  - text: '@screen 768 { ... }'
+    correct: false
+- text: Mobil qurilmalar uchun `<head>` da qaysi meta teg shart?
+  kind: single
+  points: 1
+  options:
+  - text: <meta name="phone">
+    correct: false
+  - text: <meta name="viewport" content="width=device-width, initial-scale=1">
+    correct: true
+  - text: <meta mobile="true">
+    correct: false
+  - text: <meta charset="mobile">
+    correct: false
+- text: «Avval mobil» yondashuvi inglizcha qanday ataladi? (ikki so‘z, chiziqcha bilan)
+  kind: text
+  points: 1
+  answers:
+  - mobile-first
+  - mobile first
+- text: Qaysi birliklar ekran o‘lchamiga moslashadi?
+  kind: multiple
+  points: 1
+  options:
+  - text: vw
+    correct: true
+  - text: pt
+    correct: false
+  - text: px
+    correct: false
+  - text: '%'
+    correct: true
+  - text: rem
+    correct: true
+- text: Rasm konteynerdan chiqib ketmasligi uchun?
+  kind: single
+  points: 1
+  options:
+  - text: 'float: none'
+    correct: false
+  - text: 'display: inline'
+    correct: false
+  - text: 'max-width: 100%'
+    correct: true
+  - text: 'width: 2000px'
+    correct: false
+lessons:
+- lesson: 31
+  kind: classwork
+  required: true
+  order: 10

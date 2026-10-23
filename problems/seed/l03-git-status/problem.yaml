@@ -1,0 +1,20 @@
+title: git status hisoboti
+type: code
+difficulty: 2
+points: 200
+tags:
+- satrlar
+- git
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ ($0 \le n \le 1000$), keyingi $n$ qatorda `KOD fayl_nomi`.
+output_format: 'To‘rt qator: `M x`, `A y`, `D z`, `?? w`.'
+lessons:
+- lesson: 3
+  kind: homework
+  required: true
+  order: 2

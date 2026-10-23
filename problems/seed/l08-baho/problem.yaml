@@ -1,0 +1,19 @@
+title: Ballni bahoga aylantirish
+type: code
+difficulty: 2
+points: 200
+tags:
+- if
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta butun son — ball ($0 \le b \le 100$).
+output_format: Baho.
+lessons:
+- lesson: 8
+  kind: homework
+  required: true
+  order: 2

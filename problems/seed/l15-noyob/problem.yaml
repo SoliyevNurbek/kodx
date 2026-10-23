@@ -1,0 +1,19 @@
+title: Noyob sonlar
+type: code
+difficulty: 1
+points: 100
+tags:
+- set
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ ($1 \le n \le 10^5$), ikkinchi qatorda sonlar.
+output_format: Turli sonlar soni.
+lessons:
+- lesson: 15
+  kind: classwork
+  required: true
+  order: 1

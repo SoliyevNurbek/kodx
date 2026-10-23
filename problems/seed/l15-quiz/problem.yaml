@@ -1,0 +1,67 @@
+title: 'Test: tuple, set, dict'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Qaysi tur o‘zgarmas (immutable)?
+  kind: single
+  points: 1
+  options:
+  - text: list
+    correct: false
+  - text: tuple
+    correct: true
+  - text: set
+    correct: false
+  - text: dict
+    correct: false
+- text: '`len({1, 2, 2, 3, 3, 3})` nechaga teng?'
+  kind: text
+  points: 1
+  answers:
+  - '3'
+- text: Lug‘atda kalit yo‘q bo‘lsa xato bermasdan standart qiymat qaytaruvchi metod qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: find()
+    correct: false
+  - text: get()
+    correct: true
+  - text: value()
+    correct: false
+  - text: index()
+    correct: false
+- text: Qaysilar lug‘at (dict) kaliti bo‘la oladi?
+  kind: multiple
+  points: 1
+  options:
+  - text: '{1, 2} (set)'
+    correct: false
+  - text: '[1, 2] (list)'
+    correct: false
+  - text: 42 (int)
+    correct: true
+  - text: (1, 2) (tuple)
+    correct: true
+  - text: '''ism'' (str)'
+    correct: true
+- text: '`{1, 2, 3} & {2, 3, 4}` nima beradi?'
+  kind: single
+  points: 1
+  options:
+  - text: '{1, 2, 3, 4}'
+    correct: false
+  - text: '{2, 3}'
+    correct: true
+  - text: '{1, 4}'
+    correct: false
+  - text: Xato
+    correct: false
+lessons:
+- lesson: 15
+  kind: classwork
+  required: true
+  order: 10

@@ -1,0 +1,67 @@
+title: 'Test: Funksiyalar'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Funksiya qaysi kalit so‘z bilan e’lon qilinadi?
+  kind: single
+  points: 1
+  options:
+  - text: def
+    correct: true
+  - text: fn
+    correct: false
+  - text: function
+    correct: false
+  - text: func
+    correct: false
+- text: '`return` bo‘lmagan funksiya nima qaytaradi?'
+  kind: single
+  points: 1
+  options:
+  - text: '0'
+    correct: false
+  - text: None
+    correct: true
+  - text: Xato beradi
+    correct: false
+  - text: Bo‘sh satr
+    correct: false
+- text: '`def f(a, b=2): return a * b` bo‘lsa, `f(5)` nima qaytaradi?'
+  kind: text
+  points: 1
+  answers:
+  - '10'
+- text: Funksiyalardan foydalanishning foydalari qaysilar?
+  kind: multiple
+  points: 1
+  options:
+  - text: Dastur avtomatik tezlashadi
+    correct: false
+  - text: Xatolar umuman bo‘lmaydi
+    correct: false
+  - text: Kodni sinash osonlashadi
+    correct: true
+  - text: Dastur qismlarga bo‘linadi
+    correct: true
+  - text: Kod takrorlanmaydi
+    correct: true
+- text: O‘zini o‘zi chaqiradigan funksiya qanday ataladi?
+  kind: single
+  points: 1
+  options:
+  - text: Rekursiv
+    correct: true
+  - text: Generator
+    correct: false
+  - text: Lambda
+    correct: false
+  - text: Dekorator
+    correct: false
+lessons:
+- lesson: 17
+  kind: classwork
+  required: true
+  order: 10

@@ -1,0 +1,1727 @@
+{
+  "oquvchilar": [
+    {
+      "ism": "Oquvchi0",
+      "baholar": [
+        2,
+        2,
+        2,
+        2,
+        4,
+        4,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi1",
+      "baholar": [
+        3,
+        3,
+        5,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi2",
+      "baholar": [
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi3",
+      "baholar": [
+        4,
+        5,
+        2,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi4",
+      "baholar": [
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi5",
+      "baholar": [
+        5,
+        3,
+        3,
+        4,
+        3,
+        2,
+        4,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi6",
+      "baholar": [
+        3,
+        4,
+        3,
+        5,
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi7",
+      "baholar": [
+        5,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi8",
+      "baholar": [
+        5,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi9",
+      "baholar": [
+        5,
+        5,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi10",
+      "baholar": [
+        3,
+        2,
+        5,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi11",
+      "baholar": [
+        5,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi12",
+      "baholar": [
+        3,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi13",
+      "baholar": [
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi14",
+      "baholar": [
+        4,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi15",
+      "baholar": [
+        4,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi16",
+      "baholar": [
+        5,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi17",
+      "baholar": [
+        4,
+        2,
+        2,
+        4,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi18",
+      "baholar": [
+        3,
+        5,
+        3,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi19",
+      "baholar": [
+        5,
+        3,
+        3,
+        5,
+        2,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi20",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi21",
+      "baholar": [
+        3,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi22",
+      "baholar": [
+        3,
+        2,
+        4,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi23",
+      "baholar": [
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi24",
+      "baholar": [
+        4,
+        3,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi25",
+      "baholar": [
+        2,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi26",
+      "baholar": [
+        2,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi27",
+      "baholar": [
+        3,
+        5,
+        3,
+        4,
+        5,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi28",
+      "baholar": [
+        5,
+        2,
+        4,
+        3,
+        2,
+        5,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi29",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi30",
+      "baholar": [
+        3,
+        5,
+        4,
+        3,
+        5,
+        5,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi31",
+      "baholar": [
+        5,
+        3,
+        2,
+        5,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi32",
+      "baholar": [
+        2,
+        4,
+        3,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi33",
+      "baholar": [
+        2,
+        3,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi34",
+      "baholar": [
+        3,
+        3,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi35",
+      "baholar": [
+        4,
+        3,
+        2,
+        4,
+        3,
+        2,
+        2,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi36",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi37",
+      "baholar": [
+        3,
+        5,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi38",
+      "baholar": [
+        2,
+        4,
+        5,
+        4,
+        3,
+        3,
+        4,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi39",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi40",
+      "baholar": [
+        5,
+        3,
+        3,
+        4,
+        3,
+        2,
+        5,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi41",
+      "baholar": [
+        3,
+        2,
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi42",
+      "baholar": [
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi43",
+      "baholar": [
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi44",
+      "baholar": [
+        4,
+        2,
+        3,
+        4,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi45",
+      "baholar": [
+        4,
+        5,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi46",
+      "baholar": [
+        4,
+        4,
+        3,
+        4,
+        2,
+        2,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi47",
+      "baholar": [
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi48",
+      "baholar": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi49",
+      "baholar": [
+        5,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi50",
+      "baholar": [
+        4,
+        3,
+        2,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi51",
+      "baholar": [
+        4,
+        4,
+        3,
+        5,
+        2,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi52",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi53",
+      "baholar": [
+        3,
+        4,
+        5,
+        2,
+        3,
+        4,
+        5,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi54",
+      "baholar": [
+        2,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi55",
+      "baholar": [
+        3,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi56",
+      "baholar": [
+        3,
+        2,
+        4,
+        5,
+        4,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi57",
+      "baholar": [
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi58",
+      "baholar": [
+        5,
+        5,
+        5,
+        2,
+        5,
+        5,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi59",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi60",
+      "baholar": [
+        3,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi61",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi62",
+      "baholar": [
+        3,
+        3,
+        2,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi63",
+      "baholar": [
+        5,
+        3,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi64",
+      "baholar": [
+        2,
+        5,
+        3,
+        4,
+        5,
+        4,
+        5,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi65",
+      "baholar": [
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi66",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi67",
+      "baholar": [
+        3,
+        3,
+        3,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi68",
+      "baholar": [
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi69",
+      "baholar": [
+        3,
+        4,
+        3,
+        4,
+        2,
+        5,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi70",
+      "baholar": [
+        4,
+        3,
+        5,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi71",
+      "baholar": [
+        3,
+        4,
+        5,
+        5,
+        3,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi72",
+      "baholar": [
+        3,
+        4,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi73",
+      "baholar": [
+        5,
+        3,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi74",
+      "baholar": [
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi75",
+      "baholar": [
+        2,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi76",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi77",
+      "baholar": [
+        3,
+        4,
+        2,
+        5,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi78",
+      "baholar": [
+        3,
+        4,
+        4,
+        2,
+        2,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi79",
+      "baholar": [
+        3,
+        5,
+        3,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi80",
+      "baholar": [
+        2,
+        3,
+        4,
+        5,
+        3,
+        3,
+        2,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi81",
+      "baholar": [
+        4,
+        4,
+        5,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi82",
+      "baholar": [
+        5,
+        4,
+        2,
+        4,
+        5,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi83",
+      "baholar": [
+        3,
+        3,
+        2,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi84",
+      "baholar": [
+        3,
+        5,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi85",
+      "baholar": [
+        5,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi86",
+      "baholar": [
+        5,
+        5,
+        4,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi87",
+      "baholar": [
+        5,
+        3,
+        2,
+        4,
+        4,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi88",
+      "baholar": [
+        2,
+        3,
+        5,
+        3,
+        5,
+        2,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi89",
+      "baholar": [
+        5,
+        4,
+        2,
+        5,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi90",
+      "baholar": [
+        3,
+        5,
+        4,
+        5,
+        2,
+        4,
+        3,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi91",
+      "baholar": [
+        5,
+        2,
+        3,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi92",
+      "baholar": [
+        2,
+        5,
+        3,
+        3,
+        5,
+        3,
+        2,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi93",
+      "baholar": [
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi94",
+      "baholar": [
+        4,
+        5,
+        5,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi95",
+      "baholar": [
+        2,
+        3,
+        2,
+        3,
+        2,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi96",
+      "baholar": [
+        4,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi97",
+      "baholar": [
+        5,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi98",
+      "baholar": [
+        4,
+        4,
+        2,
+        5,
+        5,
+        2,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi99",
+      "baholar": [
+        4,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi100",
+      "baholar": [
+        5,
+        3,
+        2,
+        3,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi101",
+      "baholar": [
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi102",
+      "baholar": [
+        2,
+        3,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi103",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi104",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi105",
+      "baholar": [
+        4,
+        5,
+        5,
+        3,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi106",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi107",
+      "baholar": [
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi108",
+      "baholar": [
+        4,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi109",
+      "baholar": [
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi110",
+      "baholar": [
+        3,
+        3,
+        4,
+        2,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi111",
+      "baholar": [
+        2,
+        4,
+        3,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi112",
+      "baholar": [
+        5,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi113",
+      "baholar": [
+        4,
+        2,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi114",
+      "baholar": [
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi115",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi116",
+      "baholar": [
+        5,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi117",
+      "baholar": [
+        3,
+        3,
+        3,
+        4,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi118",
+      "baholar": [
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi119",
+      "baholar": [
+        2,
+        5,
+        2,
+        3,
+        2,
+        4,
+        5,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi120",
+      "baholar": [
+        2,
+        3,
+        2,
+        2,
+        3,
+        4,
+        4,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi121",
+      "baholar": [
+        3,
+        5,
+        3,
+        4,
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi122",
+      "baholar": [
+        5,
+        5,
+        3,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi123",
+      "baholar": [
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi124",
+      "baholar": [
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi125",
+      "baholar": [
+        3,
+        2,
+        3,
+        5,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi126",
+      "baholar": [
+        3,
+        5,
+        2,
+        4,
+        4,
+        4,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi127",
+      "baholar": [
+        5,
+        2,
+        3,
+        2,
+        5,
+        4,
+        5,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi128",
+      "baholar": [
+        2,
+        5,
+        5,
+        3,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi129",
+      "baholar": [
+        5,
+        4,
+        5,
+        2,
+        4,
+        2,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi130",
+      "baholar": [
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi131",
+      "baholar": [
+        3,
+        4,
+        3,
+        3,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi132",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi133",
+      "baholar": [
+        4,
+        3,
+        5,
+        2,
+        4,
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi134",
+      "baholar": [
+        4,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi135",
+      "baholar": [
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi136",
+      "baholar": [
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi137",
+      "baholar": [
+        4,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi138",
+      "baholar": [
+        5,
+        4,
+        5,
+        2,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi139",
+      "baholar": [
+        2,
+        4,
+        2,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi140",
+      "baholar": [
+        3,
+        3,
+        2,
+        5,
+        2,
+        3,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi141",
+      "baholar": [
+        4,
+        2,
+        4,
+        3,
+        5,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi142",
+      "baholar": [
+        3,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi143",
+      "baholar": [
+        5,
+        4,
+        4,
+        5,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi144",
+      "baholar": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi145",
+      "baholar": [
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi146",
+      "baholar": [
+        2,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi147",
+      "baholar": [
+        5,
+        2,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi148",
+      "baholar": [
+        5,
+        2,
+        5,
+        5,
+        5,
+        4,
+        5,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi149",
+      "baholar": [
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi150",
+      "baholar": [
+        2,
+        4,
+        5,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi151",
+      "baholar": [
+        3,
+        2,
+        3,
+        4,
+        5,
+        4,
+        5,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi152",
+      "baholar": [
+        4,
+        5,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi153",
+      "baholar": [
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi154",
+      "baholar": [
+        3,
+        4,
+        3,
+        3,
+        2,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi155",
+      "baholar": [
+        5,
+        4,
+        3,
+        4,
+        5,
+        3,
+        2,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi156",
+      "baholar": [
+        2,
+        2,
+        3,
+        3,
+        3,
+        5,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi157",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi158",
+      "baholar": [
+        4,
+        5,
+        5,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi159",
+      "baholar": [
+        4,
+        2,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi160",
+      "baholar": [
+        5,
+        5,
+        5,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi161",
+      "baholar": [
+        2,
+        4,
+        3,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi162",
+      "baholar": [
+        2,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi163",
+      "baholar": [
+        5,
+        3,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi164",
+      "baholar": [
+        4,
+        2,
+        4,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi165",
+      "baholar": [
+        4,
+        4,
+        3,
+        5,
+        3,
+        4,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi166",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi167",
+      "baholar": [
+        4,
+        3,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi168",
+      "baholar": [
+        3,
+        2,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi169",
+      "baholar": [
+        3,
+        5,
+        3,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi170",
+      "baholar": [
+        2,
+        5,
+        3,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi171",
+      "baholar": [
+        5,
+        2,
+        4,
+        3,
+        5,
+        3,
+        2,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi172",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi173",
+      "baholar": [
+        2,
+        5,
+        2,
+        5,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi174",
+      "baholar": [
+        5,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi175",
+      "baholar": [
+        4,
+        4,
+        2,
+        5,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi176",
+      "baholar": [
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi177",
+      "baholar": [
+        5,
+        3,
+        5,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi178",
+      "baholar": [
+        2,
+        5,
+        2,
+        2,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi179",
+      "baholar": [
+        4,
+        4,
+        2,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi180",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi181",
+      "baholar": [
+        2,
+        5,
+        5,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi182",
+      "baholar": [
+        4,
+        5,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi183",
+      "baholar": [
+        2,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi184",
+      "baholar": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi185",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi186",
+      "baholar": [
+        4,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi187",
+      "baholar": [
+        5,
+        5,
+        2,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi188",
+      "baholar": [
+        2,
+        2,
+        3,
+        2,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi189",
+      "baholar": [
+        4,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi190",
+      "baholar": [
+        5
+      ]
+    },
+    {
+      "ism": "Oquvchi191",
+      "baholar": [
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi192",
+      "baholar": [
+        2,
+        4,
+        2,
+        4,
+        2,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi193",
+      "baholar": [
+        4,
+        3,
+        4,
+        3,
+        4,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi194",
+      "baholar": [
+        2,
+        5,
+        5,
+        4,
+        3,
+        3,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi195",
+      "baholar": [
+        3,
+        4,
+        4
+      ]
+    },
+    {
+      "ism": "Oquvchi196",
+      "baholar": []
+    },
+    {
+      "ism": "Oquvchi197",
+      "baholar": [
+        5,
+        2
+      ]
+    },
+    {
+      "ism": "Oquvchi198",
+      "baholar": [
+        3,
+        4,
+        3
+      ]
+    },
+    {
+      "ism": "Oquvchi199",
+      "baholar": [
+        5,
+        5,
+        2,
+        5,
+        5
+      ]
+    }
+  ]
+}

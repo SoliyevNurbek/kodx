@@ -1,0 +1,67 @@
+title: 'Test: SEO, tezlik va Lighthouse'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Lighthouse nima?
+  kind: single
+  points: 1
+  options:
+  - text: Sahifa tezligi, qulayligi va SEO’ni baholovchi vosita
+    correct: true
+  - text: Hosting xizmati
+    correct: false
+  - text: CSS freymvork
+    correct: false
+  - text: JavaScript kutubxonasi
+    correct: false
+- text: Rasmlar uchun `alt` atributi nima uchun kerak?
+  kind: single
+  points: 1
+  options:
+  - text: Ko‘rish imkoniyati cheklanganlar va SEO uchun
+    correct: true
+  - text: Rasmni kattalashtirish uchun
+    correct: false
+  - text: Rasm rangini o‘zgartirish uchun
+    correct: false
+  - text: Keraksiz
+    correct: false
+- text: 'Sahifa tavsifi uchun meta teg: `<meta name="______" content="...">`'
+  kind: text
+  points: 1
+  answers:
+  - description
+- text: Sahifani tezlashtirish usullari?
+  kind: multiple
+  points: 1
+  options:
+  - text: Rasmlarni siqish (WebP)
+    correct: true
+  - text: Har bir harf uchun alohida shrift
+    correct: false
+  - text: Keraksiz JS’ni olib tashlash
+    correct: true
+  - text: Barcha rasmlarni 4K qilish
+    correct: false
+  - text: Lazy loading
+    correct: true
+- text: SEO nima?
+  kind: single
+  points: 1
+  options:
+  - text: Server turi
+    correct: false
+  - text: Dasturlash tili
+    correct: false
+  - text: Xavfsizlik protokoli
+    correct: false
+  - text: Qidiruv tizimlarida sahifani yaxshiroq ko‘rsatish
+    correct: true
+lessons:
+- lesson: 35
+  kind: classwork
+  required: true
+  order: 10

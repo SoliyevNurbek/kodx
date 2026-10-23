@@ -1,0 +1,68 @@
+title: 'Test: Git asoslari'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Git nima?
+  kind: single
+  points: 1
+  options:
+  - text: Versiyalarni boshqarish tizimi
+    correct: true
+  - text: Veb-sayt
+    correct: false
+  - text: Kod muharriri
+    correct: false
+  - text: Dasturlash tili
+    correct: false
+- text: Yangi Git repozitoriy yaratish buyrug‘i qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: git create
+    correct: false
+  - text: git start
+    correct: false
+  - text: git new
+    correct: false
+  - text: git init
+    correct: true
+- text: Fayllarni keyingi commit’ga tayyorlash (staging) buyrug‘i qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: git log
+    correct: false
+  - text: git push
+    correct: false
+  - text: git commit
+    correct: false
+  - text: git add
+    correct: true
+- text: 'Commit tarixini ko‘rish uchun qaysi git buyrug‘i ishlatiladi? (faqat buyruq nomi, masalan: git
+    ...)'
+  kind: text
+  points: 1
+  answers:
+  - git log
+- text: Qaysi fayllarni `.gitignore` ga qo‘shish to‘g‘ri?
+  kind: multiple
+  points: 1
+  options:
+  - text: main.py
+    correct: false
+  - text: __pycache__/
+    correct: true
+  - text: venv/ papkasi
+    correct: true
+  - text: .env (maxfiy sozlamalar)
+    correct: true
+  - text: README.md
+    correct: false
+lessons:
+- lesson: 3
+  kind: classwork
+  required: true
+  order: 10

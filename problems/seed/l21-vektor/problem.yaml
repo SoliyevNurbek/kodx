@@ -1,0 +1,19 @@
+title: Vektor klassi
+type: code
+difficulty: 2
+points: 200
+tags:
+- oop
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: 'Ikki qatorda vektorlar: $x$ va $y$ ($|x|, |y| \le 10^9$).'
+output_format: Birinchi qatorda yig‘indi vektor, ikkinchi qatorda skalyar ko‘paytma.
+lessons:
+- lesson: 21
+  kind: homework
+  required: true
+  order: 2

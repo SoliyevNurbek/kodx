@@ -1,0 +1,30 @@
+title: Ochiq API bilan ishlovchi dastur
+type: project
+difficulty: 3
+points: 100
+tags:
+- loyiha
+rubric:
+- title: API bilan ishlash
+  points: 30
+  description: So‘rov, parametrlar, JSON
+- title: Xatolarni boshqarish
+  points: 20
+  description: Status kod, timeout, tarmoq xatosi
+- title: Natija
+  points: 15
+  description: Ma’lumot tushunarli ko‘rsatiladi
+- title: Kod sifati
+  points: 15
+  description: PEP 8 / toza HTML-CSS, tushunarli nomlar, takrorlanmaydigan kod
+- title: README va Git
+  points: 10
+  description: README to‘liq, ma’noli commit’lar
+- title: Xavfsizlik va mustaqillik
+  points: 10
+  description: Maxfiy ma’lumot yo‘q; muallif kodni tushuntira oladi
+lessons:
+- lesson: 40
+  kind: homework
+  required: true
+  order: 20

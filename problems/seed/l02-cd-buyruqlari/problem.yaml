@@ -1,0 +1,20 @@
+title: cd buyruqlari
+type: code
+difficulty: 2
+points: 200
+tags:
+- satrlar
+- terminal
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ ($1 \le n \le 1000$), keyingi $n$ qatorda buyruqlar.
+output_format: Oxirgi to‘liq yo‘l.
+lessons:
+- lesson: 2
+  kind: homework
+  required: true
+  order: 2

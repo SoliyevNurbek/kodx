@@ -1,0 +1,66 @@
+title: 'Test: Sinov va serverga joylash'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Unit test nima?
+  kind: single
+  points: 1
+  options:
+  - text: Dizayn sinovi
+    correct: false
+  - text: Foydalanuvchi so‘rovnomasi
+    correct: false
+  - text: Serverni yuklama bilan sinash
+    correct: false
+  - text: Kodning kichik qismini alohida tekshiruvchi test
+    correct: true
+- text: Python’da mashhur test freymvorki?
+  kind: single
+  points: 1
+  options:
+  - text: pillow
+    correct: false
+  - text: pytest
+    correct: true
+  - text: pygame
+    correct: false
+  - text: flask
+    correct: false
+- text: 'Server fonida botni doimiy ishlatuvchi Linux xizmat menejeri? (masalan: systemd)'
+  kind: text
+  points: 1
+  answers:
+  - systemd
+  - docker
+- text: Serverga joylashdan oldin nima qilinadi?
+  kind: multiple
+  points: 1
+  options:
+  - text: requirements.txt yangilanadi
+    correct: true
+  - text: Testlar ishga tushiriladi
+    correct: true
+  - text: Maxfiy kalitlar .env ga olinadi
+    correct: true
+  - text: Testlar o‘chiriladi
+    correct: false
+- text: Production’da DEBUG rejimi qanday bo‘lishi kerak?
+  kind: single
+  points: 1
+  options:
+  - text: Faqat tunda yoqiq
+    correct: false
+  - text: Yoqiq
+    correct: false
+  - text: Farqi yo‘q
+    correct: false
+  - text: O‘chiq
+    correct: true
+lessons:
+- lesson: 46
+  kind: classwork
+  required: true
+  order: 10

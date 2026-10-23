@@ -7,6 +7,10 @@ extend-exclude = ["venv", "*/migrations/0001_*.py", "*/migrations/0002_*auto*.py
 select = ["E", "F", "W", "I", "B", "UP", "DJ"]
 ignore = ["DJ001"]
 
+[tool.ruff.lint.per-file-ignores]
+"tools/seed_gen/*" = ["E501", "E402"]
+"problems/seed/*" = ["B905"]
+
 [tool.ruff.lint.isort]
 known-first-party = ["config", "accounts", "audit", "courses", "problems", "submissions", "contests", "judge", "grading"]
 

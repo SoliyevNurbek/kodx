@@ -1,0 +1,20 @@
+title: Bankomat
+type: code
+difficulty: 3
+points: 300
+tags:
+- while
+- tsikl
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta son $A$ ($1 \le A \le 10^9$).
+output_format: Kupyuralar ro‘yxati va jami, yoki `xato`.
+lessons:
+- lesson: 12
+  kind: challenge
+  required: false
+  order: 3

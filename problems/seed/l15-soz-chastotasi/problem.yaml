@@ -1,0 +1,19 @@
+title: So‘zlar chastotasi
+type: code
+difficulty: 2
+points: 200
+tags:
+- dict
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Matn (jami 10^5 belgigacha).
+output_format: Har bir qatorda `so‘z soni`.
+lessons:
+- lesson: 15
+  kind: homework
+  required: true
+  order: 2

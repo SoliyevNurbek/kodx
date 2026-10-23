@@ -1,0 +1,67 @@
+title: 'Test: Mantiqiy ifodalar'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: '`True and False` ning qiymati nima?'
+  kind: single
+  points: 1
+  options:
+  - text: Xato
+    correct: false
+  - text: None
+    correct: false
+  - text: 'False'
+    correct: true
+  - text: 'True'
+    correct: false
+- text: '`not (5 > 3)` ning qiymati nima?'
+  kind: single
+  points: 1
+  options:
+  - text: '5'
+    correct: false
+  - text: 'False'
+    correct: true
+  - text: '3'
+    correct: false
+  - text: 'True'
+    correct: false
+- text: '`3 < 5 < 4` ifodasi qanday qiymat beradi? (True yoki False)'
+  kind: text
+  points: 1
+  answers:
+  - 'False'
+- text: Qaysi qiymatlar `bool()` da `False` beradi?
+  kind: multiple
+  points: 1
+  options:
+  - text: ''''' (bo‘sh satr)'
+    correct: true
+  - text: '0'
+    correct: true
+  - text: '''0'''
+    correct: false
+  - text: '[] (bo‘sh ro‘yxat)'
+    correct: true
+  - text: '-1'
+    correct: false
+- text: '`x` juft ekanini qaysi ifoda tekshiradi?'
+  kind: single
+  points: 1
+  options:
+  - text: x / 2 == 0
+    correct: false
+  - text: x // 2 == 1
+    correct: false
+  - text: x % 2 == 1
+    correct: false
+  - text: x % 2 == 0
+    correct: true
+lessons:
+- lesson: 7
+  kind: classwork
+  required: true
+  order: 10

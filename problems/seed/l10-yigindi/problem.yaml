@@ -1,0 +1,19 @@
+title: 1 dan n gacha yig‘indi
+type: code
+difficulty: 1
+points: 100
+tags:
+- for
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta son $n$ ($1 \le n \le 10^6$).
+output_format: Yig‘indi.
+lessons:
+- lesson: 10
+  kind: classwork
+  required: true
+  order: 1

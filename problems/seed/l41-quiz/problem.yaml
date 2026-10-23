@@ -1,0 +1,68 @@
+title: 'Test: LLM API'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: LLM API’dan foydalanish uchun odatda nima kerak?
+  kind: single
+  points: 1
+  options:
+  - text: Hech narsa
+    correct: false
+  - text: Telefon raqami
+    correct: false
+  - text: API kalit
+    correct: true
+  - text: Bank kartasi raqami kodda
+    correct: false
+- text: API kalitni kodga qanday olish to‘g‘ri?
+  kind: single
+  points: 1
+  options:
+  - text: Kod ichiga to‘g‘ridan-to‘g‘ri yozish
+    correct: false
+  - text: os.getenv('API_KEY') orqali .env dan
+    correct: true
+  - text: Do‘stga yuborish
+    correct: false
+  - text: GitHub’ga commit qilish
+    correct: false
+- text: Model javobi uzunligini cheklaydigan parametr odatda qanday ataladi? (inglizcha, ikki so‘z, pastki
+    chiziq bilan)
+  kind: text
+  points: 1
+  answers:
+  - max_tokens
+- text: API bilan ishlashda nimani hisobga olish kerak?
+  kind: multiple
+  points: 1
+  options:
+  - text: Monitor o‘lchami
+    correct: false
+  - text: So‘rovlar soni cheklovi (rate limit)
+    correct: true
+  - text: Narx (tokenlar soni)
+    correct: true
+  - text: Tarmoq xatolarini ushlash
+    correct: true
+  - text: Klaviatura rangi
+    correct: false
+- text: '`temperature` parametri nimaga ta’sir qiladi?'
+  kind: single
+  points: 1
+  options:
+  - text: Javobning tasodifiylik (ijodkorlik) darajasiga
+    correct: true
+  - text: Server haroratiga
+    correct: false
+  - text: Internet tezligiga
+    correct: false
+  - text: Javob tiliga
+    correct: false
+lessons:
+- lesson: 41
+  kind: classwork
+  required: true
+  order: 10

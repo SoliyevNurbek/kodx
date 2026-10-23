@@ -1,0 +1,14 @@
+title: Shaxsiy sahifa (namuna loyiha)
+type: project
+points: 100
+rubric:
+  - title: Funksionallik
+    points: 50
+    description: Talablar to'liq bajarilgan
+  - title: Kod sifati
+    points: 30
+  - title: README
+    points: 20
+lessons:
+  - lesson: 25
+    kind: homework

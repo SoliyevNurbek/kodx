@@ -1,0 +1,6 @@
+name = input().strip()
+price = int(input())
+count = int(input())
+print(f"Mahsulot: {name}")
+print(f"Soni: {count}")
+print(f"Jami: {price * count}")

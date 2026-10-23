@@ -1,0 +1,66 @@
+title: 'Test: Web va HTML5'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: HTML nima?
+  kind: single
+  points: 1
+  options:
+  - text: Dasturlash tili
+    correct: false
+  - text: Operatsion tizim
+    correct: false
+  - text: Veb-sahifa tuzilmasini belgilash tili
+    correct: true
+  - text: Ma’lumotlar bazasi
+    correct: false
+- text: HTML5 hujjati qaysi qator bilan boshlanadi?
+  kind: single
+  points: 1
+  options:
+  - text: <head>
+    correct: false
+  - text: <html5>
+    correct: false
+  - text: <?xml?>
+    correct: false
+  - text: <!DOCTYPE html>
+    correct: true
+- text: 'Eng katta sarlavha tegi qaysi? (masalan: <p>)'
+  kind: text
+  points: 1
+  answers:
+  - <h1>
+  - h1
+- text: Qaysilar `<head>` ichida bo‘ladi?
+  kind: multiple
+  points: 1
+  options:
+  - text: <meta charset="utf-8">
+    correct: true
+  - text: <h1>
+    correct: false
+  - text: <title>
+    correct: true
+  - text: <footer>
+    correct: false
+- text: Havola (link) yaratish tegi qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: <a href="...">
+    correct: true
+  - text: <href>
+    correct: false
+  - text: <link to="...">
+    correct: false
+  - text: <url>
+    correct: false
+lessons:
+- lesson: 25
+  kind: classwork
+  required: true
+  order: 10

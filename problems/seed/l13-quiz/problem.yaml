@@ -1,0 +1,60 @@
+title: 'Test: Ro‘yxatlar (list)'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: '`a = [10, 20, 30]` bo‘lsa, `a[-1]` nima?'
+  kind: text
+  points: 1
+  answers:
+  - '30'
+- text: Ro‘yxat oxiriga element qo‘shuvchi metod qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: insert_end()
+    correct: false
+  - text: append()
+    correct: true
+  - text: push()
+    correct: false
+  - text: add()
+    correct: false
+- text: '`len([1, [2, 3], 4])` nechaga teng?'
+  kind: text
+  points: 1
+  answers:
+  - '3'
+- text: '`a = [1, 2, 3, 4, 5]` bo‘lsa, `a[1:3]` nima?'
+  kind: single
+  points: 1
+  options:
+  - text: '[1, 2, 3]'
+    correct: false
+  - text: '[2, 3, 4]'
+    correct: false
+  - text: '[2, 3]'
+    correct: true
+  - text: '[1, 2]'
+    correct: false
+- text: Qaysi metodlar ro‘yxatdan element olib tashlaydi?
+  kind: multiple
+  points: 1
+  options:
+  - text: sort()
+    correct: false
+  - text: count()
+    correct: false
+  - text: append()
+    correct: false
+  - text: remove()
+    correct: true
+  - text: pop()
+    correct: true
+lessons:
+- lesson: 13
+  kind: classwork
+  required: true
+  order: 10

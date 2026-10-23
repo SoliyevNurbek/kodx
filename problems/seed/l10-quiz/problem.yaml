@@ -1,0 +1,67 @@
+title: 'Test: for tsikli'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: '`list(range(2, 10, 3))` nima qaytaradi? (masalan: [1, 2])'
+  kind: text
+  points: 1
+  answers:
+  - '[2, 5, 8]'
+- text: '`range(5)` qaysi sonlarni beradi?'
+  kind: single
+  points: 1
+  options:
+  - text: 0, 1, 2, 3, 4
+    correct: true
+  - text: 1, 2, 3, 4, 5
+    correct: false
+  - text: 0, 1, 2, 3, 4, 5
+    correct: false
+  - text: '5'
+    correct: false
+- text: Tsiklni darhol to‘xtatish uchun qaysi operator ishlatiladi?
+  kind: single
+  points: 1
+  options:
+  - text: stop
+    correct: false
+  - text: continue
+    correct: false
+  - text: break
+    correct: true
+  - text: exit
+    correct: false
+- text: '`continue` operatori nima qiladi?'
+  kind: single
+  points: 1
+  options:
+  - text: Dasturni to‘xtatadi
+    correct: false
+  - text: Joriy iteratsiyaning qolgan qismini o‘tkazib yuboradi
+    correct: true
+  - text: Hech narsa
+    correct: false
+  - text: Tsiklni tugatadi
+    correct: false
+- text: Qaysi obyektlar ustida `for` bilan yurish mumkin?
+  kind: multiple
+  points: 1
+  options:
+  - text: Satr (str)
+    correct: true
+  - text: range(10)
+    correct: true
+  - text: None
+    correct: false
+  - text: Butun son (int)
+    correct: false
+  - text: Ro‘yxat (list)
+    correct: true
+lessons:
+- lesson: 10
+  kind: classwork
+  required: true
+  order: 10

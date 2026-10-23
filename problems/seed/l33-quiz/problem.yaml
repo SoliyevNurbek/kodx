@@ -1,0 +1,67 @@
+title: 'Test: Interaktiv komponentlar'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Elementga klassni qo‘shib-olib tashlash (almashtirish) metodi?
+  kind: single
+  points: 1
+  options:
+  - text: style.toggle()
+    correct: false
+  - text: classList.switch()
+    correct: false
+  - text: className.flip()
+    correct: false
+  - text: classList.toggle()
+    correct: true
+- text: Modal oyna nima?
+  kind: single
+  points: 1
+  options:
+  - text: Sahifa pastki qismi
+    correct: false
+  - text: Rasm galereyasi
+    correct: false
+  - text: Yangi brauzer oynasi
+    correct: false
+  - text: Sahifa ustida ochiladigan dialog oyna
+    correct: true
+- text: 'Formaning standart yuborilishini to‘xtatish: `event.______()`'
+  kind: text
+  points: 1
+  answers:
+  - preventDefault
+- text: Komponentlarni qulay (accessible) qilish uchun nima kerak?
+  kind: multiple
+  points: 1
+  options:
+  - text: aria-atributlar
+    correct: true
+  - text: Klaviatura bilan boshqarish
+    correct: true
+  - text: Matnsiz ikonalar
+    correct: false
+  - text: Faqat sichqoncha bilan ishlash
+    correct: false
+  - text: Yetarli rang kontrasti
+    correct: true
+- text: Brauzerda kichik ma’lumotni saqlash uchun nima ishlatiladi?
+  kind: single
+  points: 1
+  options:
+  - text: Excel
+    correct: false
+  - text: MySQL
+    correct: false
+  - text: cookieDB
+    correct: false
+  - text: localStorage
+    correct: true
+lessons:
+- lesson: 33
+  kind: classwork
+  required: true
+  order: 10

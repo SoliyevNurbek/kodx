@@ -1,0 +1,20 @@
+title: Ro‘yxatni siljitish
+type: code
+difficulty: 3
+points: 300
+tags:
+- list
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ va $k$ ($1 \le n \le 10^5$, $0 \le k \le 10^{9}$), ikkinchi qatorda
+  ro‘yxat.
+output_format: Siljitilgan ro‘yxat bitta qatorda.
+lessons:
+- lesson: 13
+  kind: challenge
+  required: false
+  order: 3

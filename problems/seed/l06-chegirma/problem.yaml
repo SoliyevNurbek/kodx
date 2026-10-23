@@ -1,0 +1,21 @@
+title: Chegirmali narx
+type: code
+difficulty: 2
+points: 200
+tags:
+- arifmetika
+- f-string
+time_limit: 1000
+memory_limit: 256
+checker: float
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $P$ (haqiqiy son, $0 \le P \le 10^6$), ikkinchi qatorda $D$ ($0 \le D \le
+  100$).
+output_format: Yangi narx, 2 xona aniqlikda.
+lessons:
+- lesson: 6
+  kind: challenge
+  required: false
+  order: 3

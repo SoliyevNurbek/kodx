@@ -1,0 +1,19 @@
+title: Xarid cheki
+type: code
+difficulty: 2
+points: 200
+tags:
+- kirish-chiqish
+time_limit: 1000
+memory_limit: 256
+checker: exact
+samples:
+- 1
+- 2
+input_format: 'Uch qator: mahsulot nomi, narxi (butun, $\le 10^9$), soni (butun, $\le 10^6$).'
+output_format: Uch qatorli chek.
+lessons:
+- lesson: 5
+  kind: challenge
+  required: false
+  order: 3

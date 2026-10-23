@@ -1,0 +1,65 @@
+title: 'Test: Asinxron dasturlash'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Asinxron funksiya qanday e’lon qilinadi?
+  kind: single
+  points: 1
+  options:
+  - text: async def
+    correct: true
+  - text: sync def
+    correct: false
+  - text: await def
+    correct: false
+  - text: def async
+    correct: false
+- text: '`await` nima qiladi?'
+  kind: single
+  points: 1
+  options:
+  - text: Funksiyani o‘chiradi
+    correct: false
+  - text: Asinxron amal tugashini kutadi, bu vaqtda boshqa vazifalar ishlaydi
+    correct: true
+  - text: Xato chiqaradi
+    correct: false
+  - text: Dasturni butunlay to‘xtatadi
+    correct: false
+- text: 'Asinxron dasturni ishga tushirish: `asyncio.___(main())`'
+  kind: text
+  points: 1
+  answers:
+  - run
+- text: Asinxronlik qayerda foydali?
+  kind: multiple
+  points: 1
+  options:
+  - text: Ko‘p tarmoq so‘rovlarini kutishda
+    correct: true
+  - text: Bitta sonni kvadratga oshirishda
+    correct: false
+  - text: Oddiy print() da
+    correct: false
+  - text: Telegram bot xabarlarini qayta ishlashda
+    correct: true
+- text: Bir nechta korutinani parallel kutish funksiyasi?
+  kind: single
+  points: 1
+  options:
+  - text: asyncio.parallel()
+    correct: false
+  - text: asyncio.join()
+    correct: false
+  - text: asyncio.wait_all()
+    correct: false
+  - text: asyncio.gather()
+    correct: true
+lessons:
+- lesson: 42
+  kind: classwork
+  required: true
+  order: 10

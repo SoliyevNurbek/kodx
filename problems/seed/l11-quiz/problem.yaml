@@ -1,0 +1,65 @@
+title: 'Test: while tsikli'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: '`while` tsikli qachongacha bajariladi?'
+  kind: single
+  points: 1
+  options:
+  - text: Faqat bir marta
+    correct: false
+  - text: Shart yolg‘on bo‘lguncha emas, abadiy
+    correct: false
+  - text: Aniq 10 marta
+    correct: false
+  - text: Shart rost (True) bo‘lguncha
+    correct: true
+- text: '`while True:` tsiklidan qanday chiqish mumkin?'
+  kind: single
+  points: 1
+  options:
+  - text: Chiqib bo‘lmaydi
+    correct: false
+  - text: continue bilan
+    correct: false
+  - text: break bilan
+    correct: true
+  - text: pass bilan
+    correct: false
+- text: '`n = 5` va `while n > 0: n -= 2` dan keyin `n` nechaga teng?'
+  kind: text
+  points: 1
+  answers:
+  - '-1'
+- text: Abadiy tsiklga eng ko‘p sabab bo‘ladigan xato qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: O‘zgaruvchi nomi uzun
+    correct: false
+  - text: print() ishlatilgan
+    correct: false
+  - text: Shartdagi o‘zgaruvchi tsikl ichida o‘zgarmaydi
+    correct: true
+  - text: Tsikl ichida izoh bor
+    correct: false
+- text: Qaysi vazifalarga `while` ko‘proq mos keladi?
+  kind: multiple
+  points: 1
+  options:
+  - text: Ro‘yxatning har bir elementini chiqarish
+    correct: false
+  - text: Takrorlanishlar soni oldindan noma’lum bo‘lganda
+    correct: true
+  - text: Foydalanuvchi to‘g‘ri qiymat kiritguncha so‘rash
+    correct: true
+  - text: Aniq 1 dan 10 gacha sanash
+    correct: false
+lessons:
+- lesson: 11
+  kind: classwork
+  required: true
+  order: 10

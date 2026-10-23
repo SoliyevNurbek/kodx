@@ -1,0 +1,21 @@
+title: Kvadrat ildiz
+type: code
+difficulty: 1
+points: 100
+tags:
+- modullar
+- math
+time_limit: 1000
+memory_limit: 256
+checker: float
+epsilon: 0.001
+samples:
+- 1
+- 2
+input_format: Bitta son $n$ ($0 \le n \le 10^{12}$).
+output_format: $\sqrt{n}$, 3 xona aniqlikda.
+lessons:
+- lesson: 20
+  kind: classwork
+  required: true
+  order: 1

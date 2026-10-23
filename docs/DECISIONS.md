@@ -59,3 +59,41 @@ Har yozuv: sana · qaror · sabab · muqobil variant.
   qisman (4-qatorda «jury» qolgan), shuning uchun niyat aniq emas.
 - **Muqobil:** butun loyihada `judge` ga o‘tish — egasi xohlasa, `Role` label’larini o‘zgartirish
   yetarli (DB da raqam saqlanadi, migratsiya oddiy).
+
+## 2026-10-23 · Judge arxitekturasi (3-bosqich)
+- **Qaror:** `judge` ilovasi — `JudgeBackend.submit(code, lang, tests, limits)`, `LocalDevBackend`, `Judge0Backend`
+  (batch API, `urllib`, qo‘shimcha kutubxonasiz). Chiqishni solishtirish har doim bizning `checker` da
+  (Judge0 ga `expected_output` yuborilmaydi) — ikkala backend bir xil natija beradi.
+- **Sabab:** adapter naqshi (MASTER_PROMPT §3); tekshirish mantiqi bitta joyda.
+
+## 2026-10-23 · LocalDevBackend cheklovlari
+- **Qaror:** Windows’da Job Object (xotira chegarasi, faqat 1 jarayon — subprocess/fork taqiqlanadi, eng yuqori
+  xotira o‘lchanadi), POSIX’da `setrlimit`. venv’dagi `python.exe` o‘rniga asosiy interpretator
+  (`sys._base_executable`) — venv launcher bola jarayon ochadi va Job Object uni bloklaydi; foydali yon ta’sir:
+  foydalanuvchi kodi Django va loyiha paketlarini ko‘rmaydi. `-I -X utf8`, minimal env, vaqtinchalik papka.
+  Interpretator ishga tushish vaqti (~20 ms) vaqt chegarasiga kiradi.
+- **Ruxsat:** `DEBUG=True` yoki test jarayoni (`settings.TESTING`, test runner qo‘yadi). Django test runner
+  DEBUG’ni majburan o‘chiradi, shuning uchun alohida belgi kerak bo‘ldi.
+- **Muqobil:** Docker sandbox — Windows/OpenServer muhitida og‘ir; production’da Judge0 baribir alohida.
+
+## 2026-10-23 · Float checker
+- **Qaror:** `float` rejimida absolyut YOKI nisbiy xato ≤ epsilon (`math.isclose`), son bo‘lmagan tokenlar aniq.
+- **Sabab:** Codeforces/Polygon standarti.
+
+## 2026-10-23 · Vazifa ruxsatlari
+- **Qaror:** ko‘rish — nashr etilgan hammaga, qoralama muallif va moderator+; yopiq testlar va etalon yechim —
+  muallif (Jury Pro) va moderator+; tahrirlash — muallif (agar hali Jury Pro bo‘lsa) va super admin;
+  nashr etish — moderator+. Moderator boshqaning vazifasini tahrirlamaydi, faqat holatini o‘zgartiradi.
+- **Sabab:** CLAUDE.md: Jury Pro faqat o‘z masalasini, moderator hammasini ko‘radi.
+
+## 2026-10-23 · Seed kontent
+- **Qaror:** 146 vazifa (`problems/seed/`, PROBLEM_FORMAT bo‘yicha) — 72 code, 48 quiz, 26 project. Data migratsiya
+  umumiy `importer` orqali tarixiy modellar bilan yuklaydi (mavjud bo‘lmagan maydonlar o‘tkazib yuboriladi — kelajakdagi
+  model o‘zgarishlari eski migratsiyani buzmaydi). `.out` fayllar etalon yechimdan generatsiya qilingan, namunalar
+  qo‘lda yozilgan javob bilan solishtirilgan (`tools/seed_gen/`). Test har safar 72 ta etalon yechimni
+  LocalDevBackend’da ishga tushiradi (~12 s).
+- **Chiqishdagi o‘zbekcha so‘zlar:** oddiy apostrof (`yo'q`) — o‘quvchi klaviaturadan shuni teradi; matnlarda (shart)
+  to‘g‘ri belgilar (o‘, g‘, ’). Iloji boricha chiqish so‘zlarida apostrof ishlatilmagan.
+- **Darsga biriktirish:** oson — sinf ishi, o‘rta — uyga vazifa, challenge — qo‘shimcha (majburiy emas);
+  quiz — sinf ishi; loyiha — uyga vazifa. Ball: code `difficulty × 100`, quiz 50, loyiha 100.
+- **Testlar media’si:** test runner MEDIA_ROOT’ni vaqtinchalik papkaga almashtiradi (seed migratsiya ham u yerga yozadi).

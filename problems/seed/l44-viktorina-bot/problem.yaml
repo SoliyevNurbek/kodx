@@ -1,0 +1,30 @@
+title: Viktorina bot (inline, FSM, SQLite)
+type: project
+difficulty: 3
+points: 100
+tags:
+- loyiha
+rubric:
+- title: Inline va FSM
+  points: 30
+  description: Tugmalar va holatlar to‘g‘ri ishlaydi
+- title: Ma’lumotlar bazasi
+  points: 20
+  description: Jadvallar, parametrli so‘rovlar
+- title: Foydalanuvchi tajribasi
+  points: 15
+  description: Tushunarli matnlar va xatolar
+- title: Kod sifati
+  points: 15
+  description: PEP 8 / toza HTML-CSS, tushunarli nomlar, takrorlanmaydigan kod
+- title: README va Git
+  points: 10
+  description: README to‘liq, ma’noli commit’lar
+- title: Xavfsizlik va mustaqillik
+  points: 10
+  description: Maxfiy ma’lumot yo‘q; muallif kodni tushuntira oladi
+lessons:
+- lesson: 44
+  kind: homework
+  required: true
+  order: 20

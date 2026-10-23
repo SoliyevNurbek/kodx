@@ -1,0 +1,30 @@
+title: Prompt kutubxonasi
+type: project
+difficulty: 3
+points: 100
+tags:
+- loyiha
+rubric:
+- title: Promptlar sifati
+  points: 30
+  description: Aniq vazifa, kontekst, format
+- title: Texnikalar
+  points: 20
+  description: Rol, few-shot, format, cheklovlar
+- title: Tahlil
+  points: 15
+  description: Natijalar taqqoslangan, xulosalar
+- title: Kod sifati
+  points: 15
+  description: PEP 8 / toza HTML-CSS, tushunarli nomlar, takrorlanmaydigan kod
+- title: README va Git
+  points: 10
+  description: README to‘liq, ma’noli commit’lar
+- title: Xavfsizlik va mustaqillik
+  points: 10
+  description: Maxfiy ma’lumot yo‘q; muallif kodni tushuntira oladi
+lessons:
+- lesson: 38
+  kind: homework
+  required: true
+  order: 20

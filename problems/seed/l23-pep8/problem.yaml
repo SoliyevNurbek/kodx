@@ -1,0 +1,21 @@
+title: PEP 8 tekshiruvchi
+type: code
+difficulty: 2
+points: 200
+tags:
+- satrlar
+- kod sifati
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ ($1 \le n \le 1000$), keyingi $n$ qatorda kod (bo‘sh qatorlar bo‘lishi
+  mumkin).
+output_format: Xatolar ro‘yxati yoki `toza`.
+lessons:
+- lesson: 23
+  kind: homework
+  required: true
+  order: 2

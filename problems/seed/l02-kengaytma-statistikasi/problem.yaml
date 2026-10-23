@@ -1,0 +1,21 @@
+title: Kengaytmalar statistikasi
+type: code
+difficulty: 3
+points: 300
+tags:
+- satrlar
+- lug‘at
+- terminal
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ ($1 \le n \le 10^4$), keyingi $n$ qatorda fayl nomlari.
+output_format: 'Har bir qatorda: kengaytma va fayllar soni.'
+lessons:
+- lesson: 2
+  kind: challenge
+  required: false
+  order: 3

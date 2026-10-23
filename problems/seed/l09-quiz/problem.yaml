@@ -1,0 +1,66 @@
+title: 'Test: match-case'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: '`match-case` Python’ning qaysi versiyasidan boshlab bor?'
+  kind: single
+  points: 1
+  options:
+  - text: '3.12'
+    correct: false
+  - text: '3.6'
+    correct: false
+  - text: '3.10'
+    correct: true
+  - text: '2.7'
+    correct: false
+- text: '`case _:` nimani bildiradi?'
+  kind: single
+  points: 1
+  options:
+  - text: Boshqa barcha holatlar (default)
+    correct: true
+  - text: Xatoni
+    correct: false
+  - text: Bo‘sh satrni
+    correct: false
+  - text: Faqat 0 ni
+    correct: false
+- text: Bir nechta qiymatni bitta `case` da qanday birlashtirish mumkin?
+  kind: single
+  points: 1
+  options:
+  - text: 'case 1 or 2 or 3:'
+    correct: false
+  - text: 'case [1-3]:'
+    correct: false
+  - text: 'case 1, 2, 3:'
+    correct: false
+  - text: 'case 1 | 2 | 3:'
+    correct: true
+- text: '`case` ga qo‘shimcha shart qo‘shish uchun qaysi kalit so‘z ishlatiladi? (masalan: case x ___
+    x > 0)'
+  kind: text
+  points: 1
+  answers:
+  - if
+- text: '`match command.split():` uchun qaysi `case` lar to‘g‘ri namuna (pattern)?'
+  kind: multiple
+  points: 1
+  options:
+  - text: 'case ["stop"]:'
+    correct: true
+  - text: 'case ["go", direction]:'
+    correct: true
+  - text: 'case command == ''stop'':'
+    correct: false
+  - text: 'case while:'
+    correct: false
+lessons:
+- lesson: 9
+  kind: classwork
+  required: true
+  order: 10

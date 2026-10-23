@@ -1,0 +1,69 @@
+title: 'Test: CSS3 asoslari'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Klass selektori qanday yoziladi?
+  kind: single
+  points: 1
+  options:
+  - text: card
+    correct: false
+  - text: .card
+    correct: true
+  - text: '#card'
+    correct: false
+  - text: '*card'
+    correct: false
+- text: Matn rangini o‘zgartiruvchi xossa qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: background
+    correct: false
+  - text: text-color
+    correct: false
+  - text: font-color
+    correct: false
+  - text: color
+    correct: true
+- text: ID selektori qaysi belgi bilan boshlanadi?
+  kind: text
+  points: 1
+  answers:
+  - '#'
+- text: Box model qismlari qaysilar?
+  kind: multiple
+  points: 1
+  options:
+  - text: padding
+    correct: true
+  - text: content
+    correct: true
+  - text: border
+    correct: true
+  - text: margin
+    correct: true
+  - text: z-index
+    correct: false
+  - text: float
+    correct: false
+- text: CSS faylni HTML’ga ulashning to‘g‘ri usuli qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: <link rel="stylesheet" href="style.css">
+    correct: true
+  - text: <css href="style.css">
+    correct: false
+  - text: <style src="style.css">
+    correct: false
+  - text: <script href="style.css">
+    correct: false
+lessons:
+- lesson: 27
+  kind: classwork
+  required: true
+  order: 10

@@ -1,0 +1,65 @@
+title: 'Test: GitHub'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: GitHub nima?
+  kind: single
+  points: 1
+  options:
+  - text: Git’ning yangi versiyasi
+    correct: false
+  - text: Python kutubxonasi
+    correct: false
+  - text: Git repozitoriylarini saqlash va birgalikda ishlash platformasi
+    correct: true
+  - text: Operatsion tizim
+    correct: false
+- text: Lokal commit’larni GitHub’ga yuborish buyrug‘i qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: git push
+    correct: true
+  - text: git clone
+    correct: false
+  - text: git pull
+    correct: false
+  - text: git fetch
+    correct: false
+- text: GitHub’dagi repozitoriyni kompyuterga birinchi marta yuklab olish buyrug‘i qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: git init
+    correct: false
+  - text: git pull
+    correct: false
+  - text: git clone
+    correct: true
+  - text: git add
+    correct: false
+- text: Repozitoriy haqida asosiy ma’lumot yoziladigan fayl odatda qanday nomlanadi? (kengaytmasi bilan)
+  kind: text
+  points: 1
+  answers:
+  - README.md
+- text: Pull Request (PR) nima uchun kerak?
+  kind: multiple
+  points: 1
+  options:
+  - text: Branch’ni asosiy branch bilan birlashtirishni so‘rash
+    correct: true
+  - text: Repozitoriyni o‘chirish
+    correct: false
+  - text: Parolni tiklash
+    correct: false
+  - text: O‘zgarishlarni ko‘rib chiqish (code review)
+    correct: true
+lessons:
+- lesson: 4
+  kind: classwork
+  required: true
+  order: 10

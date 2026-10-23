@@ -1,0 +1,19 @@
+title: Raqamlar yig‘indisi
+type: code
+difficulty: 1
+points: 100
+tags:
+- arifmetika
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta uch xonali son $n$ ($100 \le n \le 999$).
+output_format: Raqamlar yig‘indisi.
+lessons:
+- lesson: 6
+  kind: classwork
+  required: true
+  order: 1

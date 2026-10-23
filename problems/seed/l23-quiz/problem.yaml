@@ -1,0 +1,66 @@
+title: 'Test: Kod sifati, branch va PR'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Python kod uslubi qoidalari qaysi hujjatda?
+  kind: single
+  points: 1
+  options:
+  - text: ISO 9001
+    correct: false
+  - text: RFC 2616
+    correct: false
+  - text: PEP 8
+    correct: true
+  - text: PEP 20
+    correct: false
+- text: Yangi funksiya ustida ishlash uchun to‘g‘ri yo‘l qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: To‘g‘ridan-to‘g‘ri main’ga yozish
+    correct: false
+  - text: Repozitoriyni nusxalab yangisini ochish
+    correct: false
+  - text: Commit qilmaslik
+    correct: false
+  - text: Alohida branch ochish
+    correct: true
+- text: 'Yangi branch yaratib unga o‘tish: `git ______ -b feature` (bo‘sh joyga buyruq)'
+  kind: text
+  points: 1
+  answers:
+  - checkout
+  - switch
+- text: Yaxshi commit xabari qanday bo‘ladi?
+  kind: multiple
+  points: 1
+  options:
+  - text: 100 qatorlik matn
+    correct: false
+  - text: Qisqa va aniq
+    correct: true
+  - text: Nima o‘zgarganini tushuntiradi
+    correct: true
+  - text: «fix» yoki «update»
+    correct: false
+- text: Code review’da nima qilinadi?
+  kind: single
+  points: 1
+  options:
+  - text: Kod serverga joylanadi
+    correct: false
+  - text: Boshqa dasturchi kodni ko‘rib, izoh va takliflar beradi
+    correct: true
+  - text: Kod avtomatik o‘chiriladi
+    correct: false
+  - text: Testlar o‘chiriladi
+    correct: false
+lessons:
+- lesson: 23
+  kind: classwork
+  required: true
+  order: 10

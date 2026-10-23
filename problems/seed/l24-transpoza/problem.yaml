@@ -1,0 +1,19 @@
+title: Matritsani transponirlash
+type: code
+difficulty: 2
+points: 200
+tags:
+- list
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ va $m$ ($1 \le n, m \le 300$), keyingi $n$ qatorda $m$ tadan son.
+output_format: $m$ qator, har birida $n$ ta son.
+lessons:
+- lesson: 24
+  kind: homework
+  required: true
+  order: 2

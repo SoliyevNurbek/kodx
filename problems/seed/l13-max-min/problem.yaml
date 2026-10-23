@@ -1,0 +1,19 @@
+title: Eng katta va eng kichik
+type: code
+difficulty: 1
+points: 100
+tags:
+- list
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ ($1 \le n \le 10^5$), ikkinchi qatorda $n$ ta son ($|a_i| \le 10^9$).
+output_format: 'Ikki son: eng katta va eng kichik.'
+lessons:
+- lesson: 13
+  kind: classwork
+  required: true
+  order: 1

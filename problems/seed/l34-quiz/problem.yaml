@@ -1,0 +1,65 @@
+title: 'Test: Portfolio loyihalash'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Portfolioda eng muhim bo‘lim qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: Sevimli filmlar
+    correct: false
+  - text: Bajarilgan loyihalar (havolalar bilan)
+    correct: true
+  - text: Uy manzili
+    correct: false
+  - text: Telefon raqami katta harflarda
+    correct: false
+- text: Dizaynni kodlashdan oldin nima qilinadi?
+  kind: single
+  points: 1
+  options:
+  - text: Darhol JavaScript yoziladi
+    correct: false
+  - text: Hech narsa
+    correct: false
+  - text: Domen sotib olinadi
+    correct: false
+  - text: Maket (wireframe) chiziladi
+    correct: true
+- text: 'Portfolio uchun bepul hosting: GitHub ______ (bitta so‘z)'
+  kind: text
+  points: 1
+  answers:
+  - Pages
+- text: Bolalar xavfsizligi uchun portfolioga nima QO‘YILMAYDI?
+  kind: multiple
+  points: 1
+  options:
+  - text: Shaxsiy telefon raqami
+    correct: true
+  - text: Ko‘nikmalar ro‘yxati
+    correct: false
+  - text: Uy manzili
+    correct: true
+  - text: Loyihalar
+    correct: false
+- text: Rang palitrasida nechta asosiy rang tavsiya etiladi?
+  kind: single
+  points: 1
+  options:
+  - text: Har bir bo‘limga alohida rang
+    correct: false
+  - text: Faqat 1 ta oq
+    correct: false
+  - text: 2–3 ta
+    correct: true
+  - text: 10 dan ortiq
+    correct: false
+lessons:
+- lesson: 34
+  kind: classwork
+  required: true
+  order: 10

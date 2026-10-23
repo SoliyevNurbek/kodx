@@ -1,0 +1,67 @@
+title: 'Test: Modullar, paketlar, pip'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Paket o‘rnatish buyrug‘i qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: pip install paket_nomi
+    correct: true
+  - text: import install paket_nomi
+    correct: false
+  - text: python get paket_nomi
+    correct: false
+  - text: pip add paket_nomi
+    correct: false
+- text: Loyiha qaramliklari odatda qaysi faylda saqlanadi?
+  kind: single
+  points: 1
+  options:
+  - text: deps.json
+    correct: false
+  - text: packages.py
+    correct: false
+  - text: setup.txt
+    correct: false
+  - text: requirements.txt
+    correct: true
+- text: 'Virtual muhit yaratish: `python -m ____ venv` (bo‘sh joyga nima yoziladi?)'
+  kind: text
+  points: 1
+  answers:
+  - venv
+- text: Qaysilar Python’ning standart kutubxonasi (pip shart emas)?
+  kind: multiple
+  points: 1
+  options:
+  - text: json
+    correct: true
+  - text: math
+    correct: true
+  - text: requests
+    correct: false
+  - text: django
+    correct: false
+  - text: datetime
+    correct: true
+- text: '`from math import sqrt` dan keyin funksiya qanday chaqiriladi?'
+  kind: single
+  points: 1
+  options:
+  - text: import.sqrt(16)
+    correct: false
+  - text: sqrt(16)
+    correct: true
+  - text: math::sqrt(16)
+    correct: false
+  - text: math.sqrt(16)
+    correct: false
+lessons:
+- lesson: 20
+  kind: classwork
+  required: true
+  order: 10

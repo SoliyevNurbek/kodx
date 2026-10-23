@@ -1,0 +1,63 @@
+title: 'Test: Inline tugmalar, FSM, SQLite'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Inline tugma bosilganda bot qanday hodisani oladi?
+  kind: single
+  points: 1
+  options:
+  - text: Rasm
+    correct: false
+  - text: Ovozli xabar
+    correct: false
+  - text: Callback query
+    correct: true
+  - text: Yangi xabar
+    correct: false
+- text: FSM (holatlar mashinasi) nima uchun kerak?
+  kind: single
+  points: 1
+  options:
+  - text: Server sotib olish
+    correct: false
+  - text: Botni tezlashtirish
+    correct: false
+  - text: Rasm chizish
+    correct: false
+  - text: Ko‘p bosqichli suhbatni (masalan, ro‘yxatdan o‘tish) boshqarish
+    correct: true
+- text: Python’da SQLite bilan ishlash uchun standart modul nomi?
+  kind: text
+  points: 1
+  answers:
+  - sqlite3
+- text: SQL so‘rovlarida xavfsizlik uchun nima qilinadi?
+  kind: multiple
+  points: 1
+  options:
+  - text: Parametrli so‘rov (? belgilari) ishlatish
+    correct: true
+  - text: Foydalanuvchi matnini to‘g‘ridan-to‘g‘ri SQL’ga qo‘shish
+    correct: false
+  - text: Barcha jadvallarni ochiq qoldirish
+    correct: false
+- text: Ma’lumot qo‘shuvchi SQL buyrug‘i?
+  kind: single
+  points: 1
+  options:
+  - text: DROP TABLE
+    correct: false
+  - text: INSERT INTO
+    correct: true
+  - text: UPDATE ALL
+    correct: false
+  - text: SELECT
+    correct: false
+lessons:
+- lesson: 44
+  kind: classwork
+  required: true
+  order: 10

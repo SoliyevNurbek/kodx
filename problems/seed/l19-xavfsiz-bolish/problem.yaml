@@ -1,0 +1,19 @@
+title: Xavfsiz bo‘lish
+type: code
+difficulty: 1
+points: 100
+tags:
+- try-except
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ ($1 \le n \le 1000$), keyingi $n$ qatorda $a$ va $b$.
+output_format: Har bir juftlik uchun natija.
+lessons:
+- lesson: 19
+  kind: classwork
+  required: true
+  order: 1

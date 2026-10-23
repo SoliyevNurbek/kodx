@@ -1,0 +1,58 @@
+title: 'Test: Arifmetika, satrlar, f-string'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: '`17 // 5` ning natijasi nima?'
+  kind: text
+  points: 1
+  answers:
+  - '3'
+- text: '`17 % 5` ning natijasi nima?'
+  kind: text
+  points: 1
+  answers:
+  - '2'
+- text: '`name = ''Ali''` bo‘lsa, `f''Salom, {name}!''` nima beradi?'
+  kind: single
+  points: 1
+  options:
+  - text: Salom, {name}!
+    correct: false
+  - text: Salom, Ali!
+    correct: true
+  - text: Salom, name!
+    correct: false
+  - text: Xato
+    correct: false
+- text: '`''ab'' * 3` ning natijasi qaysi?'
+  kind: single
+  points: 1
+  options:
+  - text: '''ababab'''
+    correct: true
+  - text: '6'
+    correct: false
+  - text: Xato
+    correct: false
+  - text: '''ab3'''
+    correct: false
+- text: '`2 ** 10` ning qiymati nechaga teng?'
+  kind: single
+  points: 1
+  options:
+  - text: '100'
+    correct: false
+  - text: '1024'
+    correct: true
+  - text: '20'
+    correct: false
+  - text: '12'
+    correct: false
+lessons:
+- lesson: 6
+  kind: classwork
+  required: true
+  order: 10

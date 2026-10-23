@@ -1,0 +1,19 @@
+title: Hafta kuni
+type: code
+difficulty: 1
+points: 100
+tags:
+- match-case
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta butun son.
+output_format: Kun nomi yoki `xato`.
+lessons:
+- lesson: 9
+  kind: classwork
+  required: true
+  order: 1

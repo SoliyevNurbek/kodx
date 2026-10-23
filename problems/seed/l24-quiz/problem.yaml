@@ -1,0 +1,67 @@
+title: 'Test: Loyiha 2 himoyasi: takrorlash'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Ma’lumotlarni dasturlar orasida almashish uchun eng mos format qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: MP3
+    correct: false
+  - text: EXE
+    correct: false
+  - text: JSON
+    correct: true
+  - text: PNG
+    correct: false
+- text: '`{''a'': 1, ''b'': 2}.keys()` ni ro‘yxatga aylantirsak nima chiqadi? (masalan: [''x''])'
+  kind: text
+  points: 1
+  answers:
+  - '[''a'', ''b'']'
+- text: Loyiha 2 da qaysi mavzular ko‘rib chiqiladi?
+  kind: multiple
+  points: 1
+  options:
+  - text: OOP
+    correct: true
+  - text: HTML formalar
+    correct: false
+  - text: Telegram bot
+    correct: false
+  - text: Funksiyalar
+    correct: true
+  - text: Fayllar bilan ishlash
+    correct: true
+- text: Testlar (unit test) nima uchun yoziladi?
+  kind: single
+  points: 1
+  options:
+  - text: GitHub talab qilgani uchun
+    correct: false
+  - text: Dasturni tezlashtirish uchun
+    correct: false
+  - text: Kod kutilganidek ishlashini avtomatik tekshirish uchun
+    correct: true
+  - text: Kodni chiroyli qilish uchun
+    correct: false
+- text: '`try/except` qachon ishlatiladi?'
+  kind: single
+  points: 1
+  options:
+  - text: Xato yuz berishi mumkin bo‘lgan joyda dastur to‘xtab qolmasligi uchun
+    correct: true
+  - text: Faqat tsikllarda
+    correct: false
+  - text: Hech qachon
+    correct: false
+  - text: Har bir qatorda
+    correct: false
+lessons:
+- lesson: 24
+  kind: classwork
+  required: true
+  order: 10

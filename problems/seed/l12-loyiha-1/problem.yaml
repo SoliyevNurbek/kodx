@@ -1,0 +1,30 @@
+title: 'Loyiha 1: konsol o‘yini'
+type: project
+difficulty: 4
+points: 100
+tags:
+- loyiha
+rubric:
+- title: O‘yin to‘liq ishlaydi
+  points: 30
+  description: Barcha qoidalar bajariladi, dastur xatosiz tugaydi
+- title: Shartlar va tsikllar
+  points: 20
+  description: if/elif, for/while, match-case o‘rinli ishlatilgan
+- title: Kiritishni tekshirish
+  points: 15
+  description: Noto‘g‘ri qiymatda dastur to‘xtab qolmaydi
+- title: Kod sifati
+  points: 15
+  description: PEP 8 / toza HTML-CSS, tushunarli nomlar, takrorlanmaydigan kod
+- title: README va Git
+  points: 10
+  description: README to‘liq, ma’noli commit’lar
+- title: Xavfsizlik va mustaqillik
+  points: 10
+  description: Maxfiy ma’lumot yo‘q; muallif kodni tushuntira oladi
+lessons:
+- lesson: 12
+  kind: homework
+  required: true
+  order: 20

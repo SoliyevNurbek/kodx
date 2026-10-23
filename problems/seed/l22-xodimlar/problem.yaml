@@ -1,0 +1,20 @@
+title: Xodimlar maoshi
+type: code
+difficulty: 3
+points: 300
+tags:
+- oop
+- meros
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ ($1 \le n \le 1000$), keyingi qatorlarda xodimlar ($M, B \le 10^9$).
+output_format: $n$ qator va jami.
+lessons:
+- lesson: 22
+  kind: homework
+  required: true
+  order: 2

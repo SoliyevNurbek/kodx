@@ -1,0 +1,20 @@
+title: Kombinatsiyalar
+type: code
+difficulty: 3
+points: 300
+tags:
+- modullar
+- itertools
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta qatorda satr (uzunligi 1–12) va $k$ ($1 \le k \le$ satr uzunligi).
+output_format: Har bir qatorda bitta kombinatsiya.
+lessons:
+- lesson: 20
+  kind: challenge
+  required: false
+  order: 3

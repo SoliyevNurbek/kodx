@@ -1,0 +1,30 @@
+title: Portfolio dizayni va karkasi
+type: project
+difficulty: 3
+points: 100
+tags:
+- loyiha
+rubric:
+- title: Maket va reja
+  points: 25
+  description: Wireframe va bo‘limlar rejasi
+- title: Karkas
+  points: 25
+  description: Semantik HTML, Grid/Flexbox
+- title: Dizayn tizimi
+  points: 15
+  description: Palitra, shriftlar, o‘zgaruvchilar
+- title: Kod sifati
+  points: 15
+  description: PEP 8 / toza HTML-CSS, tushunarli nomlar, takrorlanmaydigan kod
+- title: README va Git
+  points: 10
+  description: README to‘liq, ma’noli commit’lar
+- title: Xavfsizlik va mustaqillik
+  points: 10
+  description: Maxfiy ma’lumot yo‘q; muallif kodni tushuntira oladi
+lessons:
+- lesson: 34
+  kind: homework
+  required: true
+  order: 20

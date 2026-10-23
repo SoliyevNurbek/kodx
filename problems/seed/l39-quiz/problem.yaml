@@ -1,0 +1,65 @@
+title: 'Test: AI bilan kodlash va xavfsizlik'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: AI yozgan kodni nima qilish kerak?
+  kind: single
+  points: 1
+  options:
+  - text: Darhol production’ga yuborish
+    correct: false
+  - text: O‘chirib tashlash
+    correct: false
+  - text: Hech o‘qimasdan commit qilish
+    correct: false
+  - text: O‘qib, tushunib, sinab ko‘rish
+    correct: true
+- text: API kalitni qayerda saqlash to‘g‘ri?
+  kind: single
+  points: 1
+  options:
+  - text: .env faylida (git’ga qo‘shilmagan)
+    correct: true
+  - text: Kod ichida
+    correct: false
+  - text: GitHub issue’da
+    correct: false
+  - text: README.md da
+    correct: false
+- text: Maxfiy fayllar git’ga tushmasligi uchun ular qaysi faylga yoziladi? (fayl nomi)
+  kind: text
+  points: 1
+  answers:
+  - .gitignore
+- text: AI kodidagi xavfli holatlar?
+  kind: multiple
+  points: 1
+  options:
+  - text: Foydalanuvchi kiritgan ma’lumotni tekshirmasdan ishlatish
+    correct: true
+  - text: PEP 8 ga rioya qilish
+    correct: false
+  - text: Mavjud bo‘lmagan kutubxonani taklif qilishi
+    correct: true
+  - text: Funksiyalarga docstring yozish
+    correct: false
+- text: Agar AI tushunarsiz kod yozsa?
+  kind: single
+  points: 1
+  options:
+  - text: Ko‘chirib, himoyada ham shunday ko‘rsatish
+    correct: false
+  - text: Hech narsa qilmaslik
+    correct: false
+  - text: Undan kodni qadamma-qadam tushuntirishni so‘rash
+    correct: true
+  - text: Kodni yashirish
+    correct: false
+lessons:
+- lesson: 39
+  kind: classwork
+  required: true
+  order: 10

@@ -1,0 +1,66 @@
+title: 'Test: AI, ML va LLM'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: LLM nima?
+  kind: single
+  points: 1
+  options:
+  - text: Dasturlash tili
+    correct: false
+  - text: Linux litsenziyasi
+    correct: false
+  - text: Katta til modeli (Large Language Model)
+    correct: true
+  - text: Lokal tarmoq moduli
+    correct: false
+- text: Mashinali o‘rganish (ML) nima?
+  kind: single
+  points: 1
+  options:
+  - text: Kompyuterning ma’lumotlardan qonuniyatlarni o‘rganishi
+    correct: true
+  - text: Kompyuterni yig‘ish
+    correct: false
+  - text: Faqat robotlar yasash
+    correct: false
+  - text: Internet tezligini oshirish
+    correct: false
+- text: LLM matnni qanday kichik birliklarga bo‘lib qayta ishlaydi? (inglizcha atama)
+  kind: text
+  points: 1
+  answers:
+  - token
+  - tokens
+- text: LLM’ning cheklovlari qaysilar?
+  kind: multiple
+  points: 1
+  options:
+  - text: Noto‘g‘ri ma’lumotni ishonch bilan aytishi mumkin (gallyutsinatsiya)
+    correct: true
+  - text: Hech qachon xato qilmaydi
+    correct: false
+  - text: Bilim ma’lum sanagacha cheklangan
+    correct: true
+  - text: Har doim internetdan tekshiradi
+    correct: false
+- text: AI javobini qanday ishlatish to‘g‘ri?
+  kind: single
+  points: 1
+  options:
+  - text: Muhim faktlarni ishonchli manbalardan tekshirish
+    correct: true
+  - text: Faqat sarlavhasini o‘qish
+    correct: false
+  - text: Javobni o‘chirib yuborish
+    correct: false
+  - text: Hech tekshirmasdan ko‘chirish
+    correct: false
+lessons:
+- lesson: 37
+  kind: classwork
+  required: true
+  order: 10

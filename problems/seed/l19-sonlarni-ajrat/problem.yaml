@@ -1,0 +1,19 @@
+title: Sonlarni ajratib olish
+type: code
+difficulty: 2
+points: 200
+tags:
+- try-except
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta qator (uzunligi $10^5$ gacha).
+output_format: 'Ikki son: butun sonlar soni va ularning yig‘indisi.'
+lessons:
+- lesson: 19
+  kind: homework
+  required: true
+  order: 2

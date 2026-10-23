@@ -1,0 +1,19 @@
+title: Kabisa yili
+type: code
+difficulty: 2
+points: 200
+tags:
+- mantiqiy ifodalar
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta son — yil ($1 \le y \le 10^5$).
+output_format: '`True` yoki `False`.'
+lessons:
+- lesson: 7
+  kind: homework
+  required: true
+  order: 2

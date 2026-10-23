@@ -1,0 +1,67 @@
+title: 'Test: Terminal (CLI)'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Joriy papka yo‘lini qaysi buyruq chiqaradi?
+  kind: single
+  points: 1
+  options:
+  - text: ls
+    correct: false
+  - text: mkdir
+    correct: false
+  - text: pwd
+    correct: true
+  - text: cd
+    correct: false
+- text: Yangi papka yaratish buyrug‘i qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: mkdir
+    correct: true
+  - text: touch
+    correct: false
+  - text: rm
+    correct: false
+  - text: cat
+    correct: false
+- text: Bir daraja yuqori papkaga o‘tish uchun `cd` dan keyin nima yoziladi?
+  kind: text
+  points: 1
+  answers:
+  - ..
+- text: Qaysi buyruqlar fayl yoki papkalar bilan ishlaydi?
+  kind: multiple
+  points: 1
+  options:
+  - text: ls
+    correct: true
+  - text: python --version
+    correct: false
+  - text: cp
+    correct: true
+  - text: rm
+    correct: true
+  - text: clear
+    correct: false
+- text: '`ls -a` buyrug‘i oddiy `ls` dan nimasi bilan farq qiladi?'
+  kind: single
+  points: 1
+  options:
+  - text: Yashirin fayllarni ham ko‘rsatadi
+    correct: true
+  - text: Fayllarni o‘chiradi
+    correct: false
+  - text: Fayllar hajmini yashiradi
+    correct: false
+  - text: Faqat papkalarni ko‘rsatadi
+    correct: false
+lessons:
+- lesson: 2
+  kind: classwork
+  required: true
+  order: 10

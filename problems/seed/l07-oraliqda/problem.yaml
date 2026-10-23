@@ -1,0 +1,19 @@
+title: Oraliqdami?
+type: code
+difficulty: 1
+points: 100
+tags:
+- mantiqiy ifodalar
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta qatorda $a$, $x$, $b$ ($|a|, |x|, |b| \le 10^9$).
+output_format: '`True` yoki `False`.'
+lessons:
+- lesson: 7
+  kind: classwork
+  required: true
+  order: 1

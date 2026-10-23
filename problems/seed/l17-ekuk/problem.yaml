@@ -1,0 +1,20 @@
+title: EKUK
+type: code
+difficulty: 2
+points: 200
+tags:
+- funksiyalar
+- matematika
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ ($1 \le n \le 100$), ikkinchi qatorda sonlar ($1 \le a_i \le 10^6$).
+output_format: EKUK (u juda katta bo‘lishi mumkin).
+lessons:
+- lesson: 17
+  kind: homework
+  required: true
+  order: 2

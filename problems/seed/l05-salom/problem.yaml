@@ -1,0 +1,19 @@
+title: Salom!
+type: code
+difficulty: 1
+points: 100
+tags:
+- kirish-chiqish
+time_limit: 1000
+memory_limit: 256
+checker: exact
+samples:
+- 1
+- 2
+input_format: Bitta qatorda ism.
+output_format: '`Salom, <ism>!`'
+lessons:
+- lesson: 5
+  kind: classwork
+  required: true
+  order: 1
