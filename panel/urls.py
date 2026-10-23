@@ -26,6 +26,14 @@ urlpatterns = [
     path("vazifalarim/<slug:slug>/testlar/<int:pk>/ochirish/", views.test_delete, name="test_delete"),
     path("vazifalarim/<slug:slug>/tekshirish/", views.problem_check, name="problem_check"),
     path("vazifalarim/<slug:slug>/korib-chiqishga/", views.problem_submit_review, name="problem_submit_review"),
+    # Jury: kontestlar
+    path("kontestlar/", views.contests, name="contests"),
+    path("kontestlar/yangi/", views.contest_create, name="contest_create"),
+    path("kontestlar/<slug:slug>/", views.contest_edit, name="contest_edit"),
+    path("kontestlar/<slug:slug>/masala/", views.contest_problem_add, name="contest_problem_add"),
+    path("kontestlar/<slug:slug>/masala/<int:pk>/ochirish/", views.contest_problem_remove,
+         name="contest_problem_remove"),
+    path("kontestlar/<slug:slug>/reyting/", views.contest_apply_ratings, name="contest_apply_ratings"),
     # Super admin
     path("tizim/", views.system, name="system"),
     path("audit/", views.audit_log, name="audit"),

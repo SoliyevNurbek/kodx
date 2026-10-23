@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ link.label }}. {{ problem.title }}{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" defer></script>
+{% endblock %}
+{% block content %}
+<nav class="mb-2 flex flex-wrap gap-2 text-sm">
+  <a class="hover:text-accent" href="{% url 'contest_detail' contest.slug %}">← {{ contest.title }}</a>
+  {% for l in labels %}<a class="rounded px-2 {% if l == link.label %}bg-accent text-navy{% else %}ring-1 ring-slate-300 dark:ring-white/20{% endif %}" href="{% url 'contest_problem' contest.slug l %}">{{ l }}</a>{% endfor %}
+</nav>
+<h1 class="text-2xl font-bold">{{ link.label }}. {{ problem.title }}</h1>
+<p class="mb-4 text-sm text-slate-500">{{ problem.time_limit }} ms · {{ problem.memory_limit }} MB{% if contest.scoring == "ioi" %} · {{ link.points }} {% translate "ball" %}{% endif %}</p>
+<div class="grid gap-6 lg:grid-cols-2">
+  <article class="card prose-kodx">
+    {{ statement_html|safe }}
+    {% if problem.input_format %}<h3>{% translate "Kirish" %}</h3><div class="whitespace-pre-line">{{ problem.input_format }}</div>{% endif %}
+    {% if problem.output_format %}<h3>{% translate "Chiqish" %}</h3><div class="whitespace-pre-line">{{ problem.output_format }}</div>{% endif %}
+    {% for sample in samples %}
+      <h3>{% translate "Namuna" %} {{ forloop.counter }}</h3>
+      <div class="grid gap-2 sm:grid-cols-2"><pre><code>{{ sample.input }}</code></pre><pre><code>{{ sample.output }}</code></pre></div>
+    {% endfor %}
+  </article>
+  <section>
+    {% if can_submit %}
+    <form method="post" action="{% url 'contest_submit' contest.slug link.label %}" class="card" id="submit-form">
+      {% csrf_token %}
+      <div class="mb-2 flex items-center justify-between"><label for="code" class="font-semibold">{% translate "Yechim" %}</label>
+        <select name="language" class="form-input w-auto" aria-label="{% translate 'Til' %}">{% for value, label in languages %}<option value="{{ value }}">{{ label }}</option>{% endfor %}</select></div>
+      <div id="editor" class="mb-3"></div>
+      <textarea id="code" name="code" rows="16" class="form-input font-mono text-sm" spellcheck="false" required></textarea>
+      <button class="btn-primary mt-3 w-full" type="submit">{% translate "Yuborish" %}</button>
+    </form>
+    {% else %}
+      <div class="card text-sm text-slate-500">{% if contest.is_finished %}{% translate "Kontest tugagan. Masalani mashq uchun vazifalar bo‘limida yechishingiz mumkin (agar u ochiq bo‘lsa)." %}{% else %}{% translate "Yechim yuborish uchun kontestda ro‘yxatdan o‘ting." %}{% endif %}</div>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}
+{% block scripts %}
+<script type="module">
+  try {
+    const { EditorView, basicSetup } = await import("https://esm.sh/codemirror@6.0.1");
+    const { python } = await import("https://esm.sh/@codemirror/lang-python@6.1.6");
+    const textarea = document.getElementById("code");
+    if (textarea) {
+      const view = new EditorView({ doc: textarea.value, extensions: [basicSetup, python()], parent: document.getElementById("editor") });
+      textarea.hidden = true; textarea.required = false;
+      document.getElementById("submit-form").addEventListener("submit", () => { textarea.value = view.state.doc.toString(); });
+    }
+  } catch (e) { console.warn("CodeMirror yuklanmadi:", e); }
+</script>
+<script>window.addEventListener("load", function () { window.kodxRenderMath && window.kodxRenderMath(); });</script>
+{% endblock %}

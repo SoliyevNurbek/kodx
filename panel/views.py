@@ -22,6 +22,8 @@ from accounts.models import Role, RoleRequest, User
 from accounts.permissions import role_required
 from audit.models import AuditLog
 from audit.services import log_action
+from contests.models import Contest, ContestProblem
+from contests.services import apply_ratings as apply_contest_ratings
 from core.models import SiteSettings
 from courses.models import Group, Lesson
 from grading.course_grade import group_grades as group_grades_for
@@ -32,7 +34,7 @@ from submissions.queue import get_queue
 from submissions.services import SubmissionError, create_submission, grade_project
 from submissions.stats import solved_map
 
-from .forms import GradeForm, ProblemForm, SiteSettingsForm, TestUploadForm
+from .forms import ContestForm, ContestProblemForm, GradeForm, ProblemForm, SiteSettingsForm, TestUploadForm
 
 
 @role_required(Role.JURY)
@@ -361,3 +363,99 @@ def group_attendance(request: HttpRequest, pk: int) -> HttpResponse:
     rows = [{"user": m.user, "present": marked.get(m.user_id, True), "marked": m.user_id in marked} for m in members]
     return render(request, "panel/group_attendance.html",
                   {"group": group, "lesson": lesson, "lessons": lessons, "rows": rows})
+
+
+# ---------------- Jury: kontestlar ----------------
+
+def _managed_contest(request: HttpRequest, slug: str) -> Contest:
+    contest = get_object_or_404(Contest, slug=slug)
+    if not contest.can_manage(request.user):
+        raise PermissionDenied("Faqat o‘z kontestingizni boshqara olasiz.")
+    return contest
+
+
+@role_required(Role.JURY)
+def contests(request: HttpRequest) -> HttpResponse:
+    items = Contest.objects.select_related("owner").order_by("-start_at")
+    if not request.user.is_moderator:
+        items = items.filter(owner=request.user)
+    return render(request, "panel/contests.html", {"contests": items})
+
+
+@role_required(Role.JURY)
+def contest_create(request: HttpRequest) -> HttpResponse:
+    form = ContestForm(request.POST or None, user=request.user)
+    if request.method == "POST" and form.is_valid():
+        contest = form.save(commit=False)
+        contest.owner = request.user
+        contest.save()
+        log_action(request.user, "contest_created", contest, request=request)
+        messages.success(request, "Kontest yaratildi. Endi masalalarni qo‘shing.")
+        return redirect("panel:contest_edit", slug=contest.slug)
+    return render(request, "panel/contest_form.html", {"form": form, "contest": None})
+
+
+@role_required(Role.JURY)
+def contest_edit(request: HttpRequest, slug: str) -> HttpResponse:
+    contest = _managed_contest(request, slug)
+    form = ContestForm(request.POST or None, instance=contest, user=request.user)
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        log_action(request.user, "contest_updated", contest, {"changed": form.changed_data}, request)
+        messages.success(request, "Saqlandi.")
+        return redirect("panel:contest_edit", slug=slug)
+    return render(request, "panel/contest_form.html", {
+        "form": form, "contest": contest,
+        "problem_form": ContestProblemForm(initial={"label": chr(ord("A") + contest.problems.count())}),
+        "links": contest.problems.select_related("problem"),
+        "participants": contest.participants.select_related("user").order_by("registered_at"),
+    })
+
+
+@role_required(Role.JURY)
+@require_POST
+def contest_problem_add(request: HttpRequest, slug: str) -> HttpResponse:
+    contest = _managed_contest(request, slug)
+    form = ContestProblemForm(request.POST)
+    if not form.is_valid():
+        messages.error(request, "Formani to‘g‘ri to‘ldiring.")
+        return redirect("panel:contest_edit", slug=slug)
+    problem = Problem.objects.filter(slug=form.cleaned_data["slug"], type=Problem.Type.CODE).first()
+    label = form.cleaned_data["label"].strip().upper()
+    if problem is None or not problem.can_view(request.user):
+        messages.error(request, "Bunday kod masala topilmadi.")
+    elif contest.problems.filter(Q(label=label) | Q(problem=problem)).exists():
+        messages.error(request, "Bu harf yoki masala allaqachon kontestda.")
+    else:
+        ContestProblem.objects.create(contest=contest, problem=problem, label=label,
+                                      points=form.cleaned_data["points"])
+        log_action(request.user, "contest_problem_added", contest, {"problem": problem.slug, "label": label}, request)
+        messages.success(request, f"{label}. {problem.title} qo‘shildi.")
+    return redirect("panel:contest_edit", slug=slug)
+
+
+@role_required(Role.JURY)
+@require_POST
+def contest_problem_remove(request: HttpRequest, slug: str, pk: int) -> HttpResponse:
+    contest = _managed_contest(request, slug)
+    link = get_object_or_404(ContestProblem, pk=pk, contest=contest)
+    if contest.submissions.filter(problem=link.problem).exists():
+        messages.error(request, "Bu masalaga yechimlar yuborilgan — olib tashlab bo‘lmaydi.")
+    else:
+        log_action(request.user, "contest_problem_removed", contest, {"label": link.label}, request)
+        link.delete()
+    return redirect("panel:contest_edit", slug=slug)
+
+
+@role_required(Role.JURY)
+@require_POST
+def contest_apply_ratings(request: HttpRequest, slug: str) -> HttpResponse:
+    contest = _managed_contest(request, slug)
+    try:
+        deltas = apply_contest_ratings(contest, actor=request.user)
+    except ValidationError as exc:
+        messages.error(request, exc.messages[0])
+    else:
+        messages.success(request, f"Reyting yangilandi: {len(deltas)} ishtirokchi." if deltas
+                         else "Reyting o‘zgarmadi (reytingsiz yoki allaqachon hisoblangan).")
+    return redirect("panel:contest_edit", slug=slug)

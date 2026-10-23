@@ -4,6 +4,7 @@ from pathlib import Path
 
 from django import forms
 
+from contests.models import Contest
 from core.models import SiteSettings
 from problems.models import Problem
 
@@ -95,6 +96,59 @@ class SiteSettingsForm(forms.ModelForm):
             "color_accent": forms.TextInput(attrs={"type": "color"}),
             "color_gold": forms.TextInput(attrs={"type": "color"}),
         }
+
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        _style(self)
+
+
+class ContestForm(forms.ModelForm):
+    """Kontest formasi. Parol ochiq ko'rinishda saqlanmaydi — faqat xesh."""
+
+    password = forms.CharField(label="Kontest paroli", required=False, widget=forms.PasswordInput(render_value=False),
+                               help_text="Faqat «Parol bilan» ko‘rinishda. Bo‘sh qoldirilsa — eski parol saqlanadi.")
+
+    class Meta:
+        model = Contest
+        fields = ("title", "slug", "description", "start_at", "duration_minutes", "scoring", "penalty_minutes",
+                  "freeze_minutes", "visibility", "group", "is_rated")
+        widgets = {
+            "start_at": forms.DateTimeInput(attrs={"type": "datetime-local"}, format="%Y-%m-%dT%H:%M"),
+            "description": forms.Textarea(attrs={"rows": 4}),
+        }
+
+    def __init__(self, *args, user=None, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.fields["start_at"].input_formats = ["%Y-%m-%dT%H:%M"]
+        if self.instance.pk:
+            self.fields["slug"].disabled = True
+        if user is not None and not user.is_moderator:
+            # Reytingga ta'sir qiluvchi kontestni faqat moderator belgilaydi
+            self.fields["is_rated"].disabled = True
+        _style(self)
+
+    def clean(self):
+        data = super().clean()
+        if data.get("visibility") == Contest.Visibility.PASSWORD and not data.get("password") \
+                and not self.instance.password_hash:
+            self.add_error("password", "Parolli kontest uchun parol kiriting.")
+        return data
+
+    def save(self, commit: bool = True):
+        contest = super().save(commit=False)
+        if self.cleaned_data.get("password"):
+            contest.set_password(self.cleaned_data["password"])
+        if contest.visibility != Contest.Visibility.PASSWORD:
+            contest.password_hash = ""
+        if commit:
+            contest.save()
+        return contest
+
+
+class ContestProblemForm(forms.Form):
+    slug = forms.SlugField(label="Masala slug")
+    label = forms.CharField(label="Harf", max_length=3)
+    points = forms.IntegerField(label="Ball (IOI)", min_value=1, max_value=10000, initial=100)
 
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)

@@ -1,0 +1,11 @@
+{% load i18n %}
+<a href="{% url 'contest_detail' c.slug %}" class="card block transition hover:border-accent">
+  <div class="flex items-start justify-between gap-2">
+    <span class="font-semibold">{{ c.title }}</span>
+    <span class="badge {% if c.is_rated %}badge-attempted{% else %}badge-new{% endif %}">{% if c.is_rated %}{% translate "reytingli" %}{% else %}{% translate "reytingsiz" %}{% endif %}</span>
+  </div>
+  <div class="mt-1 text-sm text-slate-500">
+    {{ c.start_at|date:"d.m.Y H:i" }} · {{ c.duration_minutes }} {% translate "daqiqa" %} · {{ c.get_scoring_display|truncatewords:1 }}
+    {% if c.visibility != "public" %}· {{ c.get_visibility_display }}{% endif %}
+  </div>
+</a>

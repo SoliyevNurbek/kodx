@@ -1,0 +1,41 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{% if contest %}{{ contest.title }}{% else %}{% translate "Yangi kontest" %}{% endif %}{% endblock %}
+{% block panel %}
+<div class="mb-4 flex flex-wrap items-center justify-between gap-2">
+  <h1 class="text-2xl font-bold">{% if contest %}{{ contest.title }}{% else %}{% translate "Yangi kontest" %}{% endif %}</h1>
+  {% if contest %}<div class="flex gap-2">
+    <a class="btn-secondary text-sm" href="{% url 'contest_detail' contest.slug %}">{% translate "Kontest sahifasi" %}</a>
+    <a class="btn-secondary text-sm" href="{% url 'contest_scoreboard' contest.slug %}">{% translate "Jadval" %}</a>
+  </div>{% endif %}
+</div>
+<div class="grid gap-6 lg:grid-cols-2">
+  <form method="post" class="card">{% csrf_token %}{% include "_form.html" %}<button class="btn-primary" type="submit">{% translate "Saqlash" %}</button></form>
+  {% if contest %}
+  <div class="space-y-4">
+    <div class="card">
+      <h2 class="mb-2 font-semibold">{% translate "Masalalar" %}</h2>
+      <ul class="mb-3 space-y-1 text-sm">{% for link in links %}
+        <li class="flex items-center justify-between gap-2"><span><strong>{{ link.label }}.</strong> {{ link.problem.title }} <span class="text-slate-500">({{ link.problem.slug }}{% if contest.scoring == "ioi" %}, {{ link.points }}{% endif %})</span></span>
+          <form method="post" action="{% url 'panel:contest_problem_remove' contest.slug link.pk %}" data-confirm="{% translate 'Masalani olib tashlaysizmi?' %}">{% csrf_token %}<button class="text-red-500">✕</button></form></li>
+      {% empty %}<li class="text-slate-500">{% translate "Hali masalalar yo‘q." %}</li>{% endfor %}</ul>
+      <form method="post" action="{% url 'panel:contest_problem_add' contest.slug %}" class="grid grid-cols-3 gap-2">{% csrf_token %}
+        {{ problem_form.slug }}{{ problem_form.label }}{{ problem_form.points }}
+        <button class="btn-primary col-span-3" type="submit">{% translate "Masala qo‘shish" %}</button>
+      </form>
+      <p class="mt-2 text-xs text-slate-500">{% translate "Slug — masala manzilidagi nom (masalan, l08-baho). Qoralama masalalar kontest paytida faqat ishtirokchilarga ko‘rinadi." %}</p>
+    </div>
+    <div class="card">
+      <h2 class="mb-2 font-semibold">{% translate "Ishtirokchilar" %} ({{ participants|length }})</h2>
+      <p class="text-sm">{% for p in participants %}{{ p.user.username }}{% if not forloop.last %}, {% endif %}{% empty %}<span class="text-slate-500">{% translate "Hali yo‘q." %}</span>{% endfor %}</p>
+    </div>
+    {% if contest.is_rated %}
+    <form method="post" action="{% url 'panel:contest_apply_ratings' contest.slug %}" class="card">{% csrf_token %}
+      <p class="mb-2 text-sm">{% if contest.ratings_applied %}✓ {% translate "Reyting hisoblangan." %}{% else %}{% translate "Kontest tugagach reyting avtomatik hisoblanadi (judge worker). Qo‘lda ishga tushirish:" %}{% endif %}</p>
+      {% if not contest.ratings_applied %}<button class="btn-secondary" type="submit">{% translate "Reytingni hisoblash" %}</button>{% endif %}
+    </form>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

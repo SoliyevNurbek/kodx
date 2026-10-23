@@ -3,5 +3,16 @@
 {% block title %}{% translate "Kontestlar" %}{% endblock %}
 {% block content %}
 <h1 class="mb-4 text-2xl font-bold">{% translate "Kontestlar" %}</h1>
-<div class="card text-slate-500">{% translate "Hozircha kontestlar yo‘q." %}</div>
+{% if running %}
+  <h2 class="mb-2 text-lg font-semibold text-emerald-500">● {% translate "Davom etmoqda" %}</h2>
+  <div class="mb-6 grid gap-3 md:grid-cols-2">{% for c in running %}{% include "contests/_card.html" %}{% endfor %}</div>
+{% endif %}
+<h2 class="mb-2 text-lg font-semibold">{% translate "Kutilayotgan" %}</h2>
+<div class="mb-6 grid gap-3 md:grid-cols-2">
+  {% for c in upcoming %}{% include "contests/_card.html" %}{% empty %}<div class="card text-slate-500">{% translate "Hozircha rejalashtirilgan kontestlar yo‘q." %}</div>{% endfor %}
+</div>
+<h2 class="mb-2 text-lg font-semibold">{% translate "Tugaganlar" %}</h2>
+<div class="grid gap-3 md:grid-cols-2">
+  {% for c in finished %}{% include "contests/_card.html" %}{% empty %}<div class="card text-slate-500">{% translate "Hali tugagan kontestlar yo‘q." %}</div>{% endfor %}
+</div>
 {% endblock %}
