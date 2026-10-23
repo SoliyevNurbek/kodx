@@ -9,6 +9,7 @@ import time
 
 from django.core.management.base import BaseCommand
 
+from contests.services import apply_due_ratings
 from judge.backends import get_backend
 from submissions.queue import DatabaseQueue, get_queue
 from submissions.services import judge_submission
@@ -31,14 +32,22 @@ class Command(BaseCommand):
                 self.stdout.write(f"{requeued} ta to'xtab qolgan yechim navbatga qaytarildi.")
         self.stdout.write(self.style.SUCCESS(f"Worker ishga tushdi (backend: {backend.name})."))
         processed = 0
+        idle_cycles = 0
         try:
             while not max or processed < max:
                 submission = queue.claim_next()
                 if submission is None:
+                    # Bo'sh paytda: tugagan reytingli kontestlar reytingini hisoblash
+                    if idle_cycles % 30 == 0:
+                        rated = apply_due_ratings()
+                        if rated:
+                            self.stdout.write(f"{rated} ta kontest reytingi hisoblandi.")
+                    idle_cycles += 1
                     if once:
                         break
                     time.sleep(interval)
                     continue
+                idle_cycles = 0
                 judge_submission(submission, backend)
                 processed += 1
                 self.stdout.write(f"#{submission.pk} {submission.problem.slug}: {submission.verdict} "

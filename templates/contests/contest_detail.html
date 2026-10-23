@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ contest.title }}{% endblock %}
+{% block content %}
+<div class="mb-4 flex flex-wrap items-start justify-between gap-3">
+  <div>
+    <h1 class="text-2xl font-bold">{{ contest.title }}</h1>
+    <p class="text-sm text-slate-500">
+      {{ contest.start_at|date:"d.m.Y H:i" }} — {{ contest.end_at|date:"d.m.Y H:i" }} · {{ contest.get_scoring_display }}
+      · {{ participants_count }} {% translate "ishtirokchi" %} · <strong>{{ contest.status_label }}</strong>
+      {% if contest.is_rated %}· {% translate "reytingli" %}{% endif %}
+    </p>
+  </div>
+  <div class="flex flex-wrap gap-2">
+    <a class="btn-secondary" href="{% url 'contest_scoreboard' contest.slug %}">{% translate "Natijalar jadvali" %}</a>
+    {% if can_manage %}<a class="btn-secondary" href="{% url 'panel:contest_edit' contest.slug %}">{% translate "Boshqarish" %}</a>{% endif %}
+  </div>
+</div>
+{% if description_html %}<div class="card prose-kodx mb-4">{{ description_html|safe }}</div>{% endif %}
+
+{% if user.is_authenticated %}
+  {% if is_participant %}
+    <div class="card mb-4 text-sm text-emerald-600 dark:text-emerald-300">✓ {% translate "Siz ro‘yxatdan o‘tgansiz." %}</div>
+  {% elif not contest.is_finished %}
+    <form method="post" action="{% url 'contest_register' contest.slug %}" class="card mb-4 flex flex-wrap items-end gap-2">
+      {% csrf_token %}
+      {% if contest.visibility == "password" %}
+        <div class="flex-1"><label class="mb-1 block text-sm" for="cpass">{% translate "Kontest paroli" %}</label>
+          <input class="form-input" id="cpass" type="password" name="password" required></div>
+      {% endif %}
+      <button class="btn-primary" type="submit">{% translate "Ro‘yxatdan o‘tish" %}</button>
+    </form>
+  {% endif %}
+{% elif not contest.is_finished %}
+  <div class="card mb-4"><a class="btn-primary" href="{% url 'login' %}?next={{ request.path }}">{% translate "Ishtirok etish uchun kiring" %}</a></div>
+{% endif %}
+
+<div class="card mb-4">
+  <h2 class="mb-2 font-semibold">{% translate "Masalalar" %}</h2>
+  {% if show_problems %}
+    <ul class="space-y-1">{% for link in problems %}
+      <li><a class="hover:text-accent" href="{% url 'contest_problem' contest.slug link.label %}"><strong>{{ link.label }}.</strong> {{ link.problem.title }}</a>
+        {% if contest.scoring == "ioi" %}<span class="text-sm text-slate-500">({{ link.points }} {% translate "ball" %})</span>{% endif %}</li>
+    {% empty %}<li class="text-slate-500">{% translate "Masalalar qo‘shilmagan." %}</li>{% endfor %}</ul>
+  {% elif contest.is_upcoming %}
+    <p class="text-slate-500">{% translate "Masalalar kontest boshlanganda ochiladi." %}</p>
+  {% else %}
+    <p class="text-slate-500">{% translate "Masalalar faqat ishtirokchilarga ko‘rinadi." %}</p>
+  {% endif %}
+</div>
+
+{% if my_submissions %}
+<div class="card">
+  <h2 class="mb-2 font-semibold">{% translate "Mening yechimlarim" %}</h2>
+  <ul class="space-y-1 text-sm">{% for s in my_submissions %}
+    <li class="flex justify-between gap-2"><a class="hover:text-accent" href="{% url 'submission_detail' s.pk %}">#{{ s.pk }} · {{ s.problem.title }} · {{ s.created_at|date:"H:i:s" }}</a>{% include "_verdict.html" %}</li>{% endfor %}</ul>
+</div>
+{% endif %}
+{% endblock %}

@@ -41,6 +41,18 @@
         {% endfor %}
       </div>
     </div>
+    {% if rating_points %}
+    <div class="card">
+      <h2 class="mb-3 font-semibold">{% translate "Kontest reytingi" %}</h2>
+      <svg viewBox="0 0 300 100" class="h-32 w-full" role="img" aria-label="{% translate 'Reyting grafigi' %}" preserveAspectRatio="none">
+        <polyline fill="none" stroke="var(--kx-accent)" stroke-width="2" points="{{ rating_points }}"/>
+      </svg>
+      <ul class="mt-2 space-y-1 text-sm">{% for h in rating_history reversed %}
+        <li class="flex justify-between gap-2"><a class="hover:text-accent" href="{% url 'contest_detail' h.contest.slug %}">{{ h.contest.title }}</a>
+          <span>#{{ h.rank }} · {{ h.old_rating }} → <strong>{{ h.new_rating }}</strong> <span class="{% if h.delta >= 0 %}text-emerald-500{% else %}text-red-500{% endif %}">({{ h.delta|stringformat:"+d" }})</span></span></li>
+      {% endfor %}</ul>
+    </div>
+    {% endif %}
     <div class="card">
       <h2 class="mb-3 font-semibold">{% translate "Nishonlar" %}</h2>
       <div class="flex flex-wrap gap-2">

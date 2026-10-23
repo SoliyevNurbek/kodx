@@ -44,9 +44,24 @@ def check_rate_limit(user) -> None:
 
 
 def create_submission(user, problem: Problem, code: str, language: str = Language.PYTHON3,
-                      lesson=None) -> Submission:
-    """Yechimni tekshiradi, saqlaydi va navbatga qo'yadi (kod bu yerda BAJARILMAYDI)."""
-    _check_problem(user, problem, Problem.Type.CODE)
+                      lesson=None, contest=None) -> Submission:
+    """
+    Yechimni tekshiradi, saqlaydi va navbatga qo'yadi (kod bu yerda BAJARILMAYDI).
+
+    `contest` berilsa — masala ko'rinishi kontest qoidalari bo'yicha tekshiriladi (masala qoralama bo'lishi mumkin):
+    kontest davom etayotgan, foydalanuvchi ishtirokchi va masala shu kontestda bo'lishi shart.
+    """
+    if contest is None:
+        _check_problem(user, problem, Problem.Type.CODE)
+    else:
+        if problem.type != Problem.Type.CODE:
+            raise SubmissionError("Kontestda faqat kod masalalar.")
+        if not contest.problems.filter(problem=problem).exists():
+            raise PermissionDenied("Masala bu kontestda yo‘q.")
+        if not contest.is_running():
+            raise SubmissionError("Kontest hozir davom etmayapti.")
+        if not contest.is_participant(user):
+            raise PermissionDenied("Avval kontestda ro‘yxatdan o‘ting.")
     if language not in Language.values:
         raise SubmissionError("Bu til qo‘llab-quvvatlanmaydi.")
     if not code.strip():
@@ -54,7 +69,8 @@ def create_submission(user, problem: Problem, code: str, language: str = Languag
     if len(code.encode("utf-8")) > MAX_CODE_BYTES:
         raise SubmissionError("Kod hajmi 64 KB dan oshmasligi kerak.")
     check_rate_limit(user)
-    submission = Submission.objects.create(user=user, problem=problem, code=code, language=language, lesson=lesson)
+    submission = Submission.objects.create(user=user, problem=problem, code=code, language=language, lesson=lesson,
+                                           contest=contest)
     get_queue().enqueue(submission)
     return submission
 

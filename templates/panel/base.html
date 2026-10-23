@@ -18,7 +18,11 @@
         <a class="nav-link" href="{% url 'panel:my_problems' %}">{% translate "Vazifalarim" %}</a>
         <a class="nav-link" href="{% url 'panel:problem_create' %}">{% translate "Yangi vazifa" %}</a>
       {% endif %}
-      {% block panel_menu_extra %}{% endblock %}
+      {% if user.is_jury %}
+        <p class="mt-2 text-xs font-semibold uppercase text-slate-500">Jury</p>
+        <a class="nav-link" href="{% url 'panel:contests' %}">{% translate "Kontestlar" %}</a>
+        <a class="nav-link" href="{% url 'panel:contest_create' %}">{% translate "Yangi kontest" %}</a>
+      {% endif %}
       {% if user.is_superadmin %}
         <p class="mt-2 text-xs font-semibold uppercase text-slate-500">{% translate "Super admin" %}</p>
         <a class="nav-link" href="{% url 'panel:system' %}">{% translate "Tizim" %}</a>

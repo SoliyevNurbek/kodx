@@ -1,0 +1,32 @@
+{% load i18n kodx %}
+<div id="scoreboard"
+     {% if contest.is_running %}hx-get="{% url 'contest_scoreboard' contest.slug %}?partial=1" hx-trigger="every 15s" hx-swap="outerHTML"{% endif %}>
+  {% if board.frozen %}<div class="card mb-3 text-sm text-amber-600 dark:text-amber-300">❄ {% translate "Jadval muzlatilgan: oxirgi daqiqalardagi natijalar kontest tugagach ko‘rsatiladi." %}</div>{% endif %}
+  <div class="card overflow-x-auto">
+    <table class="table-kodx text-sm">
+      <thead><tr><th>#</th><th>{% translate "Ishtirokchi" %}</th>
+        {% for label in board.labels %}<th class="text-center">{{ label }}</th>{% endfor %}
+        {% if contest.scoring == "ioi" %}<th class="text-right">{% translate "Ball" %}</th>{% else %}<th class="text-right">{% translate "Yechilgan" %}</th><th class="text-right">{% translate "Jarima" %}</th>{% endif %}</tr></thead>
+      <tbody>
+      {% for row in board.rows %}
+        <tr class="{% if row.user.pk == user.pk %}bg-accent/10 font-semibold{% endif %}">
+          <td>{{ row.rank }}</td>
+          <td class="whitespace-nowrap"><a class="hover:text-accent" href="{% url 'profile' row.user.username %}">{{ row.user.username }}</a></td>
+          {% for label in board.labels %}{% with c=row.cells|get_item:label %}
+            <td class="text-center">
+              {% if contest.scoring == "ioi" %}
+                {% if c.score or c.solved %}<span class="{% if c.solved %}text-emerald-500{% else %}text-amber-500{% endif %}">{{ c.score }}</span>{% elif c.pending %}<span class="text-slate-400">?</span>{% else %}<span class="text-slate-400">·</span>{% endif %}
+              {% elif c.solved %}
+                <span class="{% if c.first_solver %}rounded bg-emerald-600 px-1 text-white{% else %}text-emerald-500{% endif %}">+{% if c.attempts %}{{ c.attempts }}{% endif %}</span><div class="text-xs text-slate-500">{{ c.time_minutes }}</div>
+              {% elif c.attempts or c.pending %}
+                <span class="text-red-500">{% if c.attempts %}−{{ c.attempts }}{% endif %}</span>{% if c.pending %}<span class="text-slate-400"> ?{{ c.pending }}</span>{% endif %}
+              {% else %}<span class="text-slate-400">·</span>{% endif %}
+            </td>
+          {% endwith %}{% endfor %}
+          {% if contest.scoring == "ioi" %}<td class="text-right font-bold">{{ row.score }}</td>{% else %}<td class="text-right font-bold">{{ row.solved }}</td><td class="text-right">{{ row.penalty }}</td>{% endif %}
+        </tr>
+      {% empty %}<tr><td colspan="99" class="text-slate-500">{% translate "Hali ishtirokchilar yo‘q." %}</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

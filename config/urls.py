@@ -41,6 +41,11 @@ urlpatterns = [
     path("urinishlar/<int:pk>/holat/", submission_views.submission_status, name="submission_status"),
     # Kontestlar
     path("kontestlar/", contest_views.contest_list, name="contest_list"),
+    path("kontestlar/<slug:slug>/", contest_views.contest_detail, name="contest_detail"),
+    path("kontestlar/<slug:slug>/royxatdan-otish/", contest_views.contest_register, name="contest_register"),
+    path("kontestlar/<slug:slug>/jadval/", contest_views.contest_scoreboard, name="contest_scoreboard"),
+    path("kontestlar/<slug:slug>/<str:label>/", contest_views.contest_problem, name="contest_problem"),
+    path("kontestlar/<slug:slug>/<str:label>/yuborish/", contest_views.contest_submit, name="contest_submit"),
     # Panellar va admin
     path("panel/", include("panel.urls")),
     path("admin/", admin.site.urls),

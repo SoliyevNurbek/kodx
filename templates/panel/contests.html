@@ -1,0 +1,12 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Kontestlar" %}{% endblock %}
+{% block panel %}
+<div class="mb-4 flex items-center justify-between"><h1 class="text-2xl font-bold">{% translate "Kontestlar" %}</h1><a class="btn-primary" href="{% url 'panel:contest_create' %}">+ {% translate "Yangi kontest" %}</a></div>
+<div class="card overflow-x-auto"><table class="table-kodx">
+  <thead><tr><th>{% translate "Nomi" %}</th><th>{% translate "Boshlanish" %}</th><th>{% translate "Holat" %}</th><th>{% translate "Egasi" %}</th></tr></thead>
+  <tbody>{% for c in contests %}
+    <tr><td><a class="font-medium hover:text-accent" href="{% url 'panel:contest_edit' c.slug %}">{{ c.title }}</a></td><td class="text-sm">{{ c.start_at|date:"d.m.Y H:i" }}</td><td>{{ c.status_label }}</td><td>{{ c.owner }}</td></tr>
+  {% empty %}<tr><td colspan="4" class="text-slate-500">{% translate "Kontestlar yo‘q." %}</td></tr>{% endfor %}</tbody>
+</table></div>
+{% endblock %}

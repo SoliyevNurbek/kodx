@@ -10,7 +10,7 @@ Sessiya uzilsa — ish shu fayldan davom ettiriladi. Reja: `docs/MASTER_PROMPT.m
 | 4. Yechimlar va tekshiruv | tayyor | 129 |
 | 5. Sahifalar (UI) | tayyor | 175 |
 | 6. Baholash va reyting | tayyor | 214 |
-| 7. Kontestlar | — | |
+| 7. Kontestlar | tayyor | 244 |
 | 8. Rollar oqimi va xavfsizlik | — | |
 | 9. Sifat va hujjatlar | — | |
 
@@ -61,3 +61,11 @@ Sessiya uzilsa — ish shu fayldan davom ettiriladi. Reja: `docs/MASTER_PROMPT.m
 - Mashq bali, kunlik seriya, nishonlar (avtomatik); reyting jadvallari: umumiy/haftalik/guruh/kurs, o‘z o‘rni.
 - Elo/CF reyting algoritmi (`grading.rating`), boshlang‘ich 1200.
 - 39 yangi test (chekka holatlar). Jami 214. Keyingi qadam: 7-bosqich — kontestlar.
+
+## 7-bosqich — Kontestlar (tayyor)
+- Contest (ICPC/IOI, ochiq/guruh/parol, reytingli, muzlatish), ContestProblem, ContestParticipant, RatingHistory;
+  `Submission.contest`.
+- Sahifalar: kontestlar ro‘yxati, kontest, masala + yuborish, jonli jadval (HTMX), ro‘yxatdan o‘tish.
+- Jury paneli: kontest yaratish/tahrirlash, masalalar, ishtirokchilar, reytingni qo‘lda hisoblash.
+- Reyting: worker va `apply_contest_ratings` avtomatik; profilda reyting grafigi. Seed: «Kirish kontesti».
+- 30 yangi test. Jami 244. Keyingi qadam: 8-bosqich — rollar oqimi va xavfsizlik.

@@ -47,10 +47,22 @@ def profile(request: HttpRequest, username: str) -> HttpResponse:
         "calendar": activity_calendar(person),
         "badges": list(person.badges.select_related("badge")),
         "practice": getattr(person, "practice", None),
-        "rating_history": list(person.rating_history.select_related("contest").order_by("created_at"))
-        if hasattr(person, "rating_history") else [],
+        "rating_history": list(person.rating_history.select_related("contest").order_by("created_at")),
     }
+    context["rating_points"] = _rating_polyline(context["rating_history"])
     return render(request, "accounts/profile.html", context)
+
+
+def _rating_polyline(history: list, width: int = 300, height: int = 100) -> str:
+    """Reyting tarixi uchun SVG polyline nuqtalari (boshlang'ich reyting + har kontestdan keyingi)."""
+    if not history:
+        return ""
+    values = [history[0].old_rating] + [h.new_rating for h in history]
+    low, high = min(values), max(values)
+    span = max(high - low, 1)
+    step = width / (len(values) - 1)
+    return " ".join(f"{i * step:.1f},{height - 5 - (v - low) / span * (height - 10):.1f}"
+                    for i, v in enumerate(values))
 
 
 @login_required

@@ -156,3 +156,25 @@ Har yozuv: sana · qaror · sabab · muqobil variant.
   modeliga FK bo‘lgani uchun 7-bosqichda (kontestlar bilan) qo‘shiladi; profil shabloni unga tayyor.
 - **Reyting jadvallari:** umumiy, haftalik (oxirgi 7 kunda birinchi yechimlar), guruh, kurs; teng ball — bir xil o‘rin.
 - **Davomat:** o‘qituvchi panelida dars bo‘yicha belgilanadi (audit). CSV eksport UTF-8 BOM bilan (Excel uchun).
+
+## 2026-10-23 · Kontestlar (7-bosqich)
+- **ICPC:** o‘rin — yechilganlar soni (kamayish), keyin jarima (o‘sish). Jarima = birinchi AC daqiqasi +
+  `penalty_minutes` × undan oldingi noto‘g‘ri urinishlar; CE va IE jarima bermaydi; AC dan keyingi urinishlar e’tiborsiz.
+  Har masalani birinchi yechgan ishtirokchi belgilanadi.
+- **IOI:** har masala bo‘yicha eng yaxshi ball, kontest masalasi baliga moslashtirilgan
+  (`cp.points × submission.score / problem.points`).
+- **Teng natija** — bir xil o‘rin (1, 1, 3). Faqat ro‘yxatdan o‘tgan ishtirokchilar va kontest vaqtidagi yechimlar.
+- **Muzlatish:** oxirgi `freeze_minutes` da boshqaruvchi bo‘lmaganlar uchun muzlatishdan keyingi yechimlar «?» (kutilmoqda);
+  kontest tugashi bilan avtomatik ochiladi. Boshqaruvchi (egasi/moderator) doim jonli jadvalni ko‘radi.
+- **Ko‘rinish:** ochiq / guruh (faqat faol a’zolar) / parol (Argon2 xesh, `make_password`). Masalalar: boshlanishdan
+  oldin — faqat boshqaruvchiga; kontest paytida — ishtirokchilarga; tugagach — kontestni ko‘ra oladigan hammaga.
+  Kontestga qoralama masala qo‘shish mumkin — `create_submission(contest=...)` masala ko‘rinishini kontest qoidalari
+  bo‘yicha tekshiradi.
+- **Kontest masalasini qo‘shish:** foydalanuvchi ko‘ra oladigan code masala (nashr etilgan yoki o‘z qoralamasi; moderator — hammasi).
+  Yechim yuborilgan masalani olib tashlash taqiqlangan (natijalar buzilmasligi uchun).
+- **Reytingli kontest:** `is_rated` ni faqat moderator yoqadi (Jury formasida o‘chirilgan).
+- **Reyting avtomatik:** judge worker bo‘sh paytda (har 30 sikl) va `manage.py apply_contest_ratings` (cron) —
+  tugagan, reytingli, navbatda tekshirilmagan yechimi qolmagan kontestlar. Kamida bitta yechim yuborganlar hisoblanadi.
+  `select_for_update` bilan bir martalik; `RatingHistory` — profilda SVG grafik.
+- **Jonli jadval:** HTMX har 15 soniyada (faqat kontest davomida).
+- **Seed:** «Kirish kontesti» (2026-11-01 10:00, ICPC, 120 daqiqa, 30 daqiqa muzlatish, A–D modul 1 masalalari).

@@ -22,6 +22,8 @@ class Submission(models.Model):
                                 verbose_name="masala")
     lesson = models.ForeignKey("courses.Lesson", on_delete=models.SET_NULL, null=True, blank=True,
                                related_name="submissions", verbose_name="dars")
+    contest = models.ForeignKey("contests.Contest", on_delete=models.SET_NULL, null=True, blank=True,
+                                related_name="submissions", verbose_name="kontest")
     language = models.CharField("til", max_length=20, choices=Language.choices, default=Language.PYTHON3)
     code = models.TextField("kod")
     status = models.CharField("holat", max_length=10, choices=Status.choices, default=Status.QUEUED,
@@ -74,9 +76,8 @@ class Submission(models.Model):
         return Submission.objects.filter(user=user, problem_id=self.problem_id, verdict=Verdict.ACCEPTED).exists()
 
     def _contest_finished(self) -> bool:
-        """Kontest tugaganmi (kontestlar 7-bosqichda qo'shiladi)."""
-        contest = getattr(self, "contest", None)
-        return bool(contest and contest.is_finished)
+        """Yechim tugagan kontestga tegishli bo'lsa, kod ochiq."""
+        return bool(self.contest_id and self.contest.is_finished)
 
 
 class SubmissionResult(models.Model):
