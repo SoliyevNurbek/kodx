@@ -7,7 +7,7 @@ Sessiya uzilsa — ish shu fayldan davom ettiriladi. Reja: `docs/MASTER_PROMPT.m
 | 1. Poydevor | tayyor | 20 |
 | 2. Kurs tuzilmasi | tayyor | 43 |
 | 3. Vazifalar banki | tayyor | 96 |
-| 4. Yechimlar va tekshiruv | — | |
+| 4. Yechimlar va tekshiruv | tayyor | 129 |
 | 5. Sahifalar (UI) | — | |
 | 6. Baholash va reyting | — | |
 | 7. Kontestlar | — | |
@@ -34,3 +34,11 @@ Sessiya uzilsa — ish shu fayldan davom ettiriladi. Reja: `docs/MASTER_PROMPT.m
   Kontentni o‘zgartirish: `tools/seed_gen/*.py` ni tahrirlab, `cd tools/seed_gen && python <fayl>.py`
   (problems/seed/ qayta yoziladi); bazaga — `import_problems problems/seed --status published`.
 - Testlar: 96. Keyingi qadam: 4-bosqich — yechimlar, navbat, worker.
+
+## 4-bosqich — Yechimlar va avtomatik tekshiruv (tayyor)
+- Submission, SubmissionResult, QuizAttempt, ProjectSubmission; verdiktlar o‘zbekcha.
+- `submissions.services`: create_submission (64 KB, 6/daqiqa), judge_submission, rejudge, grade_quiz,
+  submit_project, grade_project, user_solved.
+- Navbat: `submissions.queue` (DatabaseQueue); worker: `manage.py run_judge_worker [--once]`.
+- Admin: yechimlar (faqat ko‘rish + qayta tekshirish), quiz va loyihalar.
+- Testlar: 129. Keyingi qadam: 5-bosqich — UI sahifalari.
