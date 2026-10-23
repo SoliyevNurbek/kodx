@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n kodx %}
+{% block title %}{{ course.title }}{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-bold">{{ course.title }}</h1>
+<p class="mt-1 text-slate-500">{{ course.description }}</p>
+{% for module in modules %}
+<section id="modul-{{ module.number }}" class="mt-8">
+  <h2 class="mb-3 text-lg font-bold"><span class="text-gold">{% translate "Modul" %} {{ module.number }}.</span> {{ module.title }}</h2>
+  <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+    {% for lesson in module.lessons.all %}
+      {% with p=progress|get_item:lesson.pk %}
+      <a href="{% url 'lesson_detail' course.slug lesson.number %}" class="card flex items-center justify-between gap-3 transition hover:border-accent">
+        <span>
+          <span class="mr-1 text-slate-500">{{ lesson.number }}.</span> {{ lesson.title }}
+          {% if lesson.kind != "lesson" %}<span class="badge badge-attempted ml-1">{{ lesson.get_kind_display }}</span>{% endif %}
+        </span>
+        {% if p %}<span class="whitespace-nowrap text-sm {% if p.0 == p.1 %}text-emerald-500{% else %}text-slate-500{% endif %}">{{ p.0 }}/{{ p.1 }}</span>{% endif %}
+      </a>
+      {% endwith %}
+    {% endfor %}
+  </div>
+</section>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Tizim" %}{% endblock %}
+{% block panel %}
+<h1 class="mb-4 text-2xl font-bold">{% translate "Tizim" %}</h1>
+<div class="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+  <div class="card"><div class="text-xs text-slate-500">{% translate "Worker" %}</div><div class="text-lg font-semibold {% if status.worker_ok %}text-emerald-500{% else %}text-red-500{% endif %}">{% if status.worker_ok %}{% translate "ishlayapti" %}{% else %}{% translate "javob bermayapti" %}{% endif %}</div></div>
+  <div class="card"><div class="text-xs text-slate-500">{% translate "Navbat" %}</div><div class="text-lg font-semibold">{{ status.queue_size }}</div></div>
+  <div class="card"><div class="text-xs text-slate-500">{% translate "Tekshirilmoqda" %}</div><div class="text-lg font-semibold">{{ status.running }}</div></div>
+  <div class="card"><div class="text-xs text-slate-500">{% translate "Oxirgi tekshiruv" %}</div><div class="text-sm">{{ status.last_judged|date:"d.m.Y H:i:s"|default:"—" }}</div></div>
+  <div class="card"><div class="text-xs text-slate-500">{% translate "Foydalanuvchilar" %}</div><div class="text-lg font-semibold">{{ status.users }}</div></div>
+  <div class="card"><div class="text-xs text-slate-500">{% translate "24 soatdagi yechimlar" %}</div><div class="text-lg font-semibold">{{ status.submissions_today }}</div></div>
+</div>
+<h2 class="mb-2 font-semibold">{% translate "Sayt sozlamalari" %}</h2>
+<form method="post" class="card max-w-xl">{% csrf_token %}{% include "_form.html" %}<button class="btn-primary" type="submit">{% translate "Saqlash" %}</button></form>
+{% endblock %}

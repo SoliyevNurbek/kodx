@@ -1,0 +1,39 @@
+/* kodx.uz — umumiy komponent uslublari (Tailwind CDN bilan birga) */
+.nav-link { padding: .25rem .5rem; border-radius: .375rem; font-size: .925rem; }
+.nav-link:hover { color: var(--kx-accent); }
+.btn-primary { display: inline-block; padding: .45rem .9rem; border-radius: .5rem; font-weight: 600;
+  background: var(--kx-accent); color: #0E1A2E; }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-secondary { display: inline-block; padding: .45rem .9rem; border-radius: .5rem; font-weight: 500;
+  border: 1px solid rgba(148, 163, 184, .5); }
+.card { border-radius: .75rem; border: 1px solid rgba(148, 163, 184, .3); padding: 1rem; background: rgba(255, 255, 255, .7); }
+.dark .card { background: rgba(255, 255, 255, .04); border-color: rgba(255, 255, 255, .1); }
+.badge { display: inline-block; padding: .1rem .5rem; border-radius: 999px; font-size: .75rem; font-weight: 600; }
+.badge-solved { background: #10b98133; color: #059669; }
+.badge-attempted { background: #f59e0b33; color: #b45309; }
+.badge-new { background: #94a3b833; color: #64748b; }
+.dark .badge-solved { color: #6ee7b7; } .dark .badge-attempted { color: #fcd34d; } .dark .badge-new { color: #cbd5e1; }
+.verdict-AC { color: #10b981; } .verdict-WA, .verdict-RE, .verdict-CE { color: #ef4444; }
+.verdict-TLE, .verdict-MLE { color: #f59e0b; } .verdict-IE { color: #a855f7; }
+.prose-kodx h2, .prose-kodx h3 { font-weight: 700; margin: 1rem 0 .5rem; }
+.prose-kodx p, .prose-kodx ul, .prose-kodx ol, .prose-kodx table, .prose-kodx pre { margin: .5rem 0; }
+.prose-kodx ul { list-style: disc; padding-left: 1.5rem; } .prose-kodx ol { list-style: decimal; padding-left: 1.5rem; }
+.prose-kodx code { font-family: ui-monospace, monospace; background: rgba(148, 163, 184, .2); padding: 0 .25rem; border-radius: .25rem; }
+.prose-kodx pre { background: rgba(15, 23, 42, .9); color: #e2e8f0; padding: .75rem; border-radius: .5rem; overflow-x: auto; }
+.prose-kodx pre code { background: none; padding: 0; }
+.prose-kodx table { border-collapse: collapse; } .prose-kodx td, .prose-kodx th { border: 1px solid rgba(148, 163, 184, .4); padding: .25rem .6rem; }
+.prose-kodx a { color: var(--kx-accent); text-decoration: underline; }
+.form-input { width: 100%; border-radius: .5rem; border: 1px solid rgba(148, 163, 184, .5); padding: .5rem .75rem;
+  background: transparent; }
+.form-input:focus { outline: 2px solid var(--kx-accent); outline-offset: 1px; }
+.cal-cell { width: .8rem; height: .8rem; border-radius: 2px; }
+.cal-0 { background: rgba(148, 163, 184, .2); } .cal-1 { background: #22d3ee55; } .cal-2 { background: #22d3eeaa; } .cal-3 { background: #22d3ee; }
+.table-kodx { width: 100%; font-size: .9rem; } .table-kodx th { text-align: left; font-weight: 600; padding: .5rem; border-bottom: 1px solid rgba(148, 163, 184, .4); }
+.table-kodx td { padding: .5rem; border-bottom: 1px solid rgba(148, 163, 184, .15); }
+.cm-editor { border: 1px solid rgba(148, 163, 184, .4); border-radius: .5rem; min-height: 18rem; font-size: 14px; }
+/* Standart Django formalaridagi maydonlar ham bir xil ko'rinsin */
+form.card input:not([type=checkbox]):not([type=radio]):not([type=file]):not([type=hidden]),
+form.card select, form.card textarea { width: 100%; border-radius: .5rem; border: 1px solid rgba(148, 163, 184, .5);
+  padding: .5rem .75rem; background: transparent; }
+form.card input[type=color] { height: 2.5rem; padding: .2rem; }
+.dark form.card select option { background: #0E1A2E; }

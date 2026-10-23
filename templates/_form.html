@@ -1,0 +1,13 @@
+{% load i18n %}{% if form.non_field_errors %}<div class="mb-3 rounded bg-red-100 p-2 text-sm text-red-800 dark:bg-red-900/40 dark:text-red-200">{{ form.non_field_errors }}</div>{% endif %}
+{% for field in form %}
+  <div class="mb-4">
+    {% if field.widget_type == "checkbox" %}
+      <label class="flex items-center gap-2">{{ field }} <span>{{ field.label }}</span></label>
+    {% else %}
+      <label for="{{ field.id_for_label }}" class="mb-1 block text-sm font-medium">{{ field.label }}{% if field.field.required %} *{% endif %}</label>
+      {{ field }}
+    {% endif %}
+    {% if field.help_text %}<p class="mt-1 text-xs text-slate-500">{{ field.help_text|safe }}</p>{% endif %}
+    {% for error in field.errors %}<p class="mt-1 text-sm text-red-600">{{ error }}</p>{% endfor %}
+  </div>
+{% endfor %}

@@ -1,0 +1,16 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Vazifalarim" %}{% endblock %}
+{% block panel %}
+<div class="mb-4 flex items-center justify-between"><h1 class="text-2xl font-bold">{% translate "Vazifalarim" %}</h1><a class="btn-primary" href="{% url 'panel:problem_create' %}">+ {% translate "Yangi vazifa" %}</a></div>
+<div class="card overflow-x-auto"><table class="table-kodx">
+  <thead><tr><th>{% translate "Nomi" %}</th><th>{% translate "Turi" %}</th><th>{% translate "Holat" %}</th><th></th></tr></thead>
+  <tbody>{% for p in problems %}
+    <tr><td><a class="font-medium hover:text-accent" href="{% url 'problem_detail' p.slug %}">{{ p.title }}</a><div class="text-xs text-slate-500">{{ p.slug }}</div></td><td>{{ p.get_type_display }}</td><td>{{ p.get_status_display }}</td>
+      <td><div class="flex flex-wrap gap-2"><a class="btn-secondary text-sm" href="{% url 'panel:problem_edit' p.slug %}">{% translate "Tahrirlash" %}</a>
+        {% if p.type == "code" %}<a class="btn-secondary text-sm" href="{% url 'panel:problem_tests' p.slug %}">{% translate "Testlar" %}</a>{% endif %}
+        {% if p.status == "draft" %}<form method="post" action="{% url 'panel:problem_submit_review' p.slug %}">{% csrf_token %}<button class="btn-primary text-sm">{% translate "Ko‘rib chiqishga" %}</button></form>{% endif %}</div></td></tr>
+  {% empty %}<tr><td colspan="4" class="text-slate-500">{% translate "Hali vazifalar yo‘q." %}</td></tr>{% endfor %}</tbody>
+</table></div>
+<p class="mt-3 text-sm text-slate-500">{% translate "Ko‘p vazifani birdaniga qo‘shish:" %} <code>manage.py import_problems</code> — docs/PROBLEM_FORMAT.md</p>
+{% endblock %}

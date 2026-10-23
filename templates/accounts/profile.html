@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ person.username }}{% endblock %}
+{% block content %}
+<div class="grid gap-6 md:grid-cols-3">
+  <section class="card text-center">
+    {% if person.avatar %}
+      <img src="{{ person.avatar.url }}" alt="{{ person.username }}" class="mx-auto h-28 w-28 rounded-full object-cover">
+    {% else %}
+      <div class="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-accent text-4xl font-bold text-navy">{{ person.username|first|upper }}</div>
+    {% endif %}
+    <h1 class="mt-3 text-xl font-bold">{{ person.username }}</h1>
+    {% if person.get_full_name %}<p class="text-slate-500">{{ person.get_full_name }}</p>{% endif %}
+    {% if person.role > 1 %}<span class="badge badge-new mt-2">{{ person.get_role_display }}</span>{% endif %}
+    {% if person.bio %}<p class="mt-3 text-sm">{{ person.bio|linebreaksbr }}</p>{% endif %}
+    {% if is_owner %}
+      {% if person.email %}<p class="mt-3 text-xs text-slate-500">{% translate "Email (faqat sizga ko‘rinadi):" %} {{ person.email }}</p>{% endif %}
+      <a class="btn-secondary mt-4" href="{% url 'profile_edit' %}">{% translate "Profilni tahrirlash" %}</a>
+      <a class="btn-secondary mt-2" href="{% url 'password_change' %}">{% translate "Parolni almashtirish" %}</a>
+    {% endif %}
+  </section>
+  <section class="space-y-6 md:col-span-2">
+    <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+      <div class="card text-center"><div class="text-2xl font-bold text-accent">{{ solved_count }}</div><div class="text-sm text-slate-500">{% translate "yechilgan" %}</div></div>
+      <div class="card text-center"><div class="text-2xl font-bold text-gold">{{ person.practice_score|default:0 }}</div><div class="text-sm text-slate-500">{% translate "mashq bali" %}</div></div>
+      <div class="card text-center"><div class="text-2xl font-bold">{{ person.rating }}</div><div class="text-sm text-slate-500">{% translate "kontest reytingi" %}</div></div>
+    </div>
+    <div class="card">
+      <h2 class="mb-3 font-semibold">{% translate "Faollik" %}</h2>
+      <div class="flex gap-1 overflow-x-auto pb-1" role="img" aria-label="{% translate 'Faollik kalendari' %}">
+        {% for week in calendar %}
+          <div class="flex flex-col gap-1">
+            {% for day in week %}<div class="cal-cell cal-{{ day.level }}" title="{{ day.date|date:'d.m.Y' }}: {{ day.count }}"></div>{% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="card">
+      <h2 class="mb-3 font-semibold">{% translate "Nishonlar" %}</h2>
+      <div class="flex flex-wrap gap-2">
+        {% for item in badges %}
+          <span class="badge badge-solved" title="{{ item.badge.description }}">{{ item.badge.icon }} {{ item.badge.name }}</span>
+        {% empty %}
+          <p class="text-sm text-slate-500">{% translate "Hali nishonlar yo‘q." %}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Foydalanuvchilar" %}{% endblock %}
+{% block panel %}
+<h1 class="mb-4 text-2xl font-bold">{% translate "Foydalanuvchilar" %}</h1>
+<form method="get" class="mb-4 flex gap-2" role="search"><input class="form-input" type="search" name="q" value="{{ query }}" placeholder="{% translate 'Username yoki ism' %}" aria-label="{% translate 'Qidirish' %}"><button class="btn-primary">{% translate "Qidirish" %}</button></form>
+<div class="card overflow-x-auto"><table class="table-kodx">
+  <thead><tr><th>{% translate "Foydalanuvchi" %}</th><th>{% translate "Ism" %}</th><th>{% translate "Rol" %}</th>{% block user_head_extra %}{% endblock %}</tr></thead>
+  <tbody>{% for u in page %}
+    <tr><td><a class="hover:text-accent" href="{% url 'profile' u.username %}">{{ u.username }}</a></td><td>{{ u.get_full_name }}</td>
+      <td>{% if u.pk != user.pk and u.role_level < user.role_level or u.pk != user.pk and user.is_superadmin %}
+        <form method="post" class="flex gap-2">{% csrf_token %}<input type="hidden" name="user_id" value="{{ u.pk }}">
+          <select name="role" class="form-input w-auto" aria-label="{% translate 'Rol' %}">{% for value, label in roles %}<option value="{{ value }}" {% if u.role == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select>
+          <button class="btn-secondary text-sm">{% translate "Saqlash" %}</button></form>
+      {% else %}{{ u.get_role_display }}{% endif %}</td>
+      {% block user_row_extra %}{% endblock %}</tr>
+  {% endfor %}</tbody>
+</table></div>
+{% include "_pagination.html" %}
+{% endblock %}

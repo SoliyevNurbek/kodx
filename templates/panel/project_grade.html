@@ -1,0 +1,16 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Baholash" %}{% endblock %}
+{% block panel %}
+<h1 class="text-2xl font-bold">{{ submission.problem.title }}</h1>
+<p class="mb-4 text-sm text-slate-500">{{ submission.user.username }} · {{ submission.created_at|date:"d.m.Y H:i" }} · {{ submission.get_status_display }}</p>
+<div class="grid gap-6 lg:grid-cols-2">
+  <div class="card">
+    <a class="break-all text-accent" href="{{ submission.github_url }}" target="_blank" rel="noopener noreferrer">{{ submission.github_url }}</a>
+    {% if submission.comment %}<p class="mt-2 text-sm">{{ submission.comment|linebreaksbr }}</p>{% endif %}
+    {% if history %}<h2 class="mt-4 font-semibold">{% translate "Oldingi topshiriqlar" %}</h2>
+      <ul class="text-sm">{% for h in history %}<li>{{ h.created_at|date:"d.m.Y" }} — {{ h.get_status_display }} ({{ h.score }})</li>{% endfor %}</ul>{% endif %}
+  </div>
+  <form method="post" class="card">{% csrf_token %}{% include "_form.html" %}<button class="btn-primary" type="submit">{% translate "Saqlash" %}</button></form>
+</div>
+{% endblock %}

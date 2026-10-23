@@ -1,0 +1,38 @@
+{% load i18n %}
+<div id="submission-status"
+     {% if not submission.is_finished %}hx-get="{% url 'submission_status' submission.pk %}" hx-trigger="every 2s" hx-swap="outerHTML"{% endif %}>
+  <div class="card mb-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+    <div><div class="text-xs text-slate-500">{% translate "Natija" %}</div><div class="text-lg">{% include "_verdict.html" with s=submission %}</div></div>
+    <div><div class="text-xs text-slate-500">{% translate "Ball" %}</div><div class="text-lg font-semibold">{{ submission.score }} / {{ submission.problem.points }}</div></div>
+    <div><div class="text-xs text-slate-500">{% translate "Vaqt" %}</div><div class="text-lg">{{ submission.time_ms }} ms</div></div>
+    <div><div class="text-xs text-slate-500">{% translate "Xotira" %}</div><div class="text-lg">{{ submission.memory_kb }} KB</div></div>
+  </div>
+  {% if not submission.is_finished %}
+    <p class="mb-4 text-sm text-slate-500" role="status">⏳ {% translate "Yechim tekshirilmoqda, sahifa o‘zi yangilanadi…" %}</p>
+  {% endif %}
+  {% if show_compile and submission.compile_output %}
+    <div class="card mb-4"><h2 class="mb-2 font-semibold">{% translate "Xato xabari" %}</h2><pre class="overflow-x-auto whitespace-pre-wrap text-sm text-red-500">{{ submission.compile_output }}</pre></div>
+  {% endif %}
+  {% if results %}
+  <div class="card mb-4 overflow-x-auto">
+    <table class="table-kodx">
+      <thead><tr><th>{% translate "Test" %}</th><th>{% translate "Natija" %}</th><th>{% translate "Vaqt" %}</th><th>{% translate "Xotira" %}</th><th>{% translate "Ball" %}</th></tr></thead>
+      <tbody>
+      {% for r in results %}
+        <tr>
+          <td>#{{ r.order }}{% if r.test_case.is_sample %} <span class="text-xs text-slate-500">({% translate "namuna" %})</span>{% endif %}</td>
+          <td class="font-semibold verdict-{{ r.verdict }}">{{ r.get_verdict_display }}</td>
+          <td>{{ r.time_ms }} ms</td><td>{{ r.memory_kb }} KB</td><td>{{ r.points }}</td>
+        </tr>
+        {% if r.show_details and r.verdict != "AC" %}
+          <tr><td colspan="5">
+            {% if r.output %}<div class="text-xs text-slate-500">{% translate "Chiqish" %}</div><pre class="overflow-x-auto text-xs">{{ r.output }}</pre>{% endif %}
+            {% if r.error %}<div class="text-xs text-slate-500">{% translate "Xato" %}</div><pre class="overflow-x-auto whitespace-pre-wrap text-xs text-red-500">{{ r.error }}</pre>{% endif %}
+          </td></tr>
+        {% endif %}
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+</div>

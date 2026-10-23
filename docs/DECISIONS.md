@@ -117,3 +117,20 @@ Har yozuv: sana · qaror · sabab · muqobil variant.
   allaqachon `_contest_finished()` ilgagi orqali tayyor.
 - **Worker:** ishga tushganda 5 daqiqadan eski `running` yechimlarni navbatga qaytaradi; backend xatosi worker’ni
   yiqitmaydi — yechim «Ichki xato» oladi.
+
+## 2026-10-23 · UI (5-bosqich)
+- **Tuzilma:** `core` (SiteSettings singleton, bosh sahifa, context processor, majburiy parol almashtirish middleware),
+  `panel` (rol panellari); sahifa view'lari tegishli ilovalarda. URL’lar o‘zbekcha (`/masalalar/`, `/urinishlar/`).
+- **Frontend:** Tailwind Play CDN (3.4.17), HTMX 2.0.4 (unpkg), CodeMirror 6 (esm.sh, dinamik import),
+  KaTeX 0.16.11 (jsdelivr). CodeMirror yuklanmasa, oddiy `<textarea>` ishlaydi (progressiv yaxshilash).
+  Mavzu ranglari CSS o‘zgaruvchilarida (`--kx-bg/accent/gold`), super admin paneldan o‘zgaradi; qiymatlar
+  `#RRGGBB` validatori bilan (CSS injection’ning oldi olinadi). Inline `on*` handler’lar yo‘q — `data-confirm`,
+  `data-autosubmit` (8-bosqichdagi CSP uchun).
+- **Jonli natija:** HTMX `hx-trigger="every 2s"` faqat yechim tugamaguncha; tugagach qisman shablon polling’siz qaytadi.
+- **Yopiq testlar:** o‘quvchi faqat namunaviy testlardagi chiqish/xatoni ko‘radi; yopiq testlar — faqat verdikt.
+- **Etalon yechim bilan tekshirish (Jury Pro paneli):** oddiy yechim sifatida navbatga qo‘yiladi — web jarayonda
+  kod bajarilmaydi.
+- **Test yuklash:** faqat .in/.out/.txt, ≤ 5 MB, UTF-8 (8-bosqich talabi oldinroq bajarildi).
+- **Top-10 / reyting sahifasi:** hozircha yechilgan code masalalar soni; 6-bosqichda mashq bali bilan almashtiriladi.
+- **Parolni tiklash:** email konsolga (dev). Emaili yo‘q o‘quvchi — o‘qituvchi orqali (8-bosqich: vaqtinchalik parol).
+- **i18n:** barcha shablon matnlari `{% translate %}` ichida, `LANGUAGES=[uz]`, `LOCALE_PATHS` tayyor (ru/en keyin).

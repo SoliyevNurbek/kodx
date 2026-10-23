@@ -1,0 +1,1 @@
+{% load i18n %}{% if s.status != "done" %}<span class="text-slate-500">⏳ {{ s.get_status_display }}</span>{% else %}<span class="font-semibold verdict-{{ s.verdict }}">{{ s.get_verdict_display }}</span>{% endif %}

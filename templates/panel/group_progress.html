@@ -1,0 +1,25 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{{ group.name }}{% endblock %}
+{% block panel %}
+<div class="flex flex-wrap items-center justify-between gap-2">
+  <h1 class="text-2xl font-bold">{{ group.name }} — {% translate "progress" %}</h1>
+  {% block group_actions %}{% endblock %}
+</div>
+<p class="mb-4 text-sm text-slate-500">{% translate "Katakda: dars bo‘yicha yechilgan majburiy vazifalar / jami." %}</p>
+<div class="card overflow-x-auto">
+  <table class="text-xs">
+    <thead><tr><th class="sticky left-0 bg-white p-2 text-left dark:bg-navy">{% translate "O‘quvchi" %}</th>
+      {% for lesson in lessons %}<th class="p-1 text-center" title="{{ lesson.title }}">{{ lesson.number }}</th>{% endfor %}<th class="p-2">{% translate "Jami" %}</th></tr></thead>
+    <tbody>
+    {% for row in rows %}
+      <tr>
+        <td class="sticky left-0 bg-white p-2 font-medium dark:bg-navy"><a class="hover:text-accent" href="{% url 'profile' row.user.username %}">{{ row.user.username }}</a></td>
+        {% for c in row.cells %}<td class="p-0.5 text-center"><span class="block min-w-[2.2rem] rounded px-1 py-0.5 cal-{{ c.level }}" title="{{ c.lesson.title }}">{{ c.done }}/{{ c.total }}</span></td>{% endfor %}
+        <td class="p-2 text-center font-semibold">{{ row.total }}</td>
+      </tr>
+    {% empty %}<tr><td class="p-2 text-slate-500">{% translate "Guruhda faol o‘quvchilar yo‘q." %}</td></tr>{% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load i18n kodx %}
+{% block title %}{{ lesson.number }}. {{ lesson.title }}{% endblock %}
+{% block content %}
+<nav class="mb-2 text-sm text-slate-500" aria-label="breadcrumb">
+  <a class="hover:text-accent" href="{% url 'course_detail' lesson.module.course.slug %}">{{ lesson.module.course.title }}</a> /
+  {% translate "Modul" %} {{ lesson.module.number }}
+</nav>
+<h1 class="text-2xl font-bold">{{ lesson.number }}. {{ lesson.title }}</h1>
+{% if lesson.description %}<p class="mt-2">{{ lesson.description }}</p>{% endif %}
+
+<div class="card mt-6 overflow-x-auto">
+  <table class="table-kodx">
+    <thead><tr><th>{% translate "Vazifa" %}</th><th>{% translate "Turi" %}</th><th class="hidden sm:table-cell">{% translate "Qiyinlik" %}</th><th>{% translate "Muddat" %}</th><th>{% translate "Holat" %}</th></tr></thead>
+    <tbody>
+    {% for row in rows %}
+      <tr>
+        <td><a class="font-medium hover:text-accent" href="{% url 'problem_detail' row.problem.slug %}?lesson={{ lesson.pk }}">{{ row.problem.title }}</a>
+          {% if not row.link.is_required %}<span class="text-xs text-slate-500">({% translate "ixtiyoriy" %})</span>{% endif %}</td>
+        <td class="text-sm">{{ row.link.get_kind_display }} · {{ row.problem.get_type_display }}</td>
+        <td class="hidden text-gold sm:table-cell">{{ row.problem.difficulty|stars }}</td>
+        <td class="text-sm">{% if row.link.deadline %}{{ row.link.deadline|date:"d.m.Y H:i" }}{% else %}—{% endif %}</td>
+        <td>
+          {% if row.status == "solved" %}<span class="badge badge-solved">{% translate "yechilgan" %}</span>
+          {% elif row.status == "attempted" %}<span class="badge badge-attempted">{% translate "urinilgan" %}</span>
+          {% else %}<span class="badge badge-new">{% translate "yangi" %}</span>{% endif %}
+        </td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="5" class="text-slate-500">{% translate "Bu darsga hali vazifa biriktirilmagan." %}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="mt-4 flex justify-between text-sm">
+  {% if prev %}<a class="btn-secondary" href="{% url 'lesson_detail' lesson.module.course.slug prev.number %}">← {{ prev.number }}. {{ prev.title }}</a>{% else %}<span></span>{% endif %}
+  {% if next %}<a class="btn-secondary" href="{% url 'lesson_detail' lesson.module.course.slug next.number %}">{{ next.number }}. {{ next.title }} →</a>{% endif %}
+</div>
+{% endblock %}

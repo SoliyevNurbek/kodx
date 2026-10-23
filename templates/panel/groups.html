@@ -1,0 +1,12 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Guruhlar" %}{% endblock %}
+{% block panel %}
+<h1 class="mb-4 text-2xl font-bold">{% translate "Guruhlar" %}</h1>
+<div class="card overflow-x-auto"><table class="table-kodx">
+  <thead><tr><th>{% translate "Guruh" %}</th><th>{% translate "Kurs" %}</th><th>{% translate "O‘qituvchi" %}</th><th>{% translate "Holat" %}</th></tr></thead>
+  <tbody>{% for g in groups %}
+    <tr><td><a class="font-medium hover:text-accent" href="{% url 'panel:group_progress' g.pk %}">{{ g.name }}</a></td><td>{{ g.course }}</td><td>{{ g.teacher }}</td><td>{% if g.is_active %}{% translate "faol" %}{% else %}{% translate "yopilgan" %}{% endif %}</td></tr>
+  {% empty %}<tr><td colspan="4" class="text-slate-500">{% translate "Guruhlar yo‘q. Admin paneldan qo‘shing." %}</td></tr>{% endfor %}</tbody>
+</table></div>
+{% endblock %}

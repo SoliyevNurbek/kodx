@@ -1,0 +1,10 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{% if problem %}{{ problem.title }}{% else %}{% translate "Yangi vazifa" %}{% endif %}{% endblock %}
+{% block panel %}
+<div class="mb-4 flex flex-wrap items-center justify-between gap-2">
+  <h1 class="text-2xl font-bold">{% if problem %}{{ problem.title }}{% else %}{% translate "Yangi vazifa" %}{% endif %}</h1>
+  {% if problem and problem.type == "code" %}<a class="btn-secondary" href="{% url 'panel:problem_tests' problem.slug %}">{% translate "Testlar" %} →</a>{% endif %}
+</div>
+<form method="post" class="card">{% csrf_token %}{% include "_form.html" %}<button class="btn-primary" type="submit">{% translate "Saqlash" %}</button></form>
+{% endblock %}

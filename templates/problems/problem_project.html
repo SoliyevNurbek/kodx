@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ problem.title }}{% endblock %}
+{% block content %}
+{% include "problems/_header.html" %}
+<div class="grid gap-6 lg:grid-cols-3">
+  <article class="card prose-kodx lg:col-span-2">{{ statement_html|safe }}</article>
+  <aside class="space-y-4">
+    <div class="card">
+      <h2 class="mb-2 font-semibold">{% translate "Baholash mezonlari" %}</h2>
+      <ul class="space-y-1 text-sm">
+        {% for c in rubric %}<li class="flex justify-between gap-2"><span title="{{ c.description }}">{{ c.title }}</span><span class="font-semibold">{{ c.max_points }}</span></li>{% endfor %}
+      </ul>
+    </div>
+    {% if user.is_authenticated %}
+    <form method="post" action="{% url 'submit_project' problem.slug %}" class="card">
+      {% csrf_token %}
+      {% if lesson %}<input type="hidden" name="lesson" value="{{ lesson.pk }}">{% endif %}
+      <label class="mb-1 block text-sm font-medium" for="github_url">{% translate "GitHub havolasi" %}</label>
+      <input class="form-input" id="github_url" type="url" name="github_url" placeholder="https://github.com/foydalanuvchi/repo" required>
+      <label class="mb-1 mt-3 block text-sm font-medium" for="comment">{% translate "Izoh (ixtiyoriy)" %}</label>
+      <textarea class="form-input" id="comment" name="comment" rows="3" maxlength="2000"></textarea>
+      <button class="btn-primary mt-3 w-full" type="submit">{% translate "Topshirish" %}</button>
+    </form>
+    {% for ps in project_submissions %}
+      <div class="card text-sm">
+        <div class="flex justify-between"><span>{{ ps.created_at|date:"d.m.Y H:i" }}</span><span class="font-semibold">{{ ps.get_status_display }}</span></div>
+        <a class="break-all text-accent" href="{{ ps.github_url }}" rel="noopener noreferrer" target="_blank">{{ ps.github_url }}</a>
+        {% if ps.status != "submitted" %}<p class="mt-1">{% translate "Ball" %}: <strong>{{ ps.score }}</strong></p>{% endif %}
+        {% if ps.feedback %}<p class="mt-1 text-slate-500">{{ ps.feedback|linebreaksbr }}</p>{% endif %}
+      </div>
+    {% endfor %}
+    {% else %}
+      <div class="card text-center"><a class="btn-primary" href="{% url 'login' %}?next={{ request.path }}">{% translate "Topshirish uchun kiring" %}</a></div>
+    {% endif %}
+  </aside>
+</div>
+{% endblock %}
