@@ -1,0 +1,22 @@
+title: Shakllar yuzasi
+type: code
+difficulty: 2
+points: 200
+tags:
+- oop
+- meros
+time_limit: 1000
+memory_limit: 256
+checker: float
+epsilon: 0.001
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ ($1 \le n \le 1000$), keyingi qatorlarda shakllar (o‘lchamlar $\le
+  1000$).
+output_format: Yuzalar yig‘indisi.
+lessons:
+- lesson: 22
+  kind: classwork
+  required: true
+  order: 1

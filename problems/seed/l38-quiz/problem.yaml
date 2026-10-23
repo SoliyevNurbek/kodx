@@ -1,0 +1,67 @@
+title: 'Test: Prompt engineering'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Yaxshi prompt qanday bo‘ladi?
+  kind: single
+  points: 1
+  options:
+  - text: Iloji boricha qisqa — bitta so‘z
+    correct: false
+  - text: Faqat savol belgisi
+    correct: false
+  - text: Tasodifiy so‘zlar
+    correct: false
+  - text: Aniq vazifa, kontekst va kutilgan natija formati bilan
+    correct: true
+- text: «Few-shot» prompting nima?
+  kind: single
+  points: 1
+  options:
+  - text: Modelni qayta o‘qitish
+    correct: false
+  - text: Promptga bir nechta namuna (misol) qo‘shish
+    correct: true
+  - text: Promptni bir necha marta yuborish
+    correct: false
+  - text: Rasm yuborish
+    correct: false
+- text: 'Modelga rol berish misoli: «Sen tajribali ______ o‘qituvchisisan» — bunday prompt qismi qanday
+    ataladi? (inglizcha: ... prompt)'
+  kind: text
+  points: 1
+  answers:
+  - system
+  - system prompt
+- text: Promptga nimalarni YOZMASLIK kerak?
+  kind: multiple
+  points: 1
+  options:
+  - text: Javob formati
+    correct: false
+  - text: Vazifa tavsifi
+    correct: false
+  - text: Parollar va maxfiy kalitlar
+    correct: true
+  - text: Boshqalarning shaxsiy ma’lumotlari
+    correct: true
+- text: Javob formatini qanday so‘rash mumkin?
+  kind: single
+  points: 1
+  options:
+  - text: Faqat ingliz tilida
+    correct: false
+  - text: Buni so‘rab bo‘lmaydi
+    correct: false
+  - text: «Javobni JSON ko‘rinishida ber» deb aniq yozish
+    correct: true
+  - text: Model o‘zi taxmin qiladi
+    correct: false
+lessons:
+- lesson: 38
+  kind: classwork
+  required: true
+  order: 10

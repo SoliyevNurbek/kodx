@@ -1,0 +1,65 @@
+title: 'Test: Botga AI integratsiyasi'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Botga AI ulashda foydalanuvchi xabari qayerga yuboriladi?
+  kind: single
+  points: 1
+  options:
+  - text: LLM API’ga, javob foydalanuvchiga qaytariladi
+    correct: true
+  - text: Hech qayerga
+    correct: false
+  - text: SQLite’ga faqat
+    correct: false
+  - text: To‘g‘ridan-to‘g‘ri GitHub’ga
+    correct: false
+- text: Bolalar uchun AI botda nima muhim?
+  kind: single
+  points: 1
+  options:
+  - text: Javoblarni cheklamaslik
+    correct: false
+  - text: Zararli kontentni filtrlash va xavfsiz tizim prompti
+    correct: true
+  - text: Shaxsiy ma’lumot so‘rash
+    correct: false
+  - text: Reklama ko‘rsatish
+    correct: false
+- text: Suhbat kontekstini saqlash uchun oldingi xabarlar ro‘yxati qanday ataladi? (inglizcha bitta so‘z)
+  kind: text
+  points: 1
+  answers:
+  - history
+- text: API xatosi bo‘lganda bot nima qilishi kerak?
+  kind: multiple
+  points: 1
+  options:
+  - text: API kalitni foydalanuvchiga ko‘rsatish
+    correct: false
+  - text: Jim qolish
+    correct: false
+  - text: Xatoni log’ga yozish
+    correct: true
+  - text: Foydalanuvchiga tushunarli xabar berish
+    correct: true
+- text: Xarajatni nazorat qilish uchun?
+  kind: single
+  points: 1
+  options:
+  - text: Foydalanuvchi uchun so‘rovlar limitini qo‘yish
+    correct: true
+  - text: Limitlarni o‘chirish
+    correct: false
+  - text: Eng katta modelni doim ishlatish
+    correct: false
+  - text: Har xabarni 10 marta yuborish
+    correct: false
+lessons:
+- lesson: 45
+  kind: classwork
+  required: true
+  order: 10

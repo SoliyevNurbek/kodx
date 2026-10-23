@@ -1,0 +1,65 @@
+title: 'Test: Meros va inkapsulyatsiya'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: '`class Dog(Animal):` nimani bildiradi?'
+  kind: single
+  points: 1
+  options:
+  - text: Ikki klass birlashadi
+    correct: false
+  - text: Dog klassi Animal’dan meros oladi
+    correct: true
+  - text: Animal Dog’dan meros oladi
+    correct: false
+  - text: Xato yozuv
+    correct: false
+- text: Ota-klass metodini chaqirish uchun qaysi funksiya ishlatiladi?
+  kind: single
+  points: 1
+  options:
+  - text: super()
+    correct: true
+  - text: parent()
+    correct: false
+  - text: base()
+    correct: false
+  - text: self.parent()
+    correct: false
+- text: Python’da «ichki» (yashirin) atribut nomi odatda qaysi belgi bilan boshlanadi?
+  kind: text
+  points: 1
+  answers:
+  - _
+- text: Inkapsulyatsiyaning maqsadi nima?
+  kind: single
+  points: 1
+  options:
+  - text: Fayllarni shifrlash
+    correct: false
+  - text: Klasslar sonini kamaytirish
+    correct: false
+  - text: Kodni tezlashtirish
+    correct: false
+  - text: Obyektning ichki holatini tashqi noto‘g‘ri o‘zgarishdan himoyalash
+    correct: true
+- text: Polimorfizmga misollar qaysilar?
+  kind: multiple
+  points: 1
+  options:
+  - text: Bitta o‘zgaruvchiga ikki marta qiymat berish
+    correct: false
+  - text: Tsikl ichida tsikl
+    correct: false
+  - text: len() satr va ro‘yxat uchun ishlashi
+    correct: true
+  - text: Har xil shakllarning bir xil nomli area() metodi
+    correct: true
+lessons:
+- lesson: 22
+  kind: classwork
+  required: true
+  order: 10

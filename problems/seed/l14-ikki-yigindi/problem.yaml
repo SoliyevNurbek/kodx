@@ -1,0 +1,21 @@
+title: Ikki son yig‘indisi K
+type: code
+difficulty: 4
+points: 400
+tags:
+- qidirish
+- lug‘at
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ va $K$ ($1 \le n \le 10^5$, $|K| \le 2 \cdot 10^9$), ikkinchi qatorda
+  sonlar.
+output_format: Juftliklar soni.
+lessons:
+- lesson: 14
+  kind: challenge
+  required: false
+  order: 3

@@ -1,0 +1,67 @@
+title: 'Test: GitHub Pages va Loyiha 3 himoyasi'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: GitHub Pages nima?
+  kind: single
+  points: 1
+  options:
+  - text: Ma’lumotlar bazasi
+    correct: false
+  - text: Pullik server
+    correct: false
+  - text: Kod muharriri
+    correct: false
+  - text: Statik saytlarni GitHub repozitoriydan bepul joylash xizmati
+    correct: true
+- text: GitHub Pages uchun asosiy sahifa fayli odatda qanday nomlanadi?
+  kind: single
+  points: 1
+  options:
+  - text: start.html
+    correct: false
+  - text: index.html
+    correct: true
+  - text: main.html
+    correct: false
+  - text: home.htm
+    correct: false
+- text: 'GitHub Pages sayti manzili odatda qaysi domen bilan tugaydi? (masalan: example.com)'
+  kind: text
+  points: 1
+  answers:
+  - github.io
+- text: Loyiha 3 himoyasida nimalar ko‘rsatiladi?
+  kind: multiple
+  points: 1
+  options:
+  - text: SQL so‘rovlar
+    correct: false
+  - text: Ishlayotgan sayt havolasi
+    correct: true
+  - text: Telegram bot
+    correct: false
+  - text: Lighthouse natijasi
+    correct: true
+  - text: Responsiv ko‘rinish
+    correct: true
+- text: Sayt boshqa qurilmada «buzilib» ko‘rinsa nimani tekshirish kerak?
+  kind: single
+  points: 1
+  options:
+  - text: Python o‘rnatilganini
+    correct: false
+  - text: Media query va viewport meta tegini
+    correct: true
+  - text: Klaviatura tilini
+    correct: false
+  - text: Git versiyasini
+    correct: false
+lessons:
+- lesson: 36
+  kind: classwork
+  required: true
+  order: 10

@@ -1,0 +1,20 @@
+title: 'CSV: fan bo‘yicha eng yaxshi'
+type: code
+difficulty: 3
+points: 300
+tags:
+- csv
+- dict
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Sarlavha va kamida bitta ma’lumot qatori (10^4 tagacha).
+output_format: Har bir fan uchun bitta qator.
+lessons:
+- lesson: 18
+  kind: homework
+  required: true
+  order: 2

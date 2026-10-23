@@ -1,0 +1,20 @@
+title: Kutubxona
+type: code
+difficulty: 3
+points: 300
+tags:
+- oop
+- dict
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Birinchi qatorda $n$ ($1 \le n \le 10^4$), keyingi $n$ qatorda buyruqlar.
+output_format: Har bir buyruq uchun bitta qator.
+lessons:
+- lesson: 21
+  kind: challenge
+  required: false
+  order: 3

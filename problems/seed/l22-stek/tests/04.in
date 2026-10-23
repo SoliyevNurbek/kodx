@@ -1,0 +1,5 @@
+4
+push a
+push b
+pop
+peek

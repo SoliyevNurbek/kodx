@@ -1,0 +1,58 @@
+title: 'Test: Qidirish, saralash, comprehension'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: '`[x * x for x in range(4)]` nima qaytaradi? (masalan: [1, 2])'
+  kind: text
+  points: 1
+  answers:
+  - '[0, 1, 4, 9]'
+- text: '`sorted(a)` va `a.sort()` farqi nima?'
+  kind: single
+  points: 1
+  options:
+  - text: Farqi yo‘q
+    correct: false
+  - text: sort() yangi ro‘yxat qaytaradi
+    correct: false
+  - text: sorted() yangi ro‘yxat qaytaradi, sort() joyida saralaydi
+    correct: true
+  - text: sorted() faqat sonlarni saralaydi
+    correct: false
+- text: Ikkilik qidiruv qanday ro‘yxatda ishlaydi?
+  kind: single
+  points: 1
+  options:
+  - text: Faqat satrlar ro‘yxatida
+    correct: false
+  - text: Faqat bo‘sh ro‘yxatda
+    correct: false
+  - text: Istalgan
+    correct: false
+  - text: Saralangan
+    correct: true
+- text: Kamayish tartibida saralash uchun qaysi parametr ishlatiladi?
+  kind: single
+  points: 1
+  options:
+  - text: reverse=True
+    correct: true
+  - text: desc=True
+    correct: false
+  - text: key=-1
+    correct: false
+  - text: order='down'
+    correct: false
+- text: '`[x for x in [3, 8, 5, 10] if x > 4]` nima qaytaradi?'
+  kind: text
+  points: 1
+  answers:
+  - '[8, 5, 10]'
+lessons:
+- lesson: 14
+  kind: classwork
+  required: true
+  order: 10

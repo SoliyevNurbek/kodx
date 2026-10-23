@@ -1,0 +1,22 @@
+title: Ikkilik qidiruv
+type: code
+difficulty: 3
+points: 300
+tags:
+- qidirish
+- ikkilik qidiruv
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: '$n$; keyingi qatorda $n$ ta son; keyin $q$; keyingi qatorda $q$ ta so‘rov
+
+  ($1 \le n, q \le 10^5$, sonlar $\le 10^9$).'
+output_format: Har bir so‘rov uchun alohida qatorda javob.
+lessons:
+- lesson: 14
+  kind: homework
+  required: true
+  order: 2

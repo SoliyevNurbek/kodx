@@ -4,7 +4,7 @@ import sys
 import textwrap
 from pathlib import Path
 
-ROOT = Path(r"D:\OSPanel\home\kodx")
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 os.chdir(ROOT)

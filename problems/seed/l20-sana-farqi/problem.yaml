@@ -1,0 +1,20 @@
+title: Sanalar orasidagi kunlar
+type: code
+difficulty: 2
+points: 200
+tags:
+- modullar
+- datetime
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Ikki qatorda sanalar (1900–2100 yillar).
+output_format: Kunlar soni.
+lessons:
+- lesson: 20
+  kind: homework
+  required: true
+  order: 2

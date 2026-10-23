@@ -1,0 +1,30 @@
+title: LLM API yordamchisi
+type: project
+difficulty: 3
+points: 100
+tags:
+- loyiha
+rubric:
+- title: Integratsiya
+  points: 30
+  description: API to‘g‘ri chaqiriladi, javob qayta ishlanadi
+- title: Prompt va parametrlar
+  points: 20
+  description: Tizim prompti, max_tokens, temperature
+- title: Xavfsizlik
+  points: 15
+  description: Kalit himoyalangan, xatolar ushlangan
+- title: Kod sifati
+  points: 15
+  description: PEP 8 / toza HTML-CSS, tushunarli nomlar, takrorlanmaydigan kod
+- title: README va Git
+  points: 10
+  description: README to‘liq, ma’noli commit’lar
+- title: Xavfsizlik va mustaqillik
+  points: 10
+  description: Maxfiy ma’lumot yo‘q; muallif kodni tushuntira oladi
+lessons:
+- lesson: 41
+  kind: homework
+  required: true
+  order: 20

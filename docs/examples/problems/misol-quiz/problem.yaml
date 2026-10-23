@@ -1,0 +1,26 @@
+title: Python asoslari (namuna quiz)
+type: quiz
+points: 50
+questions:
+  - text: "print(2 ** 3) nima chiqaradi?"
+    kind: single
+    options:
+      - text: "8"
+        correct: true
+      - "6"
+      - "9"
+  - text: "Qaysilar o'zgarmas (immutable) tur?"
+    kind: multiple
+    points: 2
+    options:
+      - text: tuple
+        correct: true
+      - text: str
+        correct: true
+      - list
+  - text: "len('salom') nechaga teng?"
+    kind: text
+    answers: ["5", "besh"]
+    explanation: "Satrda 5 ta belgi bor."
+lessons:
+  - lesson: 5

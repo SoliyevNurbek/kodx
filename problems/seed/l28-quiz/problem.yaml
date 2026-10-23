@@ -1,0 +1,65 @@
+title: 'Test: display, position, CSS o‘zgaruvchilar'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: '`display: none` nima qiladi?'
+  kind: single
+  points: 1
+  options:
+  - text: Hech narsa
+    correct: false
+  - text: Elementni chapga suradi
+    correct: false
+  - text: Elementni butunlay yashiradi (joy ham egallamaydi)
+    correct: true
+  - text: Elementni shaffof qiladi
+    correct: false
+- text: Ota elementga nisbatan joylashish uchun bolaga qaysi `position` beriladi?
+  kind: single
+  points: 1
+  options:
+  - text: static
+    correct: false
+  - text: inherit
+    correct: false
+  - text: absolute
+    correct: true
+  - text: normal
+    correct: false
+- text: 'CSS o‘zgaruvchidan foydalanish: `color: ___(--asosiy);` (bo‘sh joyga funksiya nomi)'
+  kind: text
+  points: 1
+  answers:
+  - var
+- text: '`position: sticky` va `fixed` haqida to‘g‘ri gaplar?'
+  kind: multiple
+  points: 1
+  options:
+  - text: Ikkalasi bir xil
+    correct: false
+  - text: sticky — aylantirilganda chegaraga yopishadi
+    correct: true
+  - text: fixed — oynaga nisbatan qotib turadi
+    correct: true
+  - text: sticky faqat jadvallarda ishlaydi
+    correct: false
+- text: '`inline` va `block` elementlar farqi?'
+  kind: single
+  points: 1
+  options:
+  - text: block faqat rasm uchun
+    correct: false
+  - text: block yangi qatordan boshlanadi va butun kenglikni egallaydi
+    correct: true
+  - text: Farqi yo‘q
+    correct: false
+  - text: inline yangi qatordan boshlanadi
+    correct: false
+lessons:
+- lesson: 28
+  kind: classwork
+  required: true
+  order: 10

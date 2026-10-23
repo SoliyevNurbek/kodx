@@ -1,0 +1,67 @@
+title: 'Test: README, taqdimot, GitHub va CV'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Yaxshi README’da nima bo‘ladi?
+  kind: single
+  points: 1
+  options:
+  - text: Bo‘sh fayl
+    correct: false
+  - text: Loyiha tavsifi, o‘rnatish, ishlatish va skrinshotlar
+    correct: true
+  - text: Parollar
+    correct: false
+  - text: Faqat sarlavha
+    correct: false
+- text: Taqdimotda nechta asosiy fikr tavsiya etiladi?
+  kind: single
+  points: 1
+  options:
+  - text: Hech qanday
+    correct: false
+  - text: 50 ta
+    correct: false
+  - text: 3–5 ta aniq fikr
+    correct: true
+  - text: Faqat bitta so‘z
+    correct: false
+- text: Markdown’da sarlavha qaysi belgi bilan boshlanadi?
+  kind: text
+  points: 1
+  answers:
+  - '#'
+- text: Dasturchi CV’sida nimalar bo‘ladi?
+  kind: multiple
+  points: 1
+  options:
+  - text: Loyihalar (GitHub havolalari)
+    correct: true
+  - text: Parollar
+    correct: false
+  - text: Do‘stlarning telefon raqamlari
+    correct: false
+  - text: Ko‘nikmalar
+    correct: true
+  - text: Ta’lim
+    correct: true
+- text: GitHub profilini kuchaytirish uchun?
+  kind: single
+  points: 1
+  options:
+  - text: Muntazam commit va yaxshi tavsiflangan loyihalar
+    correct: true
+  - text: Bo‘sh repozitoriylar yaratish
+    correct: false
+  - text: Boshqalarning kodini nusxalash
+    correct: false
+  - text: Hech narsa
+    correct: false
+lessons:
+- lesson: 47
+  kind: classwork
+  required: true
+  order: 10

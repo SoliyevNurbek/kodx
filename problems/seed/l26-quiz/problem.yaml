@@ -1,0 +1,67 @@
+title: 'Test: HTML: forma va semantika'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Semantik teglar qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: <header>, <nav>, <main>, <footer>
+    correct: true
+  - text: <div>, <span>
+    correct: false
+  - text: <br>, <hr>
+    correct: false
+  - text: <b>, <i>
+    correct: false
+- text: Forma maydoni yorlig‘ini maydon bilan bog‘lash uchun `<label>` da qaysi atribut ishlatiladi?
+  kind: single
+  points: 1
+  options:
+  - text: name
+    correct: false
+  - text: id
+    correct: false
+  - text: for
+    correct: true
+  - text: link
+    correct: false
+- text: Majburiy forma maydoni uchun qaysi atribut qo‘shiladi?
+  kind: text
+  points: 1
+  answers:
+  - required
+- text: Qaysilar `<input>` ning to‘g‘ri `type` qiymati?
+  kind: multiple
+  points: 1
+  options:
+  - text: email
+    correct: true
+  - text: text-area
+    correct: false
+  - text: phone-number
+    correct: false
+  - text: password
+    correct: true
+  - text: number
+    correct: true
+- text: Semantik HTML nima uchun muhim?
+  kind: single
+  points: 1
+  options:
+  - text: Faqat chiroyli kod uchun
+    correct: false
+  - text: Sahifa rangli bo‘lishi uchun
+    correct: false
+  - text: Hech qanday ahamiyati yo‘q
+    correct: false
+  - text: Qulaylik (accessibility) va SEO uchun
+    correct: true
+lessons:
+- lesson: 26
+  kind: classwork
+  required: true
+  order: 10

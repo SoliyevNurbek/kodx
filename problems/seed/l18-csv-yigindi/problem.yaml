@@ -1,0 +1,20 @@
+title: 'CSV: ballar yig‘indisi'
+type: code
+difficulty: 1
+points: 100
+tags:
+- csv
+- fayllar
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Sarlavha va 0 yoki undan ko‘p ma’lumot qatori (1000 tagacha).
+output_format: Ballar yig‘indisi.
+lessons:
+- lesson: 18
+  kind: classwork
+  required: true
+  order: 1

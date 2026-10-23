@@ -1,0 +1,30 @@
+title: Sahifa maketi (CSS Grid)
+type: project
+difficulty: 3
+points: 100
+tags:
+- loyiha
+rubric:
+- title: Grid maket
+  points: 35
+  description: Hududlar to‘g‘ri joylashgan
+- title: Grid xossalari
+  points: 20
+  description: fr, repeat, span, gap
+- title: Kontent
+  points: 10
+  description: Maket real kontent bilan to‘ldirilgan
+- title: Kod sifati
+  points: 15
+  description: PEP 8 / toza HTML-CSS, tushunarli nomlar, takrorlanmaydigan kod
+- title: README va Git
+  points: 10
+  description: README to‘liq, ma’noli commit’lar
+- title: Xavfsizlik va mustaqillik
+  points: 10
+  description: Maxfiy ma’lumot yo‘q; muallif kodni tushuntira oladi
+lessons:
+- lesson: 30
+  kind: homework
+  required: true
+  order: 20

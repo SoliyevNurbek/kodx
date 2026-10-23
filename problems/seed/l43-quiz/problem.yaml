@@ -1,0 +1,66 @@
+title: 'Test: Telegram bot: aiogram'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Telegram bot tokeni qayerdan olinadi?
+  kind: single
+  points: 1
+  options:
+  - text: aiogram saytidan
+    correct: false
+  - text: '@BotFather dan'
+    correct: true
+  - text: Google’dan
+    correct: false
+  - text: GitHub’dan
+    correct: false
+- text: aiogram qaysi uslubda ishlaydi?
+  kind: single
+  points: 1
+  options:
+  - text: Brauzerda
+    correct: false
+  - text: Faqat sinxron
+    correct: false
+  - text: Asinxron
+    correct: true
+  - text: Faqat JavaScript’da
+    correct: false
+- text: Botni boshlash buyrug‘i (foydalanuvchi birinchi yuboradigan) qaysi?
+  kind: text
+  points: 1
+  answers:
+  - /start
+  - start
+- text: Bot tokeni haqida to‘g‘ri gaplar?
+  kind: multiple
+  points: 1
+  options:
+  - text: README’ga yoziladi
+    correct: false
+  - text: Kanalga joylanadi
+    correct: false
+  - text: Hech kimga ko‘rsatilmaydi
+    correct: true
+  - text: .env da saqlanadi
+    correct: true
+- text: Bot foydalanuvchiga javob yuborish uchun odatda qaysi metod?
+  kind: single
+  points: 1
+  options:
+  - text: print()
+    correct: false
+  - text: input()
+    correct: false
+  - text: message.answer()
+    correct: true
+  - text: bot.echo_all()
+    correct: false
+lessons:
+- lesson: 43
+  kind: classwork
+  required: true
+  order: 10

@@ -1,0 +1,5 @@
+4
+add b 5
+add c 6
+del b
+get c

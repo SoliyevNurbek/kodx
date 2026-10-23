@@ -1,0 +1,67 @@
+title: 'Test: Kompyuter va ish muhiti'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Kompyuterning «miyasi» deb qaysi qurilma ataladi?
+  kind: single
+  points: 1
+  options:
+  - text: Qattiq disk
+    correct: false
+  - text: Klaviatura
+    correct: false
+  - text: Monitor
+    correct: false
+  - text: Protsessor (CPU)
+    correct: true
+- text: Kompyuter o‘chirilganda qaysi xotiradagi ma’lumot yo‘qoladi?
+  kind: single
+  points: 1
+  options:
+  - text: Fleshka
+    correct: false
+  - text: SSD
+    correct: false
+  - text: Qattiq disk (HDD)
+    correct: false
+  - text: Operativ xotira (RAM)
+    correct: true
+- text: 1 kilobayt necha baytga teng? (raqam bilan yozing)
+  kind: text
+  points: 1
+  answers:
+  - '1024'
+- text: Quyidagilardan qaysilari operatsion tizim?
+  kind: multiple
+  points: 1
+  options:
+  - text: Linux
+    correct: true
+  - text: Google Chrome
+    correct: false
+  - text: Python
+    correct: false
+  - text: Windows
+    correct: true
+  - text: macOS
+    correct: true
+- text: Kod yozish uchun mo‘ljallangan dastur qanday ataladi?
+  kind: single
+  points: 1
+  options:
+  - text: Arxivator
+    correct: false
+  - text: Antivirus
+    correct: false
+  - text: Brauzer
+    correct: false
+  - text: Kod muharriri (masalan, VS Code)
+    correct: true
+lessons:
+- lesson: 1
+  kind: classwork
+  required: true
+  order: 10

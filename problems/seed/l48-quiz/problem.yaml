@@ -1,0 +1,66 @@
+title: 'Test: Demo Day'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Demo Day nima?
+  kind: single
+  points: 1
+  options:
+  - text: Dam olish kuni
+    correct: false
+  - text: Ro‘yxatdan o‘tish kuni
+    correct: false
+  - text: Kurs yakunida loyihalarni ommaga taqdim etish kuni
+    correct: true
+  - text: Imtihon kuni
+    correct: false
+- text: Demo vaqtida internet ishlamay qolsa?
+  kind: single
+  points: 1
+  options:
+  - text: Taqdimotni bekor qilish
+    correct: false
+  - text: Jim turish
+    correct: false
+  - text: Oldindan tayyorlangan video yoki skrinshotlarni ko‘rsatish
+    correct: true
+  - text: Uyga ketish
+    correct: false
+- text: 'Loyihani qisqa (1 daqiqalik) tanishtirish inglizcha qanday ataladi? (ikki so‘z: elevator ...)'
+  kind: text
+  points: 1
+  answers:
+  - pitch
+  - elevator pitch
+- text: Yaxshi demo qanday bo‘ladi?
+  kind: multiple
+  points: 1
+  options:
+  - text: Muammo → yechim → jonli namoyish
+    correct: true
+  - text: Savollarga javob bermaslik
+    correct: false
+  - text: Kodni qatorma-qator o‘qish
+    correct: false
+  - text: Vaqt chegarasiga rioya qilish
+    correct: true
+- text: Demo’dan keyin nima qilish foydali?
+  kind: single
+  points: 1
+  options:
+  - text: GitHub’dan chiqish
+    correct: false
+  - text: Hech narsa
+    correct: false
+  - text: Loyihani o‘chirish
+    correct: false
+  - text: Fikr-mulohazalarni yozib olib, loyihani yaxshilash
+    correct: true
+lessons:
+- lesson: 48
+  kind: classwork
+  required: true
+  order: 10

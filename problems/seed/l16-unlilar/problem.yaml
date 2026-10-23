@@ -1,0 +1,19 @@
+title: Unli harflar
+type: code
+difficulty: 2
+points: 200
+tags:
+- satrlar
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta qator (uzunligi $10^5$ gacha).
+output_format: Unlilar soni.
+lessons:
+- lesson: 16
+  kind: homework
+  required: true
+  order: 2

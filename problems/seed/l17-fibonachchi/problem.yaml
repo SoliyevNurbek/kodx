@@ -1,0 +1,21 @@
+title: Katta Fibonachchi
+type: code
+difficulty: 5
+points: 500
+tags:
+- funksiyalar
+- rekursiya
+- matematika
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta son $n$ ($0 \le n \le 10^{18}$).
+output_format: $F_n \bmod (10^9 + 7)$.
+lessons:
+- lesson: 17
+  kind: challenge
+  required: false
+  order: 3

@@ -1,0 +1,65 @@
+title: 'Test: OOP: klass va obyekt'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Obyekt yaratilganda avtomatik chaqiriladigan metod qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: __new_object__
+    correct: false
+  - text: __start__
+    correct: false
+  - text: __init__
+    correct: true
+  - text: create
+    correct: false
+- text: Metodlardagi `self` nimani bildiradi?
+  kind: single
+  points: 1
+  options:
+  - text: Global o‘zgaruvchini
+    correct: false
+  - text: Ota-klassni
+    correct: false
+  - text: Joriy obyektning o‘zini
+    correct: true
+  - text: Klass nomini
+    correct: false
+- text: Klass e’lon qilish uchun qaysi kalit so‘z ishlatiladi?
+  kind: text
+  points: 1
+  answers:
+  - class
+- text: Klass va obyekt farqi qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: Obyekt — shablon, klass — nusxa
+    correct: false
+  - text: Klass — shablon, obyekt — undan yaratilgan nusxa
+    correct: true
+  - text: Klass faqat sonlarni saqlaydi
+    correct: false
+  - text: Farqi yo‘q
+    correct: false
+- text: Obyekt nimalardan iborat bo‘ladi?
+  kind: multiple
+  points: 1
+  options:
+  - text: Fayllar
+    correct: false
+  - text: Faqat print() lar
+    correct: false
+  - text: Metodlar (amallar)
+    correct: true
+  - text: Atributlar (ma’lumotlar)
+    correct: true
+lessons:
+- lesson: 21
+  kind: classwork
+  required: true
+  order: 10

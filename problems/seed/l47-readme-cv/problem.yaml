@@ -1,0 +1,30 @@
+title: README, taqdimot va CV
+type: project
+difficulty: 3
+points: 100
+tags:
+- loyiha
+rubric:
+- title: README
+  points: 30
+  description: To‘liq va tushunarli
+- title: Taqdimot
+  points: 20
+  description: Muammo → yechim → natija
+- title: CV
+  points: 15
+  description: Ko‘nikmalar va loyihalar aniq
+- title: Kod sifati
+  points: 15
+  description: PEP 8 / toza HTML-CSS, tushunarli nomlar, takrorlanmaydigan kod
+- title: README va Git
+  points: 10
+  description: README to‘liq, ma’noli commit’lar
+- title: Xavfsizlik va mustaqillik
+  points: 10
+  description: Maxfiy ma’lumot yo‘q; muallif kodni tushuntira oladi
+lessons:
+- lesson: 47
+  kind: homework
+  required: true
+  order: 20

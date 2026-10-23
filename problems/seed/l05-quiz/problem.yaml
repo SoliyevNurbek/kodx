@@ -1,0 +1,67 @@
+title: 'Test: Python: birinchi qadamlar'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Ekranga matn chiqaruvchi funksiya qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: echo()
+    correct: false
+  - text: print()
+    correct: true
+  - text: write()
+    correct: false
+  - text: input()
+    correct: false
+- text: '`input()` funksiyasi qanday turdagi qiymat qaytaradi?'
+  kind: single
+  points: 1
+  options:
+  - text: str (satr)
+    correct: true
+  - text: bool
+    correct: false
+  - text: int (butun son)
+    correct: false
+  - text: float
+    correct: false
+- text: '`print(2 + 3 * 4)` nima chiqaradi?'
+  kind: text
+  points: 1
+  answers:
+  - '14'
+- text: Qaysilar to‘g‘ri o‘zgaruvchi nomi?
+  kind: multiple
+  points: 1
+  options:
+  - text: _maxfiy
+    correct: true
+  - text: yosh
+    correct: true
+  - text: 2son
+    correct: false
+  - text: my-var
+    correct: false
+  - text: talaba_ismi
+    correct: true
+- text: Python’da izoh (comment) qaysi belgi bilan boshlanadi?
+  kind: single
+  points: 1
+  options:
+  - text: --
+    correct: false
+  - text: /*
+    correct: false
+  - text: //
+    correct: false
+  - text: '#'
+    correct: true
+lessons:
+- lesson: 5
+  kind: classwork
+  required: true
+  order: 10

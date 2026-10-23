@@ -1,0 +1,15 @@
+title: Ikki son yig'indisi (namuna)
+type: code
+difficulty: 1
+points: 100
+tags: [arifmetika]
+time_limit: 1000      # ms
+memory_limit: 256     # MB
+checker: whitespace   # exact | whitespace | float
+samples: [1]          # namuna sifatida ko'rsatiladigan testlar
+input_format: Bitta qatorda ikkita butun son a va b.
+output_format: a + b
+lessons:
+  - lesson: 5
+    kind: homework    # classwork | homework | challenge
+    required: true

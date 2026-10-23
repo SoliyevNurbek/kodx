@@ -1,0 +1,30 @@
+title: Vazifalar ro‘yxati (JavaScript)
+type: project
+difficulty: 3
+points: 100
+tags:
+- loyiha
+rubric:
+- title: Funksionallik
+  points: 30
+  description: Qo‘shish, belgilash, o‘chirish ishlaydi
+- title: DOM va hodisalar
+  points: 25
+  description: querySelector, addEventListener, createElement
+- title: Xavfsizlik va validatsiya
+  points: 10
+  description: textContent, bo‘sh kiritish tekshiruvi
+- title: Kod sifati
+  points: 15
+  description: PEP 8 / toza HTML-CSS, tushunarli nomlar, takrorlanmaydigan kod
+- title: README va Git
+  points: 10
+  description: README to‘liq, ma’noli commit’lar
+- title: Xavfsizlik va mustaqillik
+  points: 10
+  description: Maxfiy ma’lumot yo‘q; muallif kodni tushuntira oladi
+lessons:
+- lesson: 32
+  kind: homework
+  required: true
+  order: 20

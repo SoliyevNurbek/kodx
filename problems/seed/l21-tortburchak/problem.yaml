@@ -1,0 +1,19 @@
+title: To‘rtburchak klassi
+type: code
+difficulty: 1
+points: 100
+tags:
+- oop
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta qatorda $w$ va $h$ ($1 \le w, h \le 10^9$).
+output_format: Yuza va perimetr.
+lessons:
+- lesson: 21
+  kind: classwork
+  required: true
+  order: 1

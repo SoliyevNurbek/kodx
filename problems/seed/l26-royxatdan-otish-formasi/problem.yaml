@@ -1,0 +1,30 @@
+title: Ro‘yxatdan o‘tish formasi
+type: project
+difficulty: 3
+points: 100
+tags:
+- loyiha
+rubric:
+- title: Forma maydonlari
+  points: 30
+  description: Turli input turlari to‘g‘ri ishlatilgan
+- title: Semantika va qulaylik
+  points: 25
+  description: Semantik teglar, label, fieldset
+- title: Brauzer validatsiyasi
+  points: 10
+  description: Majburiy maydonlar va formatlar tekshiriladi
+- title: Kod sifati
+  points: 15
+  description: PEP 8 / toza HTML-CSS, tushunarli nomlar, takrorlanmaydigan kod
+- title: README va Git
+  points: 10
+  description: README to‘liq, ma’noli commit’lar
+- title: Xavfsizlik va mustaqillik
+  points: 10
+  description: Maxfiy ma’lumot yo‘q; muallif kodni tushuntira oladi
+lessons:
+- lesson: 26
+  kind: homework
+  required: true
+  order: 20

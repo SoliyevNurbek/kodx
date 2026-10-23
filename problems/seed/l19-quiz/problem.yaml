@@ -1,0 +1,65 @@
+title: 'Test: Xatolarni boshqarish'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: '`int(''abc'')` qanday xato beradi?'
+  kind: single
+  points: 1
+  options:
+  - text: KeyError
+    correct: false
+  - text: ValueError
+    correct: true
+  - text: ZeroDivisionError
+    correct: false
+  - text: TypeError
+    correct: false
+- text: '`finally` bloki qachon bajariladi?'
+  kind: single
+  points: 1
+  options:
+  - text: Hech qachon
+    correct: false
+  - text: Faqat xato bo‘lganda
+    correct: false
+  - text: Faqat xato bo‘lmaganda
+    correct: false
+  - text: Har doim (xato bo‘lsa ham, bo‘lmasa ham)
+    correct: true
+- text: O‘zingiz xato chiqarish (ko‘tarish) uchun qaysi kalit so‘z ishlatiladi?
+  kind: text
+  points: 1
+  answers:
+  - raise
+- text: Lug‘atda mavjud bo‘lmagan kalitga murojaat qanday xato beradi?
+  kind: single
+  points: 1
+  options:
+  - text: ValueError
+    correct: false
+  - text: IndexError
+    correct: false
+  - text: NameError
+    correct: false
+  - text: KeyError
+    correct: true
+- text: Qaysi yondashuvlar to‘g‘ri?
+  kind: multiple
+  points: 1
+  options:
+  - text: Foydalanuvchiga tushunarli xabar chiqarish
+    correct: true
+  - text: 'Barcha xatolarni except: pass bilan yashirish'
+    correct: false
+  - text: Xato bo‘lsa dasturni qayta yozish
+    correct: false
+  - text: 'Aniq xato turini ushlash: except ValueError:'
+    correct: true
+lessons:
+- lesson: 19
+  kind: classwork
+  required: true
+  order: 10

@@ -1,0 +1,19 @@
+title: Satrni siqish
+type: code
+difficulty: 3
+points: 300
+tags:
+- satrlar
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta qator — kichik lotin harflari (uzunligi 1–$10^5$).
+output_format: Siqilgan satr.
+lessons:
+- lesson: 16
+  kind: challenge
+  required: false
+  order: 3

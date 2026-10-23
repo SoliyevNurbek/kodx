@@ -1,0 +1,30 @@
+title: 'Loyiha 3 himoyasi: portfolio GitHub Pages’da'
+type: project
+difficulty: 4
+points: 100
+tags:
+- loyiha
+rubric:
+- title: Joylashtirilgan sayt
+  points: 25
+  description: GitHub Pages’da ishlaydi
+- title: Sifat
+  points: 25
+  description: Responsiv, qulay, Lighthouse ≥ 90
+- title: Himoya
+  points: 15
+  description: Kodni tushuntira oladi, savollarga javob beradi
+- title: Kod sifati
+  points: 15
+  description: PEP 8 / toza HTML-CSS, tushunarli nomlar, takrorlanmaydigan kod
+- title: README va Git
+  points: 10
+  description: README to‘liq, ma’noli commit’lar
+- title: Xavfsizlik va mustaqillik
+  points: 10
+  description: Maxfiy ma’lumot yo‘q; muallif kodni tushuntira oladi
+lessons:
+- lesson: 36
+  kind: homework
+  required: true
+  order: 20

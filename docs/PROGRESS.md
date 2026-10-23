@@ -6,7 +6,7 @@ Sessiya uzilsa — ish shu fayldan davom ettiriladi. Reja: `docs/MASTER_PROMPT.m
 |---|---|---|
 | 1. Poydevor | tayyor | 20 |
 | 2. Kurs tuzilmasi | tayyor | 43 |
-| 3. Vazifalar banki | jarayonda (branch stage-3-problems) | |
+| 3. Vazifalar banki | tayyor | 96 |
 | 4. Yechimlar va tekshiruv | — | |
 | 5. Sahifalar (UI) | — | |
 | 6. Baholash va reyting | — | |
@@ -25,25 +25,12 @@ Sessiya uzilsa — ish shu fayldan davom ettiriladi. Reja: `docs/MASTER_PROMPT.m
 - `is_staff` roldan kelib chiqadi; moderatorning admin chegaralari.
 - Keyingi qadam: 3-bosqich — vazifalar banki.
 
-## 3-bosqich — Vazifalar banki (JARAYONDA, `stage-3-problems` branch)
-Tayyor:
-- `judge` ilovasi: types (Verdict, Limits…), checker (exact/whitespace/float), JudgeBackend,
-  LocalDevBackend (Windows Job Object: xotira + 1 jarayon; venv o‘rniga asosiy python), Judge0Backend.
-  Qo‘lda tekshirildi: AC/WA/TLE/RE/MLE/CE, UTF-8, subprocess taqiqlangan, django import qilinmaydi.
-- `problems` modellari + 0001 migratsiya, admin, markdown.py (nh3 + LaTeX himoyasi),
-  importer.py, `import_problems`, `verify_problems`; config/test_runner.py (vaqtinchalik MEDIA_ROOT).
-- Seed generator: `tools/seed_gen/` (common.py, m1_code.py). Modul 1 — 36 code masala tayyor
-  (`problems/seed/`), har biri etalon yechimda o‘tadi.
-Qolgan:
-1. `tools/seed_gen/m2_code.py` — 13–24-darslar, 36 code masala (reja: max-min, ortachadan katta,
-   siljitish; juftlar, ikkilik qidiruv, ikki yig‘indi; noyob, so‘z chastotasi, telefon kitobi;
-   palindrom, unlilar, siqish; faktorial, EKUK, fibonachchi (fast doubling); csv yig‘indi,
-   csv eng yaxshi, json; xavfsiz bo‘lish, son tekshir, bank hisob; math ildiz, sana farqi,
-   kombinatsiyalar; to‘rtburchak, vektor, kutubxona; shakllar yuzi, xodimlar maoshi, stek;
-   snake_case, pep8 qator, branch nomi; anagramma, transpoza, reyting jadvali).
-2. 48 ta quiz (5 savol), 24 ta project (25–48) + 12, 24-darslar loyiha himoyasi.
-3. `problems/migrations/0002_seed_problems.py` (importer + tarixiy modellar, status=published, is_seed).
-4. Testlar: judge (checker, local, judge0 mock), importer, ruxsatlar, seed sifati (har dars vazifali,
-   code ≥5 test/2 namuna, etalon 100%). `docs/PROBLEM_FORMAT.md`. DECISIONS: chiqishda ASCII apostrof,
-   float checker (abs/rel 1e-6), LocalDevBackend TESTING da ham ruxsat, moderator nashr etadi.
-5. ruff, commit, merge, push → 4-bosqich.
+## 3-bosqich — Vazifalar banki (tayyor)
+- `judge`: Verdict/Limits, checker (exact/whitespace/float), JudgeBackend, LocalDevBackend (DEV ONLY), Judge0Backend.
+- `problems`: Problem (code/quiz/project, holat, qiyinlik, teglar, limitlar, etalon yechim), TestCase (fayllar
+  media/tests/ da), QuizQuestion/QuizOption, RubricCriterion, LessonProblem; ob'ekt ruxsatlari; admin (nashr etish).
+- Import: `manage.py import_problems`, `verify_problems`; `docs/PROBLEM_FORMAT.md`, namunalar `docs/examples/problems/`.
+- Seed: 146 vazifa (72 code, 48 quiz × 5 savol, 26 loyiha), har darsda vazifa bor; 72 etalon yechim 100% o‘tadi.
+  Kontentni o‘zgartirish: `tools/seed_gen/*.py` ni tahrirlab, `cd tools/seed_gen && python <fayl>.py`
+  (problems/seed/ qayta yoziladi); bazaga — `import_problems problems/seed --status published`.
+- Testlar: 96. Keyingi qadam: 4-bosqich — yechimlar, navbat, worker.

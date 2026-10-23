@@ -1,0 +1,65 @@
+title: 'Test: Shartli operatorlar (if)'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Bir nechta shartni ketma-ket tekshirish uchun qaysi kalit so‘z ishlatiladi?
+  kind: single
+  points: 1
+  options:
+  - text: elif
+    correct: true
+  - text: else if
+    correct: false
+  - text: case
+    correct: false
+  - text: elseif
+    correct: false
+- text: Python’da `if` blokining ichidagi kod qanday ajratiladi?
+  kind: single
+  points: 1
+  options:
+  - text: Figurali qavslar {} bilan
+    correct: false
+  - text: Chekinish (indentatsiya) bilan
+    correct: true
+  - text: Nuqtali vergul bilan
+    correct: false
+  - text: begin/end bilan
+    correct: false
+- text: '`x = 7` bo‘lsa: `print(''A'' if x > 5 else ''B'')` nima chiqaradi?'
+  kind: text
+  points: 1
+  answers:
+  - A
+- text: Qaysi yozuvlar sintaktik jihatdan to‘g‘ri?
+  kind: multiple
+  points: 1
+  options:
+  - text: if x > 0
+    correct: false
+  - text: 'if (x > 0) then:'
+    correct: false
+  - text: 'if x == 1 or x == 2:'
+    correct: true
+  - text: 'if x > 0:'
+    correct: true
+- text: '`else` bloki qachon bajariladi?'
+  kind: single
+  points: 1
+  options:
+  - text: Har doim
+    correct: false
+  - text: Birinchi shart rost bo‘lganda
+    correct: false
+  - text: Hech qachon
+    correct: false
+  - text: Undan oldingi barcha shartlar yolg‘on bo‘lganda
+    correct: true
+lessons:
+- lesson: 8
+  kind: classwork
+  required: true
+  order: 10

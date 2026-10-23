@@ -1,0 +1,30 @@
+title: 'Loyiha 2: ma’lumotlar bilan ishlovchi dastur'
+type: project
+difficulty: 4
+points: 100
+tags:
+- loyiha
+rubric:
+- title: Funksionallik
+  points: 25
+  description: Qo‘shish, ko‘rish, o‘chirish, saqlash ishlaydi
+- title: OOP va tuzilma
+  points: 20
+  description: Klasslar, meros/inkapsulyatsiya, modullar
+- title: Fayllar va xatolar
+  points: 20
+  description: JSON saqlash, try/except, utf-8
+- title: Kod sifati
+  points: 15
+  description: PEP 8 / toza HTML-CSS, tushunarli nomlar, takrorlanmaydigan kod
+- title: README va Git
+  points: 10
+  description: README to‘liq, ma’noli commit’lar
+- title: Xavfsizlik va mustaqillik
+  points: 10
+  description: Maxfiy ma’lumot yo‘q; muallif kodni tushuntira oladi
+lessons:
+- lesson: 24
+  kind: homework
+  required: true
+  order: 20

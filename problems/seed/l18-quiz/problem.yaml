@@ -1,0 +1,66 @@
+title: 'Test: Fayllar: txt, csv, json'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Faylni xavfsiz ochish (avtomatik yopish) uchun qaysi konstruksiya ishlatiladi?
+  kind: single
+  points: 1
+  options:
+  - text: 'with open(...) as f:'
+    correct: true
+  - text: file = open(...) always
+    correct: false
+  - text: open(...) and close
+    correct: false
+  - text: try open(...)
+    correct: false
+- text: Faylga yozish (eskisini o‘chirib) uchun qaysi rejim ishlatiladi?
+  kind: single
+  points: 1
+  options:
+  - text: '''a'''
+    correct: false
+  - text: '''x+'''
+    correct: false
+  - text: '''r'''
+    correct: false
+  - text: '''w'''
+    correct: true
+- text: Faylning oxiriga qo‘shib yozish rejimi qaysi harf bilan belgilanadi?
+  kind: text
+  points: 1
+  answers:
+  - a
+  - '''a'''
+- text: Python obyektini JSON satrga aylantiruvchi funksiya qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: json.read()
+    correct: false
+  - text: json.loads()
+    correct: false
+  - text: json.parse()
+    correct: false
+  - text: json.dumps()
+    correct: true
+- text: O‘zbekcha matnli fayllar bilan ishlashda nima muhim?
+  kind: multiple
+  points: 1
+  options:
+  - text: Fayl nomida bo‘shliq bo‘lishi
+    correct: false
+  - text: encoding='utf-8' ko‘rsatish
+    correct: true
+  - text: Faylni ishlatib bo‘lgach yopish
+    correct: true
+  - text: Faylni har doim 'w' rejimida ochish
+    correct: false
+lessons:
+- lesson: 18
+  kind: classwork
+  required: true
+  order: 10

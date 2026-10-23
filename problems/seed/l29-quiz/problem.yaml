@@ -1,0 +1,67 @@
+title: 'Test: Flexbox'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Flex konteyner qanday yaratiladi?
+  kind: single
+  points: 1
+  options:
+  - text: 'position: flex'
+    correct: false
+  - text: 'float: flex'
+    correct: false
+  - text: 'display: flex'
+    correct: true
+  - text: 'flex: true'
+    correct: false
+- text: Asosiy o‘q bo‘ylab tekislash xossasi qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: vertical-align
+    correct: false
+  - text: justify-content
+    correct: true
+  - text: align-items
+    correct: false
+  - text: text-align
+    correct: false
+- text: 'Elementlarni ustun bo‘yicha joylashtirish: `flex-direction: ______`'
+  kind: text
+  points: 1
+  answers:
+  - column
+- text: '`justify-content` ning to‘g‘ri qiymatlari?'
+  kind: multiple
+  points: 1
+  options:
+  - text: middle
+    correct: false
+  - text: space-between
+    correct: true
+  - text: stretch-all
+    correct: false
+  - text: center
+    correct: true
+  - text: flex-end
+    correct: true
+- text: Elementlar sig‘masa keyingi qatorga o‘tishi uchun qaysi xossa kerak?
+  kind: single
+  points: 1
+  options:
+  - text: 'overflow: hidden'
+    correct: false
+  - text: 'flex-grow: 1'
+    correct: false
+  - text: 'display: block'
+    correct: false
+  - text: 'flex-wrap: wrap'
+    correct: true
+lessons:
+- lesson: 29
+  kind: classwork
+  required: true
+  order: 10

@@ -1,0 +1,19 @@
+title: Faktorial
+type: code
+difficulty: 1
+points: 100
+tags:
+- funksiyalar
+time_limit: 1000
+memory_limit: 256
+checker: whitespace
+samples:
+- 1
+- 2
+input_format: Bitta son $n$ ($0 \le n \le 20$).
+output_format: $n!$
+lessons:
+- lesson: 17
+  kind: classwork
+  required: true
+  order: 1

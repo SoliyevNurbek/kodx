@@ -1,0 +1,67 @@
+title: 'Test: JavaScript: DOM va hodisalar'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: CSS selektor bo‘yicha element topuvchi metod qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: document.select()
+    correct: false
+  - text: getCss()
+    correct: false
+  - text: document.find()
+    correct: false
+  - text: document.querySelector()
+    correct: true
+- text: Tugma bosilishini tinglash qanday yoziladi?
+  kind: single
+  points: 1
+  options:
+  - text: button.addEventListener('click', handler)
+    correct: true
+  - text: button.listen('press')
+    correct: false
+  - text: button.onClick = handler()
+    correct: false
+  - text: click(button)
+    correct: false
+- text: O‘zgarmas (qayta tayinlanmaydigan) o‘zgaruvchi qaysi kalit so‘z bilan e’lon qilinadi?
+  kind: text
+  points: 1
+  answers:
+  - const
+- text: Qaysilar DOM hodisalari?
+  kind: multiple
+  points: 1
+  options:
+  - text: submit
+    correct: true
+  - text: input
+    correct: true
+  - text: loop
+    correct: false
+  - text: print
+    correct: false
+  - text: click
+    correct: true
+- text: Element matnini xavfsiz o‘zgartirish xossasi qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: textContent
+    correct: true
+  - text: text()
+    correct: false
+  - text: value()
+    correct: false
+  - text: innerHTMLScript
+    correct: false
+lessons:
+- lesson: 32
+  kind: classwork
+  required: true
+  order: 10

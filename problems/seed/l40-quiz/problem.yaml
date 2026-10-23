@@ -1,0 +1,65 @@
+title: 'Test: HTTP va REST API'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: Ma’lumot olish uchun qaysi HTTP metod ishlatiladi?
+  kind: single
+  points: 1
+  options:
+  - text: PATCH
+    correct: false
+  - text: DELETE
+    correct: false
+  - text: GET
+    correct: true
+  - text: POST
+    correct: false
+- text: HTTP 404 kodi nimani bildiradi?
+  kind: single
+  points: 1
+  options:
+  - text: Topilmadi (Not Found)
+    correct: true
+  - text: Ruxsat yo‘q
+    correct: false
+  - text: Muvaffaqiyatli
+    correct: false
+  - text: Server xatosi
+    correct: false
+- text: Muvaffaqiyatli javobning HTTP status kodi qaysi? (raqam)
+  kind: text
+  points: 1
+  answers:
+  - '200'
+- text: REST API’da odatda qaysi formatda ma’lumot almashinadi?
+  kind: multiple
+  points: 1
+  options:
+  - text: DOCX
+    correct: false
+  - text: MP4
+    correct: false
+  - text: EXE
+    correct: false
+  - text: JSON
+    correct: true
+- text: Python’da HTTP so‘rov yuborish uchun mashhur kutubxona qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: requests
+    correct: true
+  - text: pygame
+    correct: false
+  - text: numpy
+    correct: false
+  - text: tkinter
+    correct: false
+lessons:
+- lesson: 40
+  kind: classwork
+  required: true
+  order: 10

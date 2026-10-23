@@ -1,0 +1,60 @@
+title: 'Test: Satrlar chuqur'
+type: quiz
+difficulty: 1
+points: 50
+tags:
+- quiz
+questions:
+- text: '`''Salom''[::-1]` nima qaytaradi?'
+  kind: text
+  points: 1
+  answers:
+  - molaS
+- text: '`''a,b,c''.split('','')` nima qaytaradi?'
+  kind: single
+  points: 1
+  options:
+  - text: '[''a'', ''b'', ''c'']'
+    correct: true
+  - text: '''abc'''
+    correct: false
+  - text: '[''a,b,c'']'
+    correct: false
+  - text: ('a', 'b', 'c')
+    correct: false
+- text: '`''-''.join([''2026'', ''10'', ''23''])` nima qaytaradi?'
+  kind: text
+  points: 1
+  answers:
+  - '2026-10-23'
+- text: Satr boshidagi va oxiridagi bo‘shliqlarni olib tashlovchi metod qaysi?
+  kind: single
+  points: 1
+  options:
+  - text: trim()
+    correct: false
+  - text: cut()
+    correct: false
+  - text: clean()
+    correct: false
+  - text: strip()
+    correct: true
+- text: Qaysi ifodalar `True` qaytaradi?
+  kind: multiple
+  points: 1
+  options:
+  - text: '''abc''.startswith(''a'')'
+    correct: true
+  - text: '''py'' in ''python'''
+    correct: true
+  - text: '''123''.isdigit()'
+    correct: true
+  - text: '''ABC''.islower()'
+    correct: false
+  - text: '''a b''.isalpha()'
+    correct: false
+lessons:
+- lesson: 16
+  kind: classwork
+  required: true
+  order: 10
