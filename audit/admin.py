@@ -18,7 +18,6 @@ class AuditLogAdmin(RoleAdminMixin, admin.ModelAdmin):
     list_display = ("created_at", "actor", "action", "object_type", "object_id", "ip")
     list_filter = ("action", "object_type", "created_at")
     search_fields = ("actor__username", "action", "object_id")
-    date_hierarchy = "created_at"
     readonly_fields = [f.name for f in AuditLog._meta.fields]
 
     def has_add_permission(self, request: HttpRequest) -> bool:

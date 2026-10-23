@@ -26,6 +26,8 @@ from .base import JudgeBackend
 
 OUTPUT_KEEP_CHARS = 2000  # bazada saqlanadigan chiqish/xato uzunligi
 STARTUP_GRACE_S = 1.0  # interpretator ishga tushishi uchun qo'shimcha vaqt (o'ldirishdan oldin)
+# POSIX'da RLIMIT_AS virtual xotirani cheklaydi; interpretatorning o'zi ham joy oladi
+POSIX_AS_OVERHEAD_MB = 64
 
 IS_WINDOWS = sys.platform == "win32"
 
@@ -127,7 +129,7 @@ def _posix_limits(limits: Limits):
     def apply() -> None:  # pragma: no cover - Windows'da ishlamaydi
         import resource
 
-        memory = limits.memory_mb * 1024 * 1024
+        memory = (limits.memory_mb + POSIX_AS_OVERHEAD_MB) * 1024 * 1024
         resource.setrlimit(resource.RLIMIT_AS, (memory, memory))
         cpu = int(limits.time_ms / 1000) + 1
         resource.setrlimit(resource.RLIMIT_CPU, (cpu, cpu + 1))

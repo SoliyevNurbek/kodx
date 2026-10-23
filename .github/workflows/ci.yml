@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches: [main, "stage-*"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          # Faqat CI konteyneri uchun (vaqtinchalik). Loyiha root bilan ishlamaydi — kodx_user ishlatiladi.
+          MYSQL_ROOT_PASSWORD: ci-root
+          MYSQL_DATABASE: kodx
+          MYSQL_USER: kodx_user
+          MYSQL_PASSWORD: ci-kodx-password
+        ports: ["3306:3306"]
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -pci-root"
+          --health-interval=5s --health-timeout=5s --health-retries=20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Tizim kutubxonalari (mysqlclient uchun)
+        run: sudo apt-get update && sudo apt-get install -y default-libmysqlclient-dev pkg-config
+
+      - name: Virtual muhit va qaramliklar
+        # venv shart: LocalDevBackend foydalanuvchi kodini asosiy interpretatorda (venv paketlarisiz) ishga tushiradi
+        run: |
+          python -m venv venv
+          venv/bin/pip install --upgrade pip
+          venv/bin/pip install -r requirements-dev.txt
+
+      - name: Test bazasi uchun huquq va utf8mb4
+        run: |
+          mysql -h 127.0.0.1 -uroot -pci-root -e "ALTER DATABASE kodx CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+            GRANT ALL PRIVILEGES ON test_kodx.* TO 'kodx_user'@'%'; FLUSH PRIVILEGES;"
+
+      - name: .env (CI uchun)
+        run: |
+          cat > .env <<EOF
+          SECRET_KEY=$(python -c "import secrets; print(secrets.token_urlsafe(50))")
+          DEBUG=True
+          ALLOWED_HOSTS=127.0.0.1,localhost
+          DB_NAME=kodx
+          DB_USER=kodx_user
+          DB_PASSWORD=ci-kodx-password
+          DB_HOST=127.0.0.1
+          DB_PORT=3306
+          JUDGE_BACKEND=local
+          EOF
+
+      - name: Ruff
+        run: venv/bin/ruff check .
+
+      - name: Migratsiyalar to'liqligi
+        run: venv/bin/python manage.py makemigrations --check --dry-run
+
+      - name: Testlar va coverage
+        run: |
+          venv/bin/coverage run manage.py test --noinput
+          venv/bin/coverage report --fail-under=80
+
+      - name: Production sozlamalari tekshiruvi
+        run: venv/bin/python manage.py check --deploy --settings=config.settings_prod --fail-level WARNING
