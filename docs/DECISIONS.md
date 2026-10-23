@@ -134,3 +134,25 @@ Har yozuv: sana · qaror · sabab · muqobil variant.
 - **Top-10 / reyting sahifasi:** hozircha yechilgan code masalalar soni; 6-bosqichda mashq bali bilan almashtiriladi.
 - **Parolni tiklash:** email konsolga (dev). Emaili yo‘q o‘quvchi — o‘qituvchi orqali (8-bosqich: vaqtinchalik parol).
 - **i18n:** barcha shablon matnlari `{% translate %}` ichida, `LANGUAGES=[uz]`, `LOCALE_PATHS` tayyor (ru/en keyin).
+
+## 2026-10-23 · Baholash va reyting (6-bosqich)
+- **Kurs bahosi** (`grading.course_grade`, musobaqa reytingidan alohida): modul = davomat + mustaqil vazifalar +
+  test + loyiha (standart 2,5 + 5 + 2,5 + 10; `GradingPolicy` da kurs bo‘yicha sozlanadi).
+  - Faqat **majburiy** (`is_required`) va nashr etilgan vazifalar; challenge baholanmaydi.
+  - Har vazifa — eng yaxshi natija ulushi; muddatdan keyingi topshiriq `late_penalty_percent` ga kamaytiriladi
+    (standart 20%). Loyiha — faqat «Baholandi» holati («Qayta ishlash kerak» hisobga olinmaydi).
+  - Davomat maxraji — guruhda davomat **olingan** darslar (kelajakdagi darslar jarimaga olib kelmaydi).
+  - Decimal, 0,01 gacha yaxlitlash.
+- **Mashq bali:** birinchi marta yechilgan vazifalar ballari yig‘indisi (code `difficulty×100`, quiz 50, loyiha 100).
+  `PracticeStats` da denormalizatsiya; judge (AC), quiz (100%) va loyiha baholashdan keyin yangilanadi;
+  `manage.py recalculate_practice` — to‘liq qayta hisob.
+- **Seriya (streak):** *birinchi yechim* sanalari (mahalliy vaqt) bo‘yicha; bugun hali yechmagan o‘quvchining joriy
+  seriyasi kechagacha saqlanadi. Muqobil: istalgan AC — eski masalani qayta yechib seriyani «ushlab turish» mumkin bo‘lardi.
+- **Nishonlar:** 12 ta (birinchi yechim, 10/50/100, 7/30 kun seriya, 5 challenge, birinchi loyiha, 4 ta modul).
+  Qoidalar kodda (`grading.practice.BADGES`), seed migratsiya bilan bazaga yoziladi; berish idempotent.
+- **Kontest reytingi:** Codeforces uslubidagi Elo (`grading.rating`): kutilgan o‘rin → maqsadli reyting (ikkilik qidiruv),
+  delta/2, inflyatsiyaga qarshi tuzatishlar. Boshlang‘ich 1200 — `User.rating` default o‘zgartirildi va mavjud 0 lar
+  1200 ga ko‘chirildi (1-bosqichdagi «0» qarori MASTER_PROMPT bilan almashtirildi). `RatingHistory` modeli kontest
+  modeliga FK bo‘lgani uchun 7-bosqichda (kontestlar bilan) qo‘shiladi; profil shabloni unga tayyor.
+- **Reyting jadvallari:** umumiy, haftalik (oxirgi 7 kunda birinchi yechimlar), guruh, kurs; teng ball — bir xil o‘rin.
+- **Davomat:** o‘qituvchi panelida dars bo‘yicha belgilanadi (audit). CSV eksport UTF-8 BOM bilan (Excel uchun).

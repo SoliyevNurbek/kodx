@@ -1,0 +1,24 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{{ group.name }} — {% translate "davomat" %}{% endblock %}
+{% block panel %}
+<h1 class="mb-4 text-2xl font-bold">{{ group.name }} — {% translate "davomat" %}</h1>
+<form method="get" class="mb-4">
+  <select name="lesson" class="form-input w-auto" data-autosubmit aria-label="{% translate 'Dars' %}">
+    {% for l in lessons %}<option value="{{ l.number }}" {% if l.pk == lesson.pk %}selected{% endif %}>{{ l.number }}. {{ l.title }}</option>{% endfor %}
+  </select>
+</form>
+<form method="post" class="card">
+  {% csrf_token %}
+  <input type="hidden" name="lesson" value="{{ lesson.number }}">
+  <ul class="divide-y divide-slate-200 dark:divide-white/10">
+    {% for row in rows %}
+      <li class="flex items-center justify-between py-2">
+        <label class="flex items-center gap-3"><input type="checkbox" name="present" value="{{ row.user.pk }}" {% if row.present %}checked{% endif %}> {{ row.user.username }} <span class="text-sm text-slate-500">{{ row.user.get_full_name }}</span></label>
+        {% if not row.marked %}<span class="text-xs text-slate-500">{% translate "belgilanmagan" %}</span>{% endif %}
+      </li>
+    {% empty %}<li class="py-2 text-slate-500">{% translate "Guruhda faol o‘quvchilar yo‘q." %}</li>{% endfor %}
+  </ul>
+  {% if rows %}<button class="btn-primary mt-4" type="submit">{% translate "Saqlash" %}</button>{% endif %}
+</form>
+{% endblock %}

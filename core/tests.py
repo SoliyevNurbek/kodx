@@ -68,6 +68,9 @@ class PublicPagesTests(TestCase):
         user = make_user("chempion")
         Submission.objects.create(user=user, problem=Problem.objects.get(slug="l05-salom"), code="x",
                                   verdict=Verdict.ACCEPTED)
+        from grading.practice import refresh_practice_stats
+
+        refresh_practice_stats(user)  # judge/quiz/loyiha servislari buni avtomatik chaqiradi
         self.assertContains(self.client.get(reverse("home")), "chempion")
 
 

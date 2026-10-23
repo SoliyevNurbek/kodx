@@ -9,7 +9,7 @@ Sessiya uzilsa — ish shu fayldan davom ettiriladi. Reja: `docs/MASTER_PROMPT.m
 | 3. Vazifalar banki | tayyor | 96 |
 | 4. Yechimlar va tekshiruv | tayyor | 129 |
 | 5. Sahifalar (UI) | tayyor | 175 |
-| 6. Baholash va reyting | — | |
+| 6. Baholash va reyting | tayyor | 214 |
 | 7. Kontestlar | — | |
 | 8. Rollar oqimi va xavfsizlik | — | |
 | 9. Sifat va hujjatlar | — | |
@@ -54,3 +54,10 @@ Sessiya uzilsa — ish shu fayldan davom ettiriladi. Reja: `docs/MASTER_PROMPT.m
 - 46 ta view testi (ruxsat bor/yo‘q matritsasi bilan). Haqiqiy bazada barcha asosiy sahifalar 200.
 - Egasi uchun: 375/768/1440 px da vizual ko‘rib chiqish (responsiv klasslar va overflow-x jadvallar ishlatilgan).
 - Keyingi qadam: 6-bosqich — baholash va reyting.
+
+## 6-bosqich — Baholash va reyting (tayyor)
+- `grading`: GradingPolicy, Attendance, PracticeStats, Badge/UserBadge; seed: 12 nishon, standart siyosat.
+- Kurs bahosi (modul × 4 komponent, kechikish jarimasi), guruh baholari jadvali + CSV, davomat sahifasi.
+- Mashq bali, kunlik seriya, nishonlar (avtomatik); reyting jadvallari: umumiy/haftalik/guruh/kurs, o‘z o‘rni.
+- Elo/CF reyting algoritmi (`grading.rating`), boshlang‘ich 1200.
+- 39 yangi test (chekka holatlar). Jami 214. Keyingi qadam: 7-bosqich — kontestlar.

@@ -22,9 +22,15 @@
   <section class="space-y-6 md:col-span-2">
     <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
       <div class="card text-center"><div class="text-2xl font-bold text-accent">{{ solved_count }}</div><div class="text-sm text-slate-500">{% translate "yechilgan" %}</div></div>
-      <div class="card text-center"><div class="text-2xl font-bold text-gold">{{ person.practice_score|default:0 }}</div><div class="text-sm text-slate-500">{% translate "mashq bali" %}</div></div>
+      <div class="card text-center"><div class="text-2xl font-bold text-gold">{{ practice.score|default:0 }}</div><div class="text-sm text-slate-500">{% translate "mashq bali" %}</div></div>
       <div class="card text-center"><div class="text-2xl font-bold">{{ person.rating }}</div><div class="text-sm text-slate-500">{% translate "kontest reytingi" %}</div></div>
     </div>
+    {% if practice %}
+    <div class="card flex flex-wrap gap-6 text-sm">
+      <span>🔥 {% translate "Joriy seriya" %}: <strong>{{ practice.current_streak }}</strong> {% translate "kun" %}</span>
+      <span>🏆 {% translate "Eng uzun seriya" %}: <strong>{{ practice.best_streak }}</strong> {% translate "kun" %}</span>
+    </div>
+    {% endif %}
     <div class="card">
       <h2 class="mb-3 font-semibold">{% translate "Faollik" %}</h2>
       <div class="flex gap-1 overflow-x-auto pb-1" role="img" aria-label="{% translate 'Faollik kalendari' %}">
