@@ -1,0 +1,4 @@
+# Test fayllari va seed kontent doim LF bilan (Windows checkout CRLF ga aylantirmasin)
+problems/seed/** text eol=lf
+docs/examples/** text eol=lf
+*.py text eol=lf

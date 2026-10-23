@@ -97,3 +97,23 @@ Har yozuv: sana · qaror · sabab · muqobil variant.
 - **Darsga biriktirish:** oson — sinf ishi, o‘rta — uyga vazifa, challenge — qo‘shimcha (majburiy emas);
   quiz — sinf ishi; loyiha — uyga vazifa. Ball: code `difficulty × 100`, quiz 50, loyiha 100.
 - **Testlar media’si:** test runner MEDIA_ROOT’ni vaqtinchalik papkaga almashtiradi (seed migratsiya ham u yerga yozadi).
+
+## 2026-10-23 · Yechimlar (4-bosqich)
+- **Navbat:** `JudgeQueue` interfeysi + `DatabaseQueue` (`SELECT … FOR UPDATE SKIP LOCKED`, MySQL 8). Bir nechta
+  worker parallel ishlashi mumkin. Redis/Celery — `JUDGE_QUEUE` sozlamasini almashtirish orqali.
+  Muqobil: Celery hozirdanoq — OpenServer muhitida Redis qo‘shimcha xizmat talab qiladi, MVP uchun ortiqcha.
+- **Rate limit:** bazadagi oxirgi 60 soniyadagi yechimlar soni (6 ta). Kesh/Redis shart emas, bir nechta
+  web-jarayonda ham to‘g‘ri ishlaydi.
+- **Kod hajmi:** 64 KB — UTF-8 baytlarida (belgilarda emas).
+- **Ball:** `problem.points × (o‘tgan testlar bali / jami test bali)`, butunga yaxlitlangan (IOI uslubi).
+  Yakuniy verdikt — birinchi muvaffaqiyatsiz test verdikti.
+- **Quiz:** javoblar savol/variant *tartib raqami* bilan saqlanadi (ID emas) — re-import savollarni qayta yaratsa ham
+  eski urinishlar ma’nosini yo‘qotmaydi. `multiple` — to‘plam aynan mos bo‘lsa ball (qisman ball yo‘q).
+  `text` — katta-kichik harf va chetdagi bo‘shliqlarsiz.
+- **Loyiha:** faqat `https://github.com/<egasi>/<repo>` havolalari; har qayta topshirish — yangi yozuv (tarix saqlanadi);
+  moderator «Qayta ishlash kerak» holatini berishi mumkin. «Yechilgan» = kamida bitta «Baholandi».
+- **Kod ko‘rinishi:** egasi va moderator+ — doim; boshqalar — o‘zi masalani yechgan bo‘lsa yoki kontest tugagan bo‘lsa.
+- **Kontest maydoni:** `Submission.contest` 7-bosqichda (kontest modeli bilan birga) qo‘shiladi; ko‘rinish qoidasi
+  allaqachon `_contest_finished()` ilgagi orqali tayyor.
+- **Worker:** ishga tushganda 5 daqiqadan eski `running` yechimlarni navbatga qaytaradi; backend xatosi worker’ni
+  yiqitmaydi — yechim «Ichki xato» oladi.
