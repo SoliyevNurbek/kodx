@@ -11,12 +11,14 @@ Sessiya uzilsa — ish shu fayldan davom ettiriladi. Reja: `docs/MASTER_PROMPT.m
 | 5. Sahifalar (UI) | tayyor | 175 |
 | 6. Baholash va reyting | tayyor | 214 |
 | 7. Kontestlar | tayyor | 244 |
-| 8. Rollar oqimi va xavfsizlik | — | |
+| 8. Rollar oqimi va xavfsizlik | tayyor | 265 |
 | 9. Sifat va hujjatlar | — | |
 
 ## Egasi bajarishi kerak bo‘lgan ishlar
 - [ ] `venv/Scripts/python manage.py init_superuser` — `nurbek` ga parol o‘rnatadi
   (agent uchun bloklangan, qarang DECISIONS.md). Parol `.env` ning oxirgi qatorida.
+- [ ] Birinchi kirishda: parolni almashtirish (majburiy), keyin `/panel/` ochilganda autentifikator ilovada
+  (Google Authenticator, Aegis) QR-kodni skanerlab 2FA ni yoqish.
 
 ## 2-bosqich — Kurs tuzilmasi (tayyor)
 - Course, Module, Lesson (dars / loyiha himoyasi / Demo Day), Group, GroupMember.
@@ -69,3 +71,10 @@ Sessiya uzilsa — ish shu fayldan davom ettiriladi. Reja: `docs/MASTER_PROMPT.m
 - Jury paneli: kontest yaratish/tahrirlash, masalalar, ishtirokchilar, reytingni qo‘lda hisoblash.
 - Reyting: worker va `apply_contest_ratings` avtomatik; profilda reyting grafigi. Seed: «Kirish kontesti».
 - 30 yangi test. Jami 244. Keyingi qadam: 8-bosqich — rollar oqimi va xavfsizlik.
+
+## 8-bosqich — Rollar oqimi va xavfsizlik (tayyor)
+- Rol so‘rovi sahifasi (o‘quvchi) + moderator tasdiqlashi; vaqtinchalik parol (bir marta ko‘rsatiladi, majburiy almashtirish).
+- Super admin 2FA (TOTP, QR), kirish urinishlari cheklovi (5 / 15 daqiqa), audit.
+- `check_similarity` + moderator paneli «O‘xshash yechimlar».
+- CSP (nonce), xavfsizlik sarlavhalari; `config/settings_prod.py`, `check --deploy` toza.
+- 21 yangi test. Jami 265. Keyingi qadam: 9-bosqich — sifat, CI, seed_demo, hujjatlar.

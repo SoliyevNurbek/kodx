@@ -17,7 +17,9 @@ urlpatterns = [
     path("loyihalar/", views.projects_queue, name="projects"),
     path("loyihalar/<int:pk>/", views.project_grade, name="project_grade"),
     path("rol-sorovlari/", views.role_requests, name="role_requests"),
+    path("oxshashlik/", views.similarity, name="similarity"),
     path("foydalanuvchilar/", views.users, name="users"),
+    path("foydalanuvchilar/<int:pk>/vaqtinchalik-parol/", views.temp_password, name="temp_password"),
     # Jury Pro
     path("vazifalarim/", views.my_problems, name="my_problems"),
     path("vazifalarim/yangi/", views.problem_create, name="problem_create"),

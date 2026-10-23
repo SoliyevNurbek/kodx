@@ -7,7 +7,7 @@ from django.http import HttpRequest
 from accounts.models import Role
 from accounts.permissions import RoleAdminMixin
 
-from .models import ProjectSubmission, QuizAttempt, Submission, SubmissionResult
+from .models import ProjectSubmission, QuizAttempt, SimilarityMatch, Submission, SubmissionResult
 from .services import rejudge
 
 
@@ -69,3 +69,9 @@ class ProjectSubmissionAdmin(ReadOnlyMixin, admin.ModelAdmin):
     list_filter = ("status",)
     search_fields = ("user__username", "problem__slug")
     readonly_fields = [f.name for f in ProjectSubmission._meta.fields]
+
+
+@admin.register(SimilarityMatch)
+class SimilarityMatchAdmin(ReadOnlyMixin, admin.ModelAdmin):
+    list_display = ("problem", "submission_a", "submission_b", "score", "created_at")
+    list_filter = ("problem",)

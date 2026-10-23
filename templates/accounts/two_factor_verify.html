@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Tasdiqlash kodi" %}{% endblock %}
+{% block content %}
+<div class="mx-auto max-w-md">
+  <h1 class="mb-2 text-2xl font-bold">{% translate "Tasdiqlash kodi" %}</h1>
+  <p class="mb-4 text-sm text-slate-500">{% translate "Autentifikator ilovadagi 6 xonali kodni kiriting." %}</p>
+  <form method="post" class="card">{% csrf_token %}<input type="hidden" name="next" value="{{ next }}">{% include "_form.html" %}<button class="btn-primary w-full" type="submit">{% translate "Kirish" %}</button></form>
+</div>
+{% endblock %}

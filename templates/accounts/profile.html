@@ -17,6 +17,7 @@
       {% if person.email %}<p class="mt-3 text-xs text-slate-500">{% translate "Email (faqat sizga ko‘rinadi):" %} {{ person.email }}</p>{% endif %}
       <a class="btn-secondary mt-4" href="{% url 'profile_edit' %}">{% translate "Profilni tahrirlash" %}</a>
       <a class="btn-secondary mt-2" href="{% url 'password_change' %}">{% translate "Parolni almashtirish" %}</a>
+      {% if not person.is_jury_pro %}<a class="btn-secondary mt-2" href="{% url 'role_request' %}">{% translate "Rol so‘rash" %}</a>{% endif %}
     {% endif %}
   </section>
   <section class="space-y-6 md:col-span-2">

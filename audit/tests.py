@@ -1,6 +1,6 @@
 """Audit jurnali va admin xavfsizligi testlari."""
 
-from django.test import RequestFactory, TestCase
+from django.test import RequestFactory, TestCase, override_settings
 from django.urls import reverse
 
 from accounts.models import Role, User
@@ -23,6 +23,7 @@ class LogActionTests(TestCase):
         self.assertEqual(log.ip, "10.0.0.7")
 
 
+@override_settings(KODX_REQUIRE_SUPERADMIN_2FA=False)  # 2FA alohida testlanadi (accounts.test_security)
 class AdminSecurityTests(TestCase):
     """Admin panelda parol ko'rinmasligi va audit jurnali o'zgarmasligi."""
 
