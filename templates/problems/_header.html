@@ -3,15 +3,15 @@
   <div>
     {% if lesson %}<a class="text-sm text-slate-500 hover:text-accent" href="{% url 'lesson_detail' lesson.module.course.slug lesson.number %}">← {{ lesson.number }}. {{ lesson.title }}</a>{% endif %}
     <h1 class="text-2xl font-bold">{{ problem.title }}</h1>
-    <div class="mt-1 flex flex-wrap items-center gap-2 text-sm text-slate-500">
+    <div class="mt-1 flex flex-wrap items-center gap-2 text-sm text-gray-400">
       <span>{{ problem.get_type_display }}</span> · <span class="text-gold">{{ problem.difficulty|stars }}</span> ·
       <span>{{ problem.points }} {% translate "ball" %}</span>
       {% if problem.type == "code" %}· <span>{{ problem.time_limit }} ms · {{ problem.memory_limit }} MB</span>{% endif %}
-      {% if problem.status != "published" %}<span class="badge badge-attempted">{{ problem.get_status_display }}</span>{% endif %}
+      {% if problem.status != "published" %}<span class="rounded-full bg-amber-400/10 px-2.5 py-1 text-xs font-semibold text-amber-200">{{ problem.get_status_display }}</span>{% endif %}
     </div>
   </div>
   <div class="flex items-center gap-2">
-    <span class="badge badge-{{ status }}">{% if status == "solved" %}{% translate "yechilgan" %}{% elif status == "attempted" %}{% translate "urinilgan" %}{% else %}{% translate "yangi" %}{% endif %}</span>
-    {% if can_edit %}<a class="btn-secondary text-sm" href="{% url 'panel:problem_edit' problem.slug %}">{% translate "Tahrirlash" %}</a>{% endif %}
+    <span class="badge-{{ status }} rounded-full bg-cyan-400/10 px-2.5 py-1 text-xs font-semibold text-cyan-200">{% if status == "solved" %}{% translate "yechilgan" %}{% elif status == "attempted" %}{% translate "urinilgan" %}{% else %}{% translate "yangi" %}{% endif %}</span>
+    {% if can_edit %}<a class="rounded-lg bg-white/5 px-3 py-2 text-sm font-medium text-gray-200 ring-1 ring-white/10 transition hover:bg-white/10" href="{% url 'panel:problem_edit' problem.slug %}">{% translate "Tahrirlash" %}</a>{% endif %}
   </div>
 </div>
