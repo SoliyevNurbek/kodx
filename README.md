@@ -72,6 +72,20 @@ Hujjatlar: [Arxitektura](docs/ARCHITECTURE.md) · [Rollar matritsasi](docs/ROLES
    venv/Scripts/coverage run manage.py test && venv/Scripts/coverage report
    ```
 
+## Bosh sahifa surati
+
+Hero’dagi muallif surati `scripts/make_hero_image.py` bilan yaratiladi (Pillow):
+
+```bash
+venv/Scripts/python scripts/make_hero_image.py
+```
+
+Natija: `static/img/hero-nurbek.png` (manba), `hero-nurbek-800.webp`, `hero-nurbek-1200.webp` (sifat 85) — har
+ishga tushirishda qayta yoziladi. Hozir surat dizayn maketidan (`docs/design/landing-mockup.jfif`) qirqib olinadi.
+**Haqiqiy surat** qo‘yish uchun uni `static/img/hero-nurbek-source.png` nomi bilan saqlang va skriptni qayta
+ishga tushiring — skript maket o‘rniga shu fayldan foydalanadi (portret, kengligi ≥ 1200 px tavsiya etiladi).
+Muallif kartasidagi matnlar: panel → Tizim sozlamalari.
+
 ## Rollar
 
 Har yuqori rol pastdagilarning barcha huquqlarini o‘z ichiga oladi (`user.has_role_at_least(Role.JURY)`).

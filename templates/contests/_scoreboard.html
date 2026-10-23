@@ -1,19 +1,19 @@
 {% load i18n kodx %}
 <div id="scoreboard"
      {% if contest.is_running %}hx-get="{% url 'contest_scoreboard' contest.slug %}?partial=1" hx-trigger="every 15s" hx-swap="outerHTML"{% endif %}>
-  {% if board.frozen %}<div class="card mb-3 text-sm text-amber-600 dark:text-amber-300">❄ {% translate "Jadval muzlatilgan: oxirgi daqiqalardagi natijalar kontest tugagach ko‘rsatiladi." %}</div>{% endif %}
-  <div class="card overflow-x-auto">
-    <table class="table-kodx text-sm">
-      <thead><tr><th>#</th><th>{% translate "Ishtirokchi" %}</th>
-        {% for label in board.labels %}<th class="text-center">{{ label }}</th>{% endfor %}
-        {% if contest.scoring == "ioi" %}<th class="text-right">{% translate "Ball" %}</th>{% else %}<th class="text-right">{% translate "Yechilgan" %}</th><th class="text-right">{% translate "Jarima" %}</th>{% endif %}</tr></thead>
-      <tbody>
+  {% if board.frozen %}<div class="mb-3 rounded-xl bg-amber-400/10 p-4 text-sm text-amber-200 shadow-lg shadow-amber-500/5">❄ {% translate "Jadval muzlatilgan: oxirgi daqiqalardagi natijalar kontest tugagach ko‘rsatiladi." %}</div>{% endif %}
+  <div class="overflow-x-auto rounded-xl bg-[#172540] p-3 shadow-lg shadow-cyan-500/10 sm:p-5">
+    <table class="w-full border-separate border-spacing-y-2 text-sm">
+      <thead><tr class="text-xs uppercase tracking-wider text-gray-400"><th class="px-3 py-2 text-left">#</th><th class="px-3 py-2 text-left">{% translate "Ishtirokchi" %}</th>
+        {% for label in board.labels %}<th class="px-3 py-2 text-center">{{ label }}</th>{% endfor %}
+        {% if contest.scoring == "ioi" %}<th class="px-3 py-2 text-right">{% translate "Ball" %}</th>{% else %}<th class="px-3 py-2 text-right">{% translate "Yechilgan" %}</th><th class="px-3 py-2 text-right">{% translate "Jarima" %}</th>{% endif %}</tr></thead>
+      <tbody class="[&_tr:nth-child(1)_td:first-child]:text-[#D9B25F] [&_tr:nth-child(2)_td:first-child]:text-slate-300 [&_tr:nth-child(3)_td:first-child]:text-amber-700">
       {% for row in board.rows %}
-        <tr class="{% if row.user.pk == user.pk %}bg-accent/10 font-semibold{% endif %}">
-          <td>{{ row.rank }}</td>
-          <td class="whitespace-nowrap"><a class="hover:text-accent" href="{% url 'profile' row.user.username %}">{{ row.user.username }}</a></td>
+        <tr class="bg-[#1D2D49] text-gray-200 transition hover:bg-[#243858] {% if row.user.pk == user.pk %}bg-accent/10 font-semibold{% endif %}">
+          <td class="rounded-l-lg px-3 py-3 font-bold text-[#D9B25F]">{{ row.rank }}</td>
+          <td class="whitespace-nowrap px-3 py-3"><a class="font-medium transition hover:text-cyan-300" href="{% url 'profile' row.user.username %}">{{ row.user.username }}</a></td>
           {% for label in board.labels %}{% with c=row.cells|get_item:label %}
-            <td class="text-center">
+            <td class="px-2 py-3 text-center">
               {% if contest.scoring == "ioi" %}
                 {% if c.score or c.solved %}<span class="{% if c.solved %}text-emerald-500{% else %}text-amber-500{% endif %}">{{ c.score }}</span>{% elif c.pending %}<span class="text-slate-400">?</span>{% else %}<span class="text-slate-400">·</span>{% endif %}
               {% elif c.solved %}
@@ -23,7 +23,7 @@
               {% else %}<span class="text-slate-400">·</span>{% endif %}
             </td>
           {% endwith %}{% endfor %}
-          {% if contest.scoring == "ioi" %}<td class="text-right font-bold">{{ row.score }}</td>{% else %}<td class="text-right font-bold">{{ row.solved }}</td><td class="text-right">{{ row.penalty }}</td>{% endif %}
+          {% if contest.scoring == "ioi" %}<td class="rounded-r-lg px-3 py-3 text-right font-bold text-[#D9B25F]">{{ row.score }}</td>{% else %}<td class="px-3 py-3 text-right font-bold">{{ row.solved }}</td><td class="rounded-r-lg px-3 py-3 text-right text-gray-400">{{ row.penalty }}</td>{% endif %}
         </tr>
       {% empty %}<tr><td colspan="99" class="text-slate-500">{% translate "Hali ishtirokchilar yo‘q." %}</td></tr>{% endfor %}
       </tbody>

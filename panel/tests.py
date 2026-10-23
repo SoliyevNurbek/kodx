@@ -214,7 +214,8 @@ class SuperadminPanelTests(TestCase):
     def test_site_settings_update(self) -> None:
         response = self.client.post(reverse("panel:system"), {
             "site_name": "kodx", "tagline": "Yangi shior", "color_background": "#101010",
-            "color_accent": "#00FF00", "color_gold": "#D9B25F",
+            "color_accent": "#00FF00", "color_gold": "#D9B25F", "hero_author_label": "Kurs muallifi:",
+            "hero_author_name": "Nurbek Soliyev", "hero_author_title": "Yangi lavozim",
         })
         self.assertRedirects(response, reverse("panel:system"))
         settings = SiteSettings.load()
@@ -222,6 +223,7 @@ class SuperadminPanelTests(TestCase):
         self.assertEqual(settings.color_accent, "#00FF00")
         self.assertTrue(AuditLog.objects.filter(action="site_settings_updated").exists())
         self.assertContains(self.client.get(reverse("home")), "--kx-accent: #00FF00")
+        self.assertContains(self.client.get(reverse("home")), "Yangi lavozim")
 
     def test_invalid_color_rejected(self) -> None:
         response = self.client.post(reverse("panel:system"), {

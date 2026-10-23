@@ -28,6 +28,27 @@
     if (event.target.hasAttribute("data-autosubmit") && event.target.form) event.target.form.submit();
   });
 
+  // [data-count-to] — 0 dan N gacha sanash animatsiyasi ("146+"); prefers-reduced-motion da o'chiq
+  var counters = document.querySelectorAll("[data-count-to]");
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (counters.length && !reduceMotion && window.requestAnimationFrame) {
+    counters.forEach(function (el) {
+      var target = parseInt(el.getAttribute("data-count-to"), 10) || 0;
+      if (target <= 0) return;
+      var duration = 1200;
+      var start = null;
+      el.textContent = "0+";
+      var step = function (now) {
+        if (start === null) start = now;
+        var progress = Math.min((now - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(target * eased) + "+";
+        if (progress < 1) window.requestAnimationFrame(step);
+      };
+      window.requestAnimationFrame(step);
+    });
+  }
+
   // .math elementlaridagi $...$ formulalarni KaTeX bilan chizish (KaTeX yuklangan sahifalarda)
   window.kodxRenderMath = function (root) {
     if (!window.katex) return;

@@ -92,6 +92,12 @@ Sessiya uzilsa — ish shu fayldan davom ettiriladi. Reja: `docs/MASTER_PROMPT.m
 4. ✅ Barcha testlar o‘tadi, coverage ≥ 80% (95%), ruff toza, `.env` hech qachon commit qilinmagan.
 5. ✅ Barcha bosqichlar «tayyor».
 
+## Landing hero (2026-10-23)
+- Bosh sahifa hero bo‘limi maket bo‘yicha qayta qurildi: CSS Grid (1.1fr / 1fr), CTA va «1-dars BEPUL!», 2×2
+  statistika (seed akkauntlarsiz, 10 daqiqa kesh, sanash animatsiyasi), muallif surati (`scripts/make_hero_image.py`),
+  suzuvchi SVG ikonkalar, shisha effektli muallif kartasi (sayt sozlamalaridan). Responsiv: 320 px gacha scroll’siz.
+- Sidebar: «Panel» faqat moderator+; breadcrumb qatori. 14 ta yangi test (`core/test_home.py`).
+
 ## Keyingi tavsiyalar (MVP dan keyin)
 - Tailwind build (CDN o‘rniga) va CSP’dan `style-src 'unsafe-inline'` ni olib tashlash.
 - Production’da Judge0 serverini ko‘tarish; Redis/Celery navbati (`JUDGE_QUEUE`).

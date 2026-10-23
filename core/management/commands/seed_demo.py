@@ -62,7 +62,8 @@ class Command(BaseCommand):
     def _users(self, count: int, password: str) -> list[User]:
         users = []
         for index in range(count):
-            user = User(username=f"{DEMO_PREFIX}{index + 1:02d}", first_name=FIRST_NAMES[index % len(FIRST_NAMES)])
+            user = User(username=f"{DEMO_PREFIX}{index + 1:02d}", first_name=FIRST_NAMES[index % len(FIRST_NAMES)],
+                        is_seed=True)
             if password:
                 user.set_password(password)
             else:

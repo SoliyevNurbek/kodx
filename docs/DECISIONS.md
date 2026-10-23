@@ -220,3 +220,32 @@ Har yozuv: sana · qaror · sabab · muqobil variant.
 - **Admin `date_hierarchy` olib tashlandi:** MySQL vaqt zonasi jadvallari yuklanmagan serverlarda (OpenServer odatda)
   `CONVERT_TZ` NULL qaytaradi va sahifa yiqiladi. Statistikalar ham shu sababli Python’da hisoblanadi.
 - **README dagi rol nomlari:** egasining `judge`/`judge_pro` tahriri saqlandi; koddagi identifikatorlar izohda ko‘rsatildi.
+
+## 2026-10-23 · Landing hero (branch `landing-hero`)
+- **Maket:** `docs/design/landing-mockup.jfif` haqiqiy o‘lchami 2752×1536 (vazifadagi 2576×1438 emas). Muallif surati
+  `scripts/make_hero_image.py` bilan qirqildi: **x 1680–2390, y 205–1130** (710×925). Chap chegara h1 matni («…sala»,
+  x ≤ 1665), o‘ng — ICPC/IT Park logotiplari va ikonkalar (x ≥ 2400), past — «KURS MUALLIFI» kartasi (y ≥ 1143),
+  yuqori — breadcrumb qatori (y ≤ 186). Chap yelkaning bir qismi kesildi — logotip/matn tushmasligi ustun.
+  Koordinatalar maket boshqa o‘lchamda saqlansa mutanosib o‘zgaradi.
+- **Upscale:** kesim 710 px kenglikda, 1200w WebP LANCZOS bilan kattalashtiriladi (sifati 800w dan yaxshi emas).
+  Haqiqiy surat `static/img/hero-nurbek-source.png` qo‘yilsa, skript uni butunligicha ishlatadi.
+- **Egasining sidebar ishi:** ishchi nusxadagi commit qilinmagan sidebar/sahifa dizayni («Sidebar o‘zgarmaydi»)
+  branch’ning birinchi commit’i sifatida saqlandi; landing maketi ham shu commit’da.
+- **«Panel» havolasi** sidebar’da faqat moderator+ ga ko‘rinadi (avval jury/jury_pro ham). Jury/Jury Pro panelga
+  `/panel/` orqali kirish huquqini saqlaydi — faqat havola yashirildi.
+- **Statistika:** seed hisobi uchun `User.is_seed` maydoni qo‘shildi (`seed_demo` belgilaydi; migratsiya mavjud
+  `demoNN` akkauntlarni belgilaydi). `is_seed` akkauntlar va ularning yechimlari hisoblanmaydi. `Problem.is_seed`
+  (kursning seed vazifalari) — haqiqiy kontent, «vazifalar» ga kiradi; faqat `published`. Kesh — 10 daqiqa
+  (`kodx:site_counters`, standart LocMem kesh).
+- **Kicker** matni `site.tagline` dan olinadi (standart qiymati — «Dasturlash va sun’iy intellekt asoslari»,
+  CSS bilan katta harf). Muallif kartasi matnlari — `SiteSettings.hero_author_*` (panel → Tizim sozlamalari va admin).
+- **«Kursni boshlash»:** mehmon → ro‘yxatdan o‘tish (o‘chirilgan bo‘lsa — kirish); kirgan → kurs sahifasi
+  (kurs yo‘q bo‘lsa — masalalar). «1-dars BEPUL!» — bitta, CTA o‘ramida absolute; 1-dars yo‘q bo‘lsa ko‘rinmaydi.
+- **h1 o‘lchami:** spetsifikatsiyadagi `clamp(2.5rem, 1rem + 4vw, 4.5rem)` sidebar bilan chap ustunga sig‘maydi
+  («Dasturlashni» 4.5rem da ~480 px), shuning uchun `min(clamp(…), 9.2cqi)` (≥ 768px, majburiy 2 qator) va
+  `min(clamp(…), 14cqi)` (telefon, erkin o‘tish) — ustun kengligiga nisbatan cheklov.
+- **Mavzular:** hero chap qismi yorug‘ mavzuda och fon + to‘q matn (oltin #8A6417, cyan raqam #0E7490 — kontrast
+  ≥ 5:1), qorong‘ida maketdagidek to‘q ko‘k. O‘ng «sahna» ikkala mavzuda to‘q (surat foni). Tokenlar —
+  `static/css/hero.css` boshida (`--hero-*`), brend ranglari sayt sozlamalaridan (`--kx-*`).
+- **Hamkor logotiplari** (ICPC, IT Park) va «Python AI & Web» yozuvi qo‘shilmadi; ikonkalar (Python, VS Code, GitHub,
+  AI) — inline SVG. Bosh sahifadagi modullar/Top-10 blokidagi yorug‘ mavzuda ko‘rinmay qolgan oq matnlar tuzatildi.
