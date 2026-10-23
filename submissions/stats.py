@@ -3,6 +3,7 @@
 from collections import Counter
 from datetime import date, timedelta
 
+from django.core.cache import cache
 from django.db.models import Count, F, Q
 from django.utils import timezone
 
@@ -78,17 +79,30 @@ def top_solvers(limit: int = 10) -> list[dict]:
     return [{"username": r["user__username"], "solved": r["solved"], "points": r["solved"]} for r in rows]
 
 
+SITE_COUNTERS_CACHE_KEY = "kodx:site_counters"
+SITE_COUNTERS_TTL = 600  # 10 daqiqa
+
+
 def site_counters() -> dict[str, int]:
-    """Bosh sahifa statistikasi."""
+    """
+    Bosh sahifa statistikasi (10 daqiqa keshlanadi).
+
+    seed_demo akkauntlari (`is_seed`) va ularning yechimlari hisobga olinmaydi; vazifalar — faqat nashr etilganlar.
+    """
     from accounts.models import User
     from problems.models import Problem
 
-    return {
-        "users": User.objects.filter(is_active=True).count(),
-        "problems": Problem.objects.filter(status=Problem.Status.PUBLISHED).count(),
-        "submissions": Submission.objects.count(),
-        "accepted": Submission.objects.filter(verdict=Verdict.ACCEPTED).count(),
-    }
+    counters = cache.get(SITE_COUNTERS_CACHE_KEY)
+    if counters is None:
+        real = Submission.objects.filter(user__is_seed=False)
+        counters = {
+            "users": User.objects.filter(is_active=True, is_seed=False).count(),
+            "problems": Problem.objects.filter(status=Problem.Status.PUBLISHED).count(),
+            "submissions": real.count(),
+            "accepted": real.filter(verdict=Verdict.ACCEPTED).count(),
+        }
+        cache.set(SITE_COUNTERS_CACHE_KEY, counters, SITE_COUNTERS_TTL)
+    return counters
 
 
 def solved_count_by_user(user_ids: list[int]) -> dict[int, int]:

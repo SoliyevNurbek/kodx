@@ -29,7 +29,7 @@ class UserAdmin(RoleAdminMixin, BaseUserAdmin):
     admin_role = Role.MODERATOR
 
     list_display = ("username", "first_name", "last_name", "role", "rating", "is_active", "date_joined")
-    list_filter = ("role", "is_active", "is_staff", "must_change_password")
+    list_filter = ("role", "is_active", "is_staff", "must_change_password", "is_seed")
     search_fields = ("username", "first_name", "last_name", "email")
     ordering = ("-date_joined",)
     actions = ("force_password_reset",)
@@ -38,7 +38,7 @@ class UserAdmin(RoleAdminMixin, BaseUserAdmin):
         (None, {"fields": ("username",)}),
         ("Shaxsiy ma'lumotlar", {"fields": ("first_name", "last_name", "email", "bio", "avatar")}),
         ("Rol va reyting", {"fields": ("role", "rating")}),
-        ("Holat", {"fields": ("is_active", "must_change_password", "is_staff", "is_superuser")}),
+        ("Holat", {"fields": ("is_active", "must_change_password", "is_seed", "is_staff", "is_superuser")}),
         ("Sanalar", {"fields": ("last_login", "date_joined")}),
     )
     add_fieldsets = (

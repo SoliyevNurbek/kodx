@@ -47,6 +47,12 @@ class User(AbstractUser):
         default=False,
         help_text="Belgilansa, foydalanuvchi keyingi kirishda yangi parol o'rnatadi.",
     )
+    is_seed = models.BooleanField(
+        "demo/seed akkaunt",
+        default=False,
+        db_index=True,
+        help_text="seed_demo yaratgan akkaunt — bosh sahifa statistikasida hisobga olinmaydi.",
+    )
 
     objects = KodxUserManager()
 

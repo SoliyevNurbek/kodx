@@ -1,58 +1,103 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n static %}
 {% block title %}{% translate "Bosh sahifa" %}{% endblock %}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/hero.css' %}">
+  <link rel="preload" as="image" type="image/webp" fetchpriority="high"
+        imagesrcset="{% static 'img/hero-nurbek-800.webp' %} 800w, {% static 'img/hero-nurbek-1200.webp' %} 1200w"
+        imagesizes="(min-width: 1024px) 30rem, (min-width: 768px) 20rem, 22rem">
+{% endblock %}
+{% block breadcrumb %}
+      <li aria-hidden="true">›</li>
+      <li class="truncate" aria-current="page">{% translate "Dasturlashni masala yechib o‘rganing" %}</li>
+{% endblock %}
 {% block content %}
-<section class="relative mb-8 overflow-hidden rounded-2xl bg-[#172540] p-6 text-white shadow-xl shadow-cyan-500/10 md:p-10">
-  <p class="relative text-xs font-bold uppercase tracking-widest text-[#D9B25F]">{{ site.tagline }}</p>
-  <h1 class="relative mt-3 max-w-3xl text-3xl font-bold md:text-4xl">{% translate "Dasturlashni masala yechib o‘rganing" %}</h1>
-  <p class="relative mt-3 max-w-2xl text-gray-300">
-    {% blocktranslate %}48 dars, yuzlab masalalar, testlar va loyihalar. Kodingiz avtomatik tekshiriladi, natija bir necha soniyada.{% endblocktranslate %}
-  </p>
-  <div class="relative mt-6 flex flex-wrap gap-3">
-    {% if course %}<a class="rounded-lg bg-cyan-400 px-5 py-3 font-bold text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:bg-cyan-300" href="{% url 'course_detail' course.slug %}">{% translate "Kursni boshlash" %}</a>{% endif %}
-    <a class="rounded-lg bg-white/5 px-5 py-3 font-semibold text-white ring-1 ring-white/10 transition hover:bg-white/10" href="{% url 'problem_list' %}">{% translate "Masalalar" %}</a>
-  </div>
-</section>
-
-<section class="mb-8 grid grid-cols-2 gap-3 md:grid-cols-4" aria-label="{% translate 'Statistika' %}">
-  {% for label, value in counters.items %}
-  <div class="rounded-xl bg-white p-4 text-center shadow-lg shadow-slate-950/5 dark:bg-[#172540] dark:shadow-cyan-500/5 sm:p-5">
-    <div class="text-2xl font-bold text-cyan-600 dark:text-cyan-300">{{ value }}</div>
-    <div class="text-sm text-slate-500 dark:text-gray-400">
-      {% if label == "users" %}{% translate "o‘quvchilar" %}{% elif label == "problems" %}{% translate "vazifalar" %}{% elif label == "submissions" %}{% translate "yechimlar" %}{% else %}{% translate "qabul qilingan" %}{% endif %}
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="hero-kicker">{{ site.tagline }}</p>
+    <h1 id="hero-title" class="hero-title">{% translate "Dasturlashni masala" %}<br class="hero-break"> {% translate "yechib o‘rganing" %}</h1>
+    <p class="hero-lead">
+      {% blocktranslate %}48 dars, yuzlab masalalar, testlar va loyihalar. Kodingiz avtomatik tekshiriladi, natija bir necha soniyada.{% endblocktranslate %}
+    </p>
+    <div class="hero-actions">
+      <span class="hero-cta-wrap">
+        <a class="hero-btn hero-btn-primary" href="{{ hero.start }}" data-hero-start>{% translate "Kursni boshlash" %}</a>
+        {% if hero.lesson1 %}<a class="hero-free" href="{{ hero.lesson1 }}" data-hero-free>{% translate "1-dars BEPUL!" %}</a>{% endif %}
+      </span>
+      <a class="hero-btn hero-btn-outline" href="{{ hero.problems }}" data-hero-problems>{% translate "Masalalar" %}</a>
     </div>
   </div>
-  {% endfor %}
+
+  <div class="hero-stage">
+    <div class="hero-dots" aria-hidden="true"></div>
+    <picture>
+      <source type="image/webp"
+              srcset="{% static 'img/hero-nurbek-800.webp' %} 800w, {% static 'img/hero-nurbek-1200.webp' %} 1200w"
+              sizes="(min-width: 1024px) 30rem, (min-width: 768px) 20rem, 22rem">
+      <img class="hero-photo" src="{% static 'img/hero-nurbek.png' %}" width="800" height="1042"
+           fetchpriority="high" decoding="async" alt="{% translate 'Kurs muallifi' %} {{ site.hero_author_name }}">
+    </picture>
+
+    <div class="hero-icons" aria-hidden="true">
+      <span class="hero-icon hero-icon-python">
+        <svg viewBox="0 0 24 24" width="28" height="28"><path class="hi-python-blue" d="M11.9 1C6.6 1 6.9 3.3 6.9 3.3v2.4h5.1v.7H4.9S1.5 6 1.5 11.4s3 5.2 3 5.2h1.8v-2.5s-.1-3 2.9-3h5.1s2.8 0 2.8-2.7V3.9S17.6 1 11.9 1Zm-2.8 1.6a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"/><path class="hi-python-yellow" d="M12.1 23c5.3 0 5-2.3 5-2.3v-2.4H12v-.7h7.1s3.4.4 3.4-5-3-5.2-3-5.2h-1.8v2.5s.1 3-2.9 3H9.7s-2.8 0-2.8 2.7v4.5S6.4 23 12.1 23Zm2.8-1.6a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8Z"/></svg>
+      </span>
+      <span class="hero-icon hero-icon-vscode">
+        <svg viewBox="0 0 24 24" width="28" height="28"><path class="hi-vscode" d="M17.6 1.3 9.3 8.9 4.6 5.3 2.7 6.2v11.6l1.9.9 4.7-3.6 8.3 7.6 3.7-1.8V3.1l-3.7-1.8ZM4.9 15.1V8.9L8 12l-3.1 3.1Zm12.7 1.6L12.5 12l5.1-4.7v9.4Z"/></svg>
+      </span>
+      <span class="hero-icon hero-icon-github">
+        <svg viewBox="0 0 24 24" width="28" height="28"><path class="hi-github" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+      </span>
+      <span class="hero-icon hero-icon-ai">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none"><g class="hi-ai" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="14" height="14" rx="2.5"/><path d="M9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3m14-6h3m-3 6h3"/></g><text class="hi-ai-text" x="12" y="15.2" text-anchor="middle" font-size="7.5" font-weight="700" font-family="system-ui, sans-serif">AI</text></svg>
+      </span>
+    </div>
+
+    <div class="hero-author">
+      <p class="hero-author-label">{{ site.hero_author_label }}</p>
+      <p class="hero-author-name">{{ site.hero_author_name }}</p>
+      <p class="hero-author-title">{{ site.hero_author_title }}</p>
+    </div>
+  </div>
+
+  <ul class="hero-stats" aria-label="{% translate 'Statistika' %}">
+    {% for stat in stats %}
+    <li class="hero-stat">
+      <span class="hero-stat-num" data-count-to="{{ stat.value }}">{{ stat.value }}+</span>
+      <span class="hero-stat-label">{% translate stat.label %}</span>
+    </li>
+    {% endfor %}
+  </ul>
 </section>
 
 <div class="grid gap-6 lg:grid-cols-3">
   <section class="lg:col-span-2">
     {% if course %}
-    <h2 class="mb-3 text-xl font-bold text-white">{{ course.title }}</h2>
+    <h2 class="mb-3 text-xl font-bold text-slate-900 dark:text-white">{{ course.title }}</h2>
     <div class="grid gap-3 sm:grid-cols-2">
       {% for module in course.modules.all %}
       <a class="block rounded-xl bg-white p-5 shadow-lg shadow-slate-950/5 transition hover:-translate-y-0.5 hover:shadow-cyan-500/10 dark:bg-[#172540] dark:shadow-cyan-500/5" href="{% url 'course_detail' course.slug %}#modul-{{ module.number }}">
-        <div class="text-xs font-semibold uppercase text-[#D9B25F]">{% translate "Modul" %} {{ module.number }}</div>
-        <div class="mt-1 font-semibold text-white">{{ module.title }}</div>
-        <div class="mt-2 text-sm text-gray-400">{{ module.lessons.all|length }} {% translate "dars" %}</div>
+        <div class="text-xs font-semibold uppercase text-[#8A6417] dark:text-[#D9B25F]">{% translate "Modul" %} {{ module.number }}</div>
+        <div class="mt-1 font-semibold text-slate-900 dark:text-white">{{ module.title }}</div>
+        <div class="mt-2 text-sm text-slate-500 dark:text-gray-400">{{ module.lessons.all|length }} {% translate "dars" %}</div>
       </a>
       {% endfor %}
     </div>
     {% endif %}
   </section>
   <section>
-    <h2 class="mb-3 text-xl font-bold text-white">{% translate "Top-10" %}</h2>
-    <ol class="space-y-1 rounded-xl bg-[#172540] p-4 shadow-lg shadow-cyan-500/5">
+    <h2 class="mb-3 text-xl font-bold text-slate-900 dark:text-white">{% translate "Top-10" %}</h2>
+    <ol class="space-y-1 rounded-xl bg-white p-4 shadow-lg shadow-slate-950/5 dark:bg-[#172540] dark:shadow-cyan-500/5">
       {% for row in top %}
-        <li class="flex items-center justify-between gap-2 rounded-lg px-3 py-2 transition hover:bg-white/5">
-          <span><span class="mr-2 font-mono text-gray-500">{{ forloop.counter }}.</span><a class="text-gray-200 transition hover:text-cyan-300" href="{% url 'profile' row.username %}">{{ row.username }}</a></span>
-          <span class="font-semibold text-[#D9B25F] tabular-nums">{{ row.points }}</span>
+        <li class="flex items-center justify-between gap-2 rounded-lg px-3 py-2 transition hover:bg-slate-100 dark:hover:bg-white/5">
+          <span><span class="mr-2 font-mono text-slate-500">{{ forloop.counter }}.</span><a class="text-slate-800 transition hover:text-cyan-700 dark:text-gray-200 dark:hover:text-cyan-300" href="{% url 'profile' row.username %}">{{ row.username }}</a></span>
+          <span class="font-semibold text-[#8A6417] tabular-nums dark:text-[#D9B25F]">{{ row.points }}</span>
         </li>
       {% empty %}
-        <li class="text-sm text-gray-400">{% translate "Hali hech kim masala yechmagan — birinchi bo‘ling!" %}</li>
+        <li class="text-sm text-slate-500 dark:text-gray-400">{% translate "Hali hech kim masala yechmagan — birinchi bo‘ling!" %}</li>
       {% endfor %}
     </ol>
-    <a class="mt-3 inline-block text-sm font-semibold text-cyan-400 transition hover:text-cyan-300" href="{% url 'leaderboard' %}">{% translate "To‘liq reyting" %} →</a>
+    <a class="mt-3 inline-block text-sm font-semibold text-cyan-700 transition hover:text-cyan-600 dark:text-cyan-400 dark:hover:text-cyan-300" href="{% url 'leaderboard' %}">{% translate "To‘liq reyting" %} →</a>
   </section>
 </div>
 {% endblock %}

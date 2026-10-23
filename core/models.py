@@ -15,6 +15,10 @@ class SiteSettings(models.Model):
     color_accent = models.CharField("aksent rang", max_length=7, default="#22D3EE", validators=[HEX_COLOR])
     color_gold = models.CharField("oltin rang", max_length=7, default="#D9B25F", validators=[HEX_COLOR])
     registration_enabled = models.BooleanField("ro‘yxatdan o‘tish yoqilgan", default=True)
+    hero_author_label = models.CharField("hero: karta sarlavhasi", max_length=60, default="Kurs muallifi:")
+    hero_author_name = models.CharField("hero: muallif ismi", max_length=100, default="Nurbek Soliyev")
+    hero_author_title = models.CharField("hero: muallif lavozimi", max_length=150,
+                                         default="AI (ML, CV, LLM) va Full-Stack dasturchi")
     updated_at = models.DateTimeField("yangilangan", auto_now=True)
 
     class Meta:

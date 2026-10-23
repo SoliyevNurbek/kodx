@@ -90,7 +90,8 @@ class GradeForm(forms.Form):
 class SiteSettingsForm(forms.ModelForm):
     class Meta:
         model = SiteSettings
-        fields = ("site_name", "tagline", "color_background", "color_accent", "color_gold", "registration_enabled")
+        fields = ("site_name", "tagline", "color_background", "color_accent", "color_gold", "registration_enabled",
+                  "hero_author_label", "hero_author_name", "hero_author_title")
         widgets = {
             "color_background": forms.TextInput(attrs={"type": "color"}),
             "color_accent": forms.TextInput(attrs={"type": "color"}),

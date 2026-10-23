@@ -1,0 +1,191 @@
+/* kodx.uz — bosh sahifa hero bo'limi */
+
+/* Dizayn tokenlari: yorug' mavzu (standart) va .dark. Brend ranglari — sayt sozlamalaridan (--kx-*). */
+:root {
+  --hero-bg: linear-gradient(135deg, #F8FAFC 0%, #EEF6FB 100%);
+  --hero-border: rgba(15, 23, 42, .1);
+  --hero-text: #0F172A;
+  --hero-muted: #475569;
+  --hero-kicker: #8A6417;
+  --hero-card-bg: rgba(255, 255, 255, .72);
+  --hero-card-border: rgba(15, 23, 42, .12);
+  --hero-num: #0E7490;
+  --hero-cta-bg: var(--kx-accent);
+  --hero-cta-text: #0B1324;
+  --hero-cta-glow: rgba(34, 211, 238, .35);
+  --hero-outline: rgba(15, 23, 42, .28);
+  --hero-outline-hover: rgba(15, 23, 42, .06);
+  --hero-focus: #0E7490;
+  --hero-gold: var(--kx-gold);
+  --hero-gold-text: #1F1503;
+  --hero-gold-glow: rgba(217, 178, 95, .35);
+  --hero-stage-from: #12264A;
+  --hero-stage-to: #0A1428;
+  --hero-stage-glow: rgba(34, 211, 238, .22);
+  --hero-dot: rgba(103, 232, 249, .55);
+  --hero-glass: rgba(10, 20, 40, .58);
+  --hero-glass-border: rgba(217, 178, 95, .65);
+  --hero-on-dark: #FFFFFF;
+  --hero-on-dark-muted: #CBD5E1;
+  --hero-shadow: rgba(0, 0, 0, .32);
+  --hero-icon-bg: rgba(15, 30, 58, .72);
+  --hero-icon-border: rgba(103, 232, 249, .25);
+  --hero-python-blue: #4B8BBE;
+  --hero-python-yellow: #FFD43B;
+  --hero-vscode: #3B9FE6;
+  --hero-github: #F1F5F9;
+  --hero-ai: #67E8F9;
+}
+.dark {
+  --hero-bg: linear-gradient(135deg, var(--kx-bg) 0%, #0B1528 100%);
+  --hero-border: rgba(148, 163, 184, .16);
+  --hero-text: #F8FAFC;
+  --hero-muted: #CBD5E1;
+  --hero-kicker: var(--kx-gold);
+  --hero-card-bg: rgba(255, 255, 255, .04);
+  --hero-card-border: rgba(148, 163, 184, .22);
+  --hero-num: var(--kx-accent);
+  --hero-outline: rgba(103, 232, 249, .45);
+  --hero-outline-hover: rgba(103, 232, 249, .08);
+  --hero-focus: var(--kx-accent);
+}
+
+/* Telefon (≤ 767px): bitta ustun — matn, surat (kartasi bilan), statistika 2×2 */
+.hero {
+  display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "copy" "stage" "stats";
+  margin-bottom: 2rem; overflow: hidden; border-radius: 1.25rem; border: 1px solid var(--hero-border);
+  background: var(--hero-bg); color: var(--hero-text);
+}
+.hero-copy { grid-area: copy; container-type: inline-size; padding: 1.75rem 1.25rem 1.5rem; }
+.hero-kicker { font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--hero-kicker); }
+.hero-title {
+  margin-top: .75rem; font-weight: 800; line-height: 1.08; letter-spacing: -.02em; color: var(--hero-text);
+  /* Spetsifikatsiyadagi clamp; ustun tor bo'lsa (sidebar, telefon) so'zlar sig'ishi uchun ustun kengligi bilan cheklanadi */
+  font-size: min(clamp(2.5rem, 1rem + 4vw, 4.5rem), 14cqi);
+}
+.hero-break { display: none; }
+.hero-lead { margin-top: 1rem; max-width: 36rem; font-size: 1.0625rem; line-height: 1.6; color: var(--hero-muted); }
+.hero-actions { margin-top: 1.75rem; display: flex; flex-wrap: wrap; align-items: center; gap: .875rem; }
+.hero-cta-wrap { position: relative; display: inline-flex; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 3rem; padding: .75rem 1.5rem;
+  border-radius: .75rem; font-size: 1.0625rem; font-weight: 700;
+  transition: transform .15s, box-shadow .15s, background-color .15s;
+}
+.hero-btn:focus-visible, .hero-free:focus-visible { outline: 3px solid var(--hero-focus); outline-offset: 3px; }
+.hero-btn-primary {
+  background: var(--hero-cta-bg); color: var(--hero-cta-text);
+  box-shadow: 0 0 0 1px var(--hero-cta-glow), 0 8px 28px var(--hero-cta-glow);
+}
+.hero-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 0 1px var(--hero-cta-glow), 0 10px 36px var(--hero-cta-glow); }
+.hero-btn-outline { border: 1px solid var(--hero-outline); color: var(--hero-text); }
+.hero-btn-outline:hover { background: var(--hero-outline-hover); }
+.hero-free {
+  position: absolute; top: -.85rem; right: -.75rem; z-index: 1; padding: .2rem .6rem; border-radius: 999px;
+  white-space: nowrap; font-size: .75rem; font-weight: 800; background: var(--hero-gold); color: var(--hero-gold-text);
+  box-shadow: 0 4px 14px var(--hero-gold-glow); transform: rotate(4deg);
+}
+.hero-free:hover { filter: brightness(1.06); }
+
+/* O'ng ustun: to'q ko'k gradient + yumshoq cyan nuqtalar (rasm emas) */
+.hero-stage {
+  grid-area: stage; position: relative; isolation: isolate; display: flex; align-items: flex-end; justify-content: center;
+  min-height: 24rem; padding: 1.5rem 1rem 0; overflow: hidden;
+  background:
+    radial-gradient(60% 50% at 55% 35%, var(--hero-stage-glow), transparent 70%),
+    linear-gradient(160deg, var(--hero-stage-from) 0%, var(--hero-stage-to) 100%);
+}
+.hero-dots {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .55;
+  background-image:
+    radial-gradient(circle, var(--hero-dot) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle, var(--hero-dot) 0 1px, transparent 2px);
+  background-size: 48px 48px, 31px 31px; background-position: 0 0, 15px 22px;
+  -webkit-mask-image: radial-gradient(70% 70% at 50% 45%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(70% 70% at 50% 45%, #000 0%, transparent 75%);
+}
+.hero-stage picture { display: block; width: min(100%, 22rem); }
+.hero-photo {
+  display: block; width: 100%; height: auto;
+  /* Chetlari fonga silliq qo'shiladi: yon tomonlar va past qismi xiralashadi */
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%),
+                      linear-gradient(to bottom, transparent 0, #000 14%, #000 62%, transparent 98%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%),
+              linear-gradient(to bottom, transparent 0, #000 14%, #000 62%, transparent 98%);
+  mask-composite: intersect;
+}
+
+/* Suzuvchi ikonkalar */
+.hero-icons { position: absolute; inset: 0; pointer-events: none; }
+.hero-icon {
+  position: absolute; display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: .9rem;
+  background: var(--hero-icon-bg); border: 1px solid var(--hero-icon-border); box-shadow: 0 8px 24px var(--hero-shadow);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  animation: hero-float 6s ease-in-out infinite;
+}
+.hero-icon-python { top: 12%; left: 6%; }
+.hero-icon-vscode { top: 10%; right: 6%; animation-delay: -1.5s; }
+.hero-icon-github { top: 40%; right: 4%; animation-delay: -3s; }
+.hero-icon-ai { top: 44%; left: 5%; animation-delay: -4.5s; }
+.hi-python-blue { fill: var(--hero-python-blue); }
+.hi-python-yellow { fill: var(--hero-python-yellow); }
+.hi-vscode { fill: var(--hero-vscode); }
+.hi-github { fill: var(--hero-github); }
+.hi-ai { stroke: var(--hero-ai); }
+.hi-ai-text { fill: var(--hero-ai); }
+@keyframes hero-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+/* Muallif kartasi: shisha effekti, oltin ingichka chegara */
+.hero-author {
+  position: absolute; left: 50%; bottom: 1rem; transform: translateX(-50%); width: min(calc(100% - 2rem), 24rem);
+  padding: .75rem 1rem; border-radius: 1rem; text-align: center;
+  background: var(--hero-glass); border: 1px solid var(--hero-glass-border); box-shadow: 0 10px 30px var(--hero-shadow);
+  -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%);
+}
+.hero-author-label { font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--hero-gold); }
+.hero-author-name {
+  margin-top: .15rem; font-size: clamp(1.35rem, 1rem + 1.4vw, 2rem); font-weight: 800; line-height: 1.1;
+  letter-spacing: .02em; text-transform: uppercase; color: var(--hero-on-dark); overflow-wrap: anywhere;
+}
+.hero-author-title { margin-top: .35rem; font-size: .875rem; color: var(--hero-on-dark-muted); }
+
+/* Statistika kartalari */
+.hero-stats { grid-area: stats; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; padding: 1.25rem; }
+.hero-stat {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .15rem; min-width: 0;
+  padding: 1rem .5rem; border-radius: 1rem; text-align: center;
+  background: var(--hero-card-bg); border: 1px solid var(--hero-card-border);
+}
+.hero-stat-num {
+  font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.25rem); font-weight: 800; line-height: 1.1;
+  font-variant-numeric: tabular-nums; color: var(--hero-num);
+}
+.hero-stat-label { font-size: .9375rem; color: var(--hero-muted); overflow-wrap: anywhere; }
+
+/* Planshet (768–1023px): ikki ustun, surat kichikroq, statistika bitta qatorda 4 ustun */
+@media (min-width: 768px) {
+  .hero { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); grid-template-areas: "copy stage" "stats stats"; }
+  .hero-copy { align-self: center; padding: 2.5rem 2rem 2rem; }
+  .hero-title { font-size: min(clamp(2.5rem, 1rem + 4vw, 4.5rem), 9.2cqi); }
+  .hero-break { display: inline; }
+  .hero-stage { min-height: 26rem; }
+  .hero-stage picture { width: min(100%, 20rem); }
+  .hero-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 0 2rem 2rem; }
+}
+
+/* Desktop (≥ 1024px): 1.1fr / 1fr; statistika chap ustunda 2×2, surat ikki qatorni egallaydi */
+@media (min-width: 1024px) {
+  .hero { grid-template-areas: "copy stage" "stats stage"; grid-template-rows: auto 1fr; min-height: 38rem; }
+  .hero-copy { align-self: end; padding: 3rem 2.5rem 1.5rem; }
+  .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); align-self: start; max-width: 32rem; padding: .5rem 2.5rem 2.5rem; }
+  .hero-stage { padding-top: 2rem; }
+  .hero-stage picture { width: min(100%, 30rem); }
+  .hero-author { bottom: 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-icon { animation: none; }
+  .hero-btn { transition: none; }
+  .hero-btn-primary:hover { transform: none; }
+}
