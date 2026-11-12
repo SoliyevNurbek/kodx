@@ -23,3 +23,6 @@ python-*.exe
 .idea/
 Thumbs.db
 .DS_Store
+
+# maxfiy va keraksiz fayllar
+.coverage
